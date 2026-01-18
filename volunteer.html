@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer - No On The Library Tax - Save El Cerrito</title>
+    <meta name="description" content="Join us in opposing the El Cerrito Library Tax. Volunteer to make a difference.">
+
+    <meta property="og:title" content="Volunteer - No On The Library Tax - Save El Cerrito">
+    <meta property="og:description" content="Join our volunteer efforts to oppose the library tax measure.">
+    <meta property="og:image" content="volunteer.jpeg">
+    <meta property="og:type" content="website">
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --brand-color: #fe5252; 
+            --brand-hover: #d63d3d;
+            --accent-yellow: #F9D466;
+            --text-dark: #222; 
+            --section-bg: #f4f4f4; 
+        }
+
+        /* --- RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Open Sans', sans-serif; 
+            background: white; 
+            color: var(--text-dark);
+            overflow-x: hidden; 
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .logo {
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+            cursor: pointer;
+        }
+
+        .nav-links { display: flex; align-items: center; }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent-yellow); }
+
+        .nav-links .nav-btn {
+            background-color: var(--brand-color);
+            padding: 8px 24px;
+            border-radius: 50px; 
+            border: 2px solid var(--brand-color);
+            text-shadow: none;
+            transition: all 0.3s;
+            font-weight: 700; 
+        }
+        
+        .nav-links .nav-btn:hover { background-color: var(--brand-hover); border-color: var(--brand-hover); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh; 
+            position: relative;
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.1) 100%), url('volunteer.jpeg'); 
+            background-size: cover;
+            background-position: center 15%; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px 100px 20px;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 1200px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            color: white;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin: 0;
+            text-transform: uppercase;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+        }
+
+        .separator-bar {
+            width: 100%;
+            max-width: 1000px;
+            height: 14px;
+            background-color: var(--brand-color);
+            margin: 25px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+
+        .hero h2 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--accent-yellow);
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin: 0;
+            text-transform: uppercase;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+        }
+
+        /* --- ACTION BAR --- */
+        .action-bar {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            width: 100vw;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 80px 20px 40px 20px; 
+            z-index: 5;
+            flex-wrap: wrap; 
+        }
+
+        /* --- BUTTON STYLES --- */
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+            transition: transform 0.2s, background-color 0.2s;
+            min-width: 200px;
+            text-align: center;
+            white-space: nowrap;
+            margin-bottom: 5px; 
+        }
+
+        .btn-primary {
+            background-color: var(--brand-color); 
+            color: white;
+            border: 2px solid var(--brand-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--brand-hover);
+            border-color: var(--brand-hover);
+            transform: scale(1.05);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white; 
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5); 
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: #333;
+            border-color: white;
+            text-shadow: none;
+        }
+
+        /* --- MISSION SECTION --- */
+        .mission-section {
+            background-color: var(--section-bg);
+            padding: 100px 20px;
+        }
+
+        .mission-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: flex-start; 
+            gap: 60px;
+        }
+
+        .mission-text { flex: 1; font-family: 'Open Sans', sans-serif; }
+
+        .eyebrow {
+            display: block;
+            color: var(--brand-color);
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .mission-text h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            color: #222;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .mission-text p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #444; 
+            margin-bottom: 25px;
+        }
+
+        .highlight { font-weight: 700; color: var(--brand-color); }
+
+        .mission-image {
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mission-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
+            border: 5px solid white; 
+        }
+
+        .mission-donate-btn {
+            margin-top: 15px;
+            width: auto;             
+            align-self: center;      
+            min-width: 0;            
+            padding-top: 8px;
+            padding-left: 45px;
+            padding-right: 35px;       
+            font-size: 1.2rem;       
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .caption {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* --- WAYS TO HELP SECTION --- */
+        .ways-section {
+            background-color: white;
+            padding: 100px 20px;
+        }
+
+        .ways-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ways-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .ways-header h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            color: #222;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .ways-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .way-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-top: 4px solid var(--brand-color);
+            border-radius: 6px;
+            padding: 30px;
+            transition: box-shadow 0.3s;
+        }
+
+        .way-card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .way-card h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: #222;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .way-card p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .way-card .btn {
+            min-width: 0;
+            width: auto;
+            padding: 10px 25px;
+            font-size: 1rem;
+        }
+
+        /* --- CALL TO ACTION SECTION --- */
+        .cta-section {
+            background-color: var(--section-bg);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            color: #222;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.2rem;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero h2 { font-size: 2rem; }
+            .separator-bar { height: 8px; margin: 15px 0; }
+            
+            .action-bar {
+                position: relative;
+                flex-direction: column;
+                background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.9) 20%);
+                padding: 40px 20px;
+                gap: 15px;
+                left: 0; right: 0; margin: 0; width: 100%;
+            }
+            
+            .hero { height: auto; min-height: 80vh; padding-bottom: 0; }
+            .btn { width: 100%; max-width: 350px; }
+            
+            nav { flex-direction: column; gap: 15px; padding-top: 30px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .nav-links a { margin: 0; font-size: 1rem; }
+
+            .mission-section { padding: 60px 20px; }
+            .mission-container { flex-direction: column; gap: 30px; }
+            .mission-text h3 { font-size: 2rem; }
+            .mission-text p { font-size: 1.1rem; }
+            
+            .ways-section { padding: 60px 20px; }
+            .ways-header h3 { font-size: 2rem; }
+            .ways-grid { grid-template-columns: 1fr; }
+            
+            .cta-section { padding: 60px 20px; }
+            .cta-section h3 { font-size: 2rem; }
+            .cta-section p { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">No On Another Forever Tax</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="volunteer.html">Volunteer</a>
+            <a href="tax-calculator.html">Tax Calculator</a>
+            <a href="faq.html">FAQ</a>
+            <a href="donate.html" class="nav-btn">Donate</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>JOIN THE MOVEMENT</h1>
+            <div class="separator-bar"></div>
+            <h2>VOLUNTEER TODAY</h2>
+        </div>
+        
+        <div class="action-bar">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header" class="btn btn-outline">Sign The Petition</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header" class="btn btn-outline">Order Yard Sign</a>
+            <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary" style="font-size: 1.3rem; letter-spacing: 2px; font-weight: 800;">DONATE</a>
+            <a href="faq.html" class="btn btn-outline">FAQ</a>
+        </div>
+    </section>
+
+    <section class="mission-section">
+        <div class="mission-container">
+            <div class="mission-text">
+                <span class="eyebrow">GET INVOLVED</span>
+                
+                <h3>Your Voice Matters</h3>
+                
+                <p>
+                    Every volunteer makes a difference. We're a group of <span class="highlight">El Cerrito residents</span> 
+                    who care about our community and believe this library tax measure is the <span class="highlight">wrong plan 
+                    at the wrong price</span>. Together, we can ensure our voices are heard at the ballot box.
+                </p>
+
+                <p>
+                    Whether you can dedicate a few hours or commit to regular volunteering, there are many ways to help. 
+                    From spreading the word in your neighborhood to helping with events and outreach, every contribution 
+                    moves us closer to protecting El Cerrito from this excessive tax burden.
+                </p>
+            </div>
+
+            <div class="mission-image">
+                <img src="volunteer.jpeg" alt="El Cerrito Resident Volunteer with Bicycle and Yard Sign">
+                <span class="caption">Local residents working together to oppose the tax measure.</span>
+                
+                <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary mission-donate-btn">
+                    Donate <span>&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="ways-section">
+        <div class="ways-container">
+            <div class="ways-header">
+                <h3>WAYS TO VOLUNTEER</h3>
+            </div>
+
+            <div class="ways-grid">
+                <div class="way-card">
+                    <h4>Spread The Word</h4>
+                    <p>
+                        Talk to your neighbors, friends, and family about why this tax measure is wrong for El Cerrito. 
+                        Personal conversations are one of the most effective ways to reach voters.
+                    </p>
+                    <a href="faq.html" class="btn btn-outline" style="color: #333; border-color: #ddd;">
+                        Learn More
+                    </a>
+                </div>
+
+                <div class="way-card">
+                    <h4>Get A Yard Sign</h4>
+                    <p>
+                        Show your support with a yard sign. Displaying a sign helps raise awareness and shows 
+                        your neighbors that you're voting NO on this measure.
+                    </p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header" class="btn btn-outline" style="color: #333; border-color: #ddd;">
+                        Order Sign
+                    </a>
+                </div>
+
+                <div class="way-card">
+                    <h4>Sign The Petition</h4>
+                    <p>
+                        Add your name to our petition to show your opposition to the library tax measure. 
+                        Every signature demonstrates the strength of our movement.
+                    </p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header" class="btn btn-outline" style="color: #333; border-color: #ddd;">
+                        Sign Now
+                    </a>
+                </div>
+
+                <div class="way-card">
+                    <h4>Donate</h4>
+                    <p>
+                        Your financial contribution helps us reach more voters through advertising, materials, 
+                        and outreach efforts. Every dollar makes a difference.
+                    </p>
+                    <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary">
+                        Donate
+                    </a>
+                </div>
+
+                <div class="way-card">
+                    <h4>Community Events</h4>
+                    <p>
+                        Join us at community events and meetings. Help us connect with voters, answer questions, 
+                        and share information about the tax measure.
+                    </p>
+                    <a href="index.html" class="btn btn-outline" style="color: #333; border-color: #ddd;">
+                        Get Involved
+                    </a>
+                </div>
+
+                <div class="way-card">
+                    <h4>Share On Social Media</h4>
+                    <p>
+                        Help spread our message online. Share information about the tax measure with your 
+                        social networks and help others understand why we're voting NO.
+                    </p>
+                    <a href="faq.html" class="btn btn-outline" style="color: #333; border-color: #ddd;">
+                        Share Facts
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-container">
+            <h3>Ready To Make A Difference?</h3>
+            <p>
+                Join El Cerrito residents who are standing up against this excessive tax. Together, we can 
+                ensure our community gets a better deal for the library we all want.
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header" class="btn btn-outline" style="color: #333; border-color: #ddd; background: white;">
+                    Sign The Petition
+                </a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header" class="btn btn-outline" style="color: #333; border-color: #ddd; background: white;">
+                    Order Yard Sign
+                </a>
+                <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary">
+                    DONATE NOW
+                </a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
