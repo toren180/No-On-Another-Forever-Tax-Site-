@@ -55,7 +55,6 @@
             font-size: 1.5rem;
             text-transform: uppercase;
             cursor: pointer;
-            text-decoration: none;
         }
 
         .nav-links {
@@ -385,8 +384,9 @@
                 padding: 15px 20px;
                 position: absolute;
                 top: 0;
-                background: transparent;
+                background: white;
                 border-bottom: none;
+                border-bottom: 1px solid #eee;
             }
 
             .hamburger {
@@ -465,6 +465,10 @@
                 gap: 15px;
                 text-align: center;
             }
+
+            .footer-info span:nth-child(2) {
+                display: none;
+            }
         }
 
         /* --- FOOTER --- */
@@ -527,7 +531,7 @@
 
 <body>
     <nav>
-        <a href="index.html" class="logo">No On Another Forever Tax</a>
+        <div class="logo">No On Another Forever Tax</div>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="volunteer.html">Volunteer</a>

@@ -60,7 +60,6 @@
             text-transform: uppercase;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
             cursor: pointer;
-            text-decoration: none;
         }
 
         .nav-links {
@@ -241,7 +240,7 @@
         .hero {
             height: 90vh;
             position: relative;
-            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0) 30%, rgba(0, 0, 0, 0.1) 100%), url('library.jpeg');
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0) 30%, rgba(0, 0, 0, 0.1) 70%, rgba(0, 0, 0, 0.4) 100%), url('library.jpeg');
             background-size: cover;
             background-position: center 15%;
             display: flex;
@@ -723,36 +722,12 @@
                 gap: 30px;
             }
 
-            .mission-text {
-                max-width: 100%;
-                overflow-wrap: break-word;
-                word-wrap: break-word;
-            }
-
             .mission-text h3 {
                 font-size: 2rem;
             }
 
             .mission-text p {
                 font-size: 1.1rem;
-            }
-
-            .mission-text ul {
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-                max-width: 100%;
-            }
-
-            .mission-text ul li {
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-                word-break: break-word;
-            }
-
-            .mission-text ul li a {
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-                word-break: break-all;
             }
 
             .ways-section {
@@ -787,6 +762,10 @@
                 flex-direction: column;
                 gap: 15px;
                 text-align: center;
+            }
+
+            .footer-info span:nth-child(2) {
+                display: none;
             }
         }
 
@@ -851,7 +830,7 @@
 <body>
 
     <nav>
-        <a href="index.html" class="logo">No On Another Forever Tax</a>
+        <div class="logo">No On Another Forever Tax</div>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="volunteer.html">Volunteer</a>
