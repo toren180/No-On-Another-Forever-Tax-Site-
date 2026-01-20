@@ -98,6 +98,118 @@
             border-color: var(--brand-hover);
         }
 
+        /* --- HAMBURGER MENU --- */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.98);
+            transition: right 0.3s ease-in-out;
+            z-index: 1000;
+            padding: 80px 30px 30px 30px;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .sidebar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            padding: 15px 0;
+            margin: 0;
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s, padding-left 0.3s;
+        }
+
+        .sidebar .nav-links a:hover {
+            color: var(--accent-yellow);
+            padding-left: 10px;
+        }
+
+        .sidebar .nav-links .nav-btn {
+            margin-top: 10px;
+            width: 100%;
+            text-align: center;
+            border-radius: 50px;
+            padding: 12px 24px;
+            background-color: var(--brand-color);
+            color: white;
+            border: 2px solid var(--brand-color);
+        }
+
+        .sidebar .nav-links .nav-btn:hover {
+            background-color: var(--brand-hover);
+            border-color: var(--brand-hover);
+            padding-left: 12px;
+        }
+
+        /* --- OVERLAY --- */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
         /* --- HERO SECTION --- */
         .hero {
             height: 90vh;
@@ -644,7 +756,10 @@
         /* --- ACTION CARDS SECTION --- */
         .action-cards-section {
             background-color: white;
-            padding: 100px 20px;
+            padding-top: 0;
+            padding-bottom: 100px;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         .action-cards-container {
@@ -724,57 +839,79 @@
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                padding: 80px 20px 30px 20px;
+                justify-content: center;
+                padding-top: 100px;
+            }
+
+            .hero-content {
+                width: 100%;
+                padding: 0;
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+                margin-bottom: 8px;
+                line-height: 1.1;
             }
 
             .hero h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+                line-height: 1.1;
             }
 
             .separator-bar {
-                height: 8px;
-                margin: 15px 0;
+                height: 6px;
+                margin: 12px 0;
+                width: 100%;
+                max-width: 300px;
             }
 
             .action-bar {
                 position: relative;
                 flex-direction: column;
-                background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.9) 20%);
-                padding: 40px 20px;
-                gap: 15px;
-                left: 0;
-                right: 0;
-                margin: 0;
-                width: 100%;
-            }
-
-            .hero {
-                height: auto;
-                min-height: 80vh;
-                padding-bottom: 0;
+                /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%); */
+                background-color: transparent;
+                padding: 25px 20px;
+                gap: 12px;
+                left: auto;
+                right: auto;
+                margin: 30px auto 0 auto;
+                width: calc(100% - 40px);
+                max-width: 100%;
+                transform: none;
+                border-radius: 8px;
             }
 
             .btn {
                 width: 100%;
-                max-width: 350px;
+                max-width: 100%;
+                margin: 0;
+                padding: 14px 24px;
+                font-size: 1rem;
             }
 
             nav {
-                flex-direction: column;
-                gap: 15px;
-                padding-top: 30px;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 15px 20px;
+            }
+
+            .hamburger {
+                display: flex;
             }
 
             .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
+                display: none;
             }
 
-            .nav-links a {
-                margin: 0;
-                font-size: 1rem;
+            .logo {
+                font-size: 1.2rem;
             }
 
             .mission-section {
@@ -860,9 +997,28 @@
             <a href="volunteer.html">Volunteer</a>
             <a href="tax-calculator.html">Tax Calculator</a>
             <a href="faq.html">FAQ</a>
-            <a href="donate.html" class="nav-btn">Donate</a>
+            <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02?locale=en&__embed_source=buy_btn_1Sna8XEAriv54ByVvLc4qkan"
+                class="nav-btn" target="_blank">Donate</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </nav>
+
+    <!-- Sidebar -->
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="volunteer.html">Volunteer</a>
+            <a href="tax-calculator.html">Tax Calculator</a>
+            <a href="faq.html">FAQ</a>
+            <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02?locale=en&__embed_source=buy_btn_1Sna8XEAriv54ByVvLc4qkan"
+                class="nav-btn" target="_blank">Donate</a>
+        </div>
+    </div>
 
     <section class="hero">
         <div class="hero-content">
@@ -874,11 +1030,11 @@
         <div class="action-bar">
             <a href="volunteer.html" class="btn btn-outline">Volunteer</a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header"
-                class="btn btn-outline">Sign The Petition</a>
+                class="btn btn-outline" target="_blank">Sign The Petition </a>
             <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary"
-                style="font-size: 1.3rem; letter-spacing: 2px; font-weight: 800;">DONATE</a>
+                style="font-size: 1.3rem; letter-spacing: 2px; font-weight: 800;" target="_blank">DONATE</a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header"
-                class="btn btn-outline">Order Yard Sign</a>
+                class="btn btn-outline" target="_blank">Order Yard Sign</a>
             <a href="faq.html" class="btn btn-outline">FAQ</a>
         </div>
     </section>
@@ -910,7 +1066,8 @@
                 <img src="volunteer.jpeg" alt="El Cerrito Resident Volunteer with Bicycle and Yard Sign">
 
 
-                <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary mission-donate-btn">
+                <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary mission-donate-btn"
+                    target="_blank">
                     Donate <span>&rarr;</span>
                 </a>
             </div>
@@ -1145,19 +1302,22 @@
                         <p>Add your name to the growing list of El Cerrito residents and library users who oppose the
                             new Forever Tax.</p>
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header"
-                            class="btn btn-primary">Sign Now</a>
+                            class="btn btn-primary" target="_blank">Sign Now</a>
                     </div>
                 </div>
 
                 <div class="action-card">
+                    <img src="volunteer.jpeg" alt="Yard Sign" class="action-card-image">
                     <div class="action-card-content">
                         <h4>Donate</h4>
                         <p>Support our campaign to stop the Forever Tax.</p>
-                        <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary">Donate</a>
+                        <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary"
+                            target="_blank">Donate</a>
                     </div>
                 </div>
 
                 <div class="action-card">
+                    <img src="tabling.jpg" alt="Yard Sign" class="action-card-image">
                     <div class="action-card-content">
                         <h4>Volunteer</h4>
                         <p>Get involved and help us stop another Forever Tax.</p>
@@ -1166,16 +1326,17 @@
                 </div>
 
                 <div class="action-card">
-                    <img src="volunteer.jpeg" alt="Yard Sign" class="action-card-image">
+                    <img src="yardsign.jpg" alt="Yard Sign" class="action-card-image">
                     <div class="action-card-content">
                         <h4>Order a Yard Sign</h4>
                         <p>Show your support!</p>
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header"
-                            class="btn btn-primary">Order Sign</a>
+                            class="btn btn-primary" target="_blank">Order Sign</a>
                     </div>
                 </div>
 
                 <div class="action-card">
+                    <img src="cityhall.jpg" alt="Yard Sign" class="action-card-image">
                     <div class="action-card-content">
                         <h4>Calculate Your Personal Tax</h4>
                         <p>Find out how much the library tax will cost you personally.</p>
@@ -1184,6 +1345,7 @@
                 </div>
 
                 <div class="action-card">
+                    <img src="talking.jpg" alt="FAQ" class="action-card-image">
                     <div class="action-card-content">
                         <h4>FAQ</h4>
                         <p>Get answers to frequently asked questions about the Forever Tax.</p>
@@ -1207,6 +1369,34 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // Close sidebar when clicking on links
+        const sidebarLinks = sidebar.querySelectorAll('a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
 </body>
 
 </html>

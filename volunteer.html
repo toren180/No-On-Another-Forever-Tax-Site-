@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,26 +12,32 @@
     <meta property="og:image" content="volunteer.jpeg">
     <meta property="og:type" content="website">
 
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         /* --- VARIABLES --- */
         :root {
-            --brand-color: #fe5252; 
+            --brand-color: #fe5252;
             --brand-hover: #d63d3d;
             --accent-yellow: #F9D466;
-            --text-dark: #222; 
-            --section-bg: #f4f4f4; 
+            --text-dark: #222;
+            --section-bg: #f4f4f4;
         }
 
         /* --- RESET --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body { 
-            font-family: 'Open Sans', sans-serif; 
-            background: white; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: white;
             color: var(--text-dark);
-            overflow-x: hidden; 
+            overflow-x: hidden;
         }
 
         /* --- NAVIGATION --- */
@@ -51,11 +58,14 @@
             font-weight: 700;
             font-size: 1.5rem;
             text-transform: uppercase;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
             cursor: pointer;
         }
 
-        .nav-links { display: flex; align-items: center; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
 
         .nav-links a {
             color: white;
@@ -65,31 +75,148 @@
             font-weight: 500;
             font-size: 1.1rem;
             text-transform: uppercase;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
             transition: color 0.3s;
         }
 
-        .nav-links a:hover { color: var(--accent-yellow); }
+        .nav-links a:hover {
+            color: var(--accent-yellow);
+        }
 
         .nav-links .nav-btn {
             background-color: var(--brand-color);
             padding: 8px 24px;
-            border-radius: 50px; 
+            border-radius: 50px;
             border: 2px solid var(--brand-color);
             text-shadow: none;
             transition: all 0.3s;
-            font-weight: 700; 
+            font-weight: 700;
         }
-        
-        .nav-links .nav-btn:hover { background-color: var(--brand-hover); border-color: var(--brand-hover); }
+
+        .nav-links .nav-btn:hover {
+            background-color: var(--brand-hover);
+            border-color: var(--brand-hover);
+        }
+
+        /* --- HAMBURGER MENU --- */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.98);
+            transition: right 0.3s ease-in-out;
+            z-index: 1000;
+            padding: 80px 30px 30px 30px;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .sidebar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            padding: 15px 0;
+            margin: 0;
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s, padding-left 0.3s;
+        }
+
+        .sidebar .nav-links a:hover {
+            color: var(--accent-yellow);
+            padding-left: 10px;
+        }
+
+        .sidebar .nav-links .nav-btn {
+            margin-top: 10px;
+            width: 100%;
+            text-align: center;
+            border-radius: 50px;
+            padding: 12px 24px;
+            background-color: var(--brand-color);
+            color: white;
+            border: 2px solid var(--brand-color);
+        }
+
+        .sidebar .nav-links .nav-btn:hover {
+            background-color: var(--brand-hover);
+            border-color: var(--brand-hover);
+            padding-left: 12px;
+        }
+
+        /* --- OVERLAY --- */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 90vh; 
+            height: 90vh;
             position: relative;
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.0) 30%, rgba(0,0,0,0.1) 100%), url('volunteer.jpeg'); 
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0) 30%, rgba(0, 0, 0, 0.1) 100%), url('library.jpeg');
             background-size: cover;
-            background-position: center 15%; 
+            background-position: center 15%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -100,7 +227,7 @@
 
         .hero-content {
             width: 100%;
-            max-width: 1200px; 
+            max-width: 1200px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -114,7 +241,7 @@
             line-height: 1;
             margin: 0;
             text-transform: uppercase;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
         }
 
         .separator-bar {
@@ -123,7 +250,7 @@
             height: 14px;
             background-color: var(--brand-color);
             margin: 25px 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
 
         .hero h2 {
@@ -134,7 +261,7 @@
             line-height: 1;
             margin: 0;
             text-transform: uppercase;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
         }
 
         /* --- ACTION BAR --- */
@@ -151,9 +278,9 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
-            padding: 80px 20px 40px 20px; 
+            padding: 80px 20px 40px 20px;
             z-index: 5;
-            flex-wrap: wrap; 
+            flex-wrap: wrap;
         }
 
         /* --- BUTTON STYLES --- */
@@ -170,14 +297,14 @@
             min-width: 200px;
             text-align: center;
             white-space: nowrap;
-            margin-bottom: 5px; 
+            margin-bottom: 5px;
         }
 
         .btn-primary {
-            background-color: var(--brand-color); 
+            background-color: var(--brand-color);
             color: white;
             border: 2px solid var(--brand-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .btn-primary:hover {
@@ -185,14 +312,14 @@
             border-color: var(--brand-hover);
             transform: scale(1.05);
         }
-        
+
         .btn-outline {
             background-color: transparent;
             color: white;
-            border: 2px solid white; 
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5); 
+            border: 2px solid white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
-        
+
         .btn-outline:hover {
             background-color: white;
             color: #333;
@@ -210,11 +337,14 @@
             max-width: 1100px;
             margin: 0 auto;
             display: flex;
-            align-items: flex-start; 
+            align-items: flex-start;
             gap: 60px;
         }
 
-        .mission-text { flex: 1; font-family: 'Open Sans', sans-serif; }
+        .mission-text {
+            flex: 1;
+            font-family: 'Open Sans', sans-serif;
+        }
 
         .eyebrow {
             display: block;
@@ -239,14 +369,52 @@
         .mission-text p {
             font-size: 1.2rem;
             line-height: 1.6;
-            color: #444; 
+            color: #444;
             margin-bottom: 25px;
         }
 
-        .highlight { font-weight: 700; color: var(--brand-color); }
+        .mission-text ul {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 25px;
+            margin-left: 25px;
+        }
+
+        .mission-text ul li {
+            margin-bottom: 15px;
+        }
+
+        .mission-text ul li strong {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .mission-text ul li a {
+            color: var(--brand-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .mission-text ul li a:hover {
+            color: var(--brand-hover);
+            text-decoration: underline;
+        }
+
+        .mission-text ul ul {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            list-style: none;
+        }
+
+        .highlight {
+            font-weight: 700;
+            color: var(--brand-color);
+        }
 
         .mission-image {
-            flex: 1; 
+            flex: 1;
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -256,19 +424,28 @@
             width: 100%;
             height: auto;
             border-radius: 4px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
-            border: 5px solid white; 
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border: 5px solid white;
         }
 
-        .mission-donate-btn {
+        .mission-buttons {
             margin-top: 15px;
-            width: auto;             
-            align-self: center;      
-            min-width: 0;            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .mission-donate-btn,
+        .mission-involve-btn {
+            margin-top: 0;
+            width: auto;
+            min-width: 0;
             padding-top: 8px;
             padding-left: 45px;
-            padding-right: 35px;       
-            font-size: 1.2rem;       
+            padding-right: 35px;
+            font-size: 1.2rem;
             display: inline-flex;
             justify-content: center;
             align-items: center;
@@ -323,7 +500,7 @@
         }
 
         .way-card:hover {
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .way-card h4 {
@@ -339,7 +516,32 @@
             font-size: 1rem;
             color: #555;
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+        }
+
+        .way-card ul {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .way-card ul li {
+            margin-bottom: 8px;
+        }
+
+        .way-card a {
+            color: var(--brand-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .way-card a:hover {
+            color: var(--brand-hover);
+            text-decoration: underline;
         }
 
         .way-card .btn {
@@ -349,9 +551,20 @@
             font-size: 1rem;
         }
 
+        .council-list {
+            list-style: none;
+            margin-left: 0;
+            margin-top: 10px;
+        }
+
+        .council-list li {
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+
         /* --- CALL TO ACTION SECTION --- */
         .cta-section {
-            background-color: var(--section-bg);
+            background-color: white;
             padding: 80px 20px;
             text-align: center;
         }
@@ -379,41 +592,190 @@
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero h2 { font-size: 2rem; }
-            .separator-bar { height: 8px; margin: 15px 0; }
-            
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                padding: 80px 20px 30px 20px;
+                justify-content: center;
+                padding-top: 100px;
+            }
+
+            .hero-content {
+                width: 100%;
+                padding: 0;
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                margin-bottom: 8px;
+                line-height: 1.1;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+                line-height: 1.1;
+            }
+
+            .separator-bar {
+                height: 6px;
+                margin: 12px 0;
+                width: 100%;
+                max-width: 300px;
+            }
+
             .action-bar {
                 position: relative;
                 flex-direction: column;
-                background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.9) 20%);
-                padding: 40px 20px;
-                gap: 15px;
-                left: 0; right: 0; margin: 0; width: 100%;
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%);
+                padding: 25px 20px;
+                gap: 12px;
+                left: auto;
+                right: auto;
+                margin: 30px auto 0 auto;
+                width: calc(100% - 40px);
+                max-width: 100%;
+                transform: none;
+                border-radius: 8px;
             }
-            
-            .hero { height: auto; min-height: 80vh; padding-bottom: 0; }
-            .btn { width: 100%; max-width: 350px; }
-            
-            nav { flex-direction: column; gap: 15px; padding-top: 30px; }
-            .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
-            .nav-links a { margin: 0; font-size: 1rem; }
 
-            .mission-section { padding: 60px 20px; }
-            .mission-container { flex-direction: column; gap: 30px; }
-            .mission-text h3 { font-size: 2rem; }
-            .mission-text p { font-size: 1.1rem; }
-            
-            .ways-section { padding: 60px 20px; }
-            .ways-header h3 { font-size: 2rem; }
-            .ways-grid { grid-template-columns: 1fr; }
-            
-            .cta-section { padding: 60px 20px; }
-            .cta-section h3 { font-size: 2rem; }
-            .cta-section p { font-size: 1.1rem; }
+            .btn {
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+                padding: 14px 24px;
+                font-size: 1rem;
+            }
+
+            nav {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 15px 20px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .mission-section {
+                padding: 60px 20px;
+            }
+
+            .mission-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .mission-text h3 {
+                font-size: 2rem;
+            }
+
+            .mission-text p {
+                font-size: 1.1rem;
+            }
+
+            .ways-section {
+                padding: 60px 20px;
+            }
+
+            .ways-header h3 {
+                font-size: 2rem;
+            }
+
+            .ways-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 60px 20px;
+            }
+
+            .cta-section h3 {
+                font-size: 2rem;
+            }
+
+            .cta-section p {
+                font-size: 1.1rem;
+            }
+
+            .footer {
+                padding: 30px 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background-color: var(--brand-color);
+            padding: 50px 20px;
+            color: white;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .footer-campaign-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .footer-paid-for {
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .footer-info span {
+            opacity: 0.9;
+        }
+
+        .footer-content a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-content a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
         }
     </style>
 </head>
+
 <body>
 
     <nav>
@@ -423,22 +785,40 @@
             <a href="volunteer.html">Volunteer</a>
             <a href="tax-calculator.html">Tax Calculator</a>
             <a href="faq.html">FAQ</a>
-            <a href="donate.html" class="nav-btn">Donate</a>
+            <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="nav-btn" target="_blank">Donate</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </nav>
 
+    <!-- Sidebar -->
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="volunteer.html">Volunteer</a>
+            <a href="tax-calculator.html">Tax Calculator</a>
+            <a href="faq.html">FAQ</a>
+            <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="nav-btn" target="_blank">Donate</a>
+        </div>
+    </div>
+
     <section class="hero">
         <div class="hero-content">
-            <h1>JOIN THE MOVEMENT</h1>
+            <h1>Volunteer</h1>
             <div class="separator-bar"></div>
-            <h2>VOLUNTEER TODAY</h2>
         </div>
-        
+
         <div class="action-bar">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header" class="btn btn-outline">Sign The Petition</a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header" class="btn btn-outline">Order Yard Sign</a>
-            <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary" style="font-size: 1.3rem; letter-spacing: 2px; font-weight: 800;">DONATE</a>
-            <a href="faq.html" class="btn btn-outline">FAQ</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header"
+                class="btn btn-outline" target="_blank">Sign The Petition</a>
+                <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary"
+                style="font-size: 1.3rem; letter-spacing: 2px; font-weight: 800;" target="_blank">DONATE</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header"
+                class="btn btn-outline mission-involve-btn" target="_blank">Order Yard Sign</a>
         </div>
     </section>
 
@@ -446,103 +826,45 @@
         <div class="mission-container">
             <div class="mission-text">
                 <span class="eyebrow">GET INVOLVED</span>
-                
-                <h3>Your Voice Matters</h3>
-                
-                <p>
-                    Every volunteer makes a difference. We're a group of <span class="highlight">El Cerrito residents</span> 
-                    who care about our community and believe this library tax measure is the <span class="highlight">wrong plan 
-                    at the wrong price</span>. Together, we can ensure our voices are heard at the ballot box.
-                </p>
 
-                <p>
-                    Whether you can dedicate a few hours or commit to regular volunteering, there are many ways to help. 
-                    From spreading the word in your neighborhood to helping with events and outreach, every contribution 
-                    moves us closer to protecting El Cerrito from this excessive tax burden.
-                </p>
+                <h3>WAYS TO HELP</h3>
+
+                <ul>
+                    <li><strong>Collect Signatures:</strong> We need names of El Cerrito residents to show the City
+                        Council that El Cerrito residents do not want another Forever Tax! You must be at least 18 years
+                        of age.</li>
+                    <li><strong>Talk to Neighbors:</strong> share our website link, give them a flyer</li>
+                    <li><strong>Call El Cerrito Contacts</strong></li>
+                    <li><strong>Host a Neighborhood Gathering</strong> and invite our speakers to come</li>
+                    <li><strong>Speak at City Council meetings</strong></li>
+                    <li><strong>Email Council Members:</strong>
+                        <ul>
+                            <li>William Ktsanes: <a href="mailto:wktsanes@elcerrito.gov" target="_blank">wktsanes@elcerrito.gov</a></li>
+                            <li>Lisa Moytoyama: <a href="mailto:lmotoyama@elcerrito.gov" target="_blank">lmotoyama@elcerrito.gov</a>
+                            </li>
+                            <li>Gabe Quinto: <a href="mailto:gquinto@elcerrito.gov" target="_blank">gquinto@elcerrito.gov</a></li>
+                            <li>Rebecca Saltzman: <a href="mailto:rsaltzman@elcerrito.gov" target="_blank">rsaltzman@elcerrito.gov</a>
+                            </li>
+                            <li>Carolyn Wysinge: <a href="mailto:cwysinger@elcerrito.gov" target="_blank">cwysinger@elcerrito.gov</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Help behind the scenes</strong> - email us at <a
+                            href="mailto:NoOnAnotherForeverTax@gmail.com" target="_blank">NoOnAnotherForeverTax@gmail.com</a></li>
+                </ul>
             </div>
 
             <div class="mission-image">
-                <img src="volunteer.jpeg" alt="El Cerrito Resident Volunteer with Bicycle and Yard Sign">
-                <span class="caption">Local residents working together to oppose the tax measure.</span>
-                
-                <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary mission-donate-btn">
-                    Donate <span>&rarr;</span>
-                </a>
-            </div>
-        </div>
-    </section>
+                <img src="tabling.jpg" alt="El Cerrito Resident Volunteer with Bicycle and Yard Sign">
+                <span class="caption">Volunteers tabling at El Cerrito Plaza</span>
 
-    <section class="ways-section">
-        <div class="ways-container">
-            <div class="ways-header">
-                <h3>WAYS TO VOLUNTEER</h3>
-            </div>
-
-            <div class="ways-grid">
-                <div class="way-card">
-                    <h4>Spread The Word</h4>
-                    <p>
-                        Talk to your neighbors, friends, and family about why this tax measure is wrong for El Cerrito. 
-                        Personal conversations are one of the most effective ways to reach voters.
-                    </p>
-                    <a href="faq.html" class="btn btn-outline" style="color: #333; border-color: #ddd;">
-                        Learn More
-                    </a>
-                </div>
-
-                <div class="way-card">
-                    <h4>Get A Yard Sign</h4>
-                    <p>
-                        Show your support with a yard sign. Displaying a sign helps raise awareness and shows 
-                        your neighbors that you're voting NO on this measure.
-                    </p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header" class="btn btn-outline" style="color: #333; border-color: #ddd;">
-                        Order Sign
-                    </a>
-                </div>
-
-                <div class="way-card">
-                    <h4>Sign The Petition</h4>
-                    <p>
-                        Add your name to our petition to show your opposition to the library tax measure. 
-                        Every signature demonstrates the strength of our movement.
-                    </p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header" class="btn btn-outline" style="color: #333; border-color: #ddd;">
-                        Sign Now
-                    </a>
-                </div>
-
-                <div class="way-card">
-                    <h4>Donate</h4>
-                    <p>
-                        Your financial contribution helps us reach more voters through advertising, materials, 
-                        and outreach efforts. Every dollar makes a difference.
-                    </p>
-                    <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary">
-                        Donate
-                    </a>
-                </div>
-
-                <div class="way-card">
-                    <h4>Community Events</h4>
-                    <p>
-                        Join us at community events and meetings. Help us connect with voters, answer questions, 
-                        and share information about the tax measure.
-                    </p>
-                    <a href="index.html" class="btn btn-outline" style="color: #333; border-color: #ddd;">
+                <div class="mission-buttons">
+                    <a href="#ways-to-help" class="btn btn-outline"
+                        style="color: #333; border-color: #ddd; background: white; text-shadow: none;" target="_blank">
                         Get Involved
                     </a>
-                </div>
-
-                <div class="way-card">
-                    <h4>Share On Social Media</h4>
-                    <p>
-                        Help spread our message online. Share information about the tax measure with your 
-                        social networks and help others understand why we're voting NO.
-                    </p>
-                    <a href="faq.html" class="btn btn-outline" style="color: #333; border-color: #ddd;">
-                        Share Facts
+                    <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary mission-donate-btn" target="_blank">
+                        Donate <span>&rarr;</span>
                     </a>
                 </div>
             </div>
@@ -553,22 +875,67 @@
         <div class="cta-container">
             <h3>Ready To Make A Difference?</h3>
             <p>
-                Join El Cerrito residents who are standing up against this excessive tax. Together, we can 
-                ensure our community gets a better deal for the library we all want.
+                Join El Cerrito residents who are standing up against this excessive tax. Together, we can stop another
+                forever tax from being passed.
             </p>
             <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header" class="btn btn-outline" style="color: #333; border-color: #ddd; background: white;">
-                    Sign The Petition
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header"
+                    class="btn btn-outline"
+                    style="color: #333; border-color: #ddd; background: white; text-shadow: none;" target="_blank">
+                    Get Involved
                 </a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header" class="btn btn-outline" style="color: #333; border-color: #ddd; background: white;">
-                    Order Yard Sign
-                </a>
-                <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary">
+                <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary" target="_blank">
                     DONATE NOW
+                </a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header"
+                    class="btn btn-outline" style="color: #333; border-color: #ddd; background: white; text-shadow: none;" target="_blank">
+                    Order Yard Sign
                 </a>
             </div>
         </div>
     </section>
 
+    <!-- FOOTER -->
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-campaign-name">No On Another Forever Tax</div>
+            <div class="footer-paid-for">Paid for by Neighbors For a Better El Cerrito</div>
+            <div class="footer-info">
+                <span>FPPC #1485677</span>
+                <span>|</span>
+                <a href="mailto:NoOnAnotherForeverTax@gmail.com">NoOnAnotherForeverTax@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // Close sidebar when clicking on links
+        const sidebarLinks = sidebar.querySelectorAll('a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
 </body>
+
 </html>
