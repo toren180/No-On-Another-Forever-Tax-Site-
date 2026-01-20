@@ -60,6 +60,7 @@
             text-transform: uppercase;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
             cursor: pointer;
+            text-decoration: none;
         }
 
         .nav-links {
@@ -105,11 +106,15 @@
             cursor: pointer;
             padding: 5px;
             z-index: 1001;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .hamburger span {
-            width: 25px;
-            height: 3px;
+            width: 18px;
+            height: 2.5px;
             background-color: white;
             margin: 3px 0;
             transition: 0.3s;
@@ -132,19 +137,40 @@
         .sidebar {
             position: fixed;
             top: 0;
-            right: -100%;
+            left: -100%;
             width: 280px;
             height: 100vh;
-            background-color: rgba(0, 0, 0, 0.98);
-            transition: right 0.3s ease-in-out;
+            background-color: white;
+            transition: left 0.3s ease-in-out;
             z-index: 1000;
             padding: 80px 30px 30px 30px;
-            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
             overflow-y: auto;
         }
 
         .sidebar.active {
-            right: 0;
+            left: 0;
+        }
+
+        .sidebar-close {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: var(--brand-color);
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar-close:hover {
+            opacity: 0.8;
         }
 
         .sidebar .nav-links {
@@ -156,7 +182,7 @@
         }
 
         .sidebar .nav-links a {
-            color: white;
+            color: var(--brand-color);
             text-decoration: none;
             font-family: 'Oswald', sans-serif;
             font-weight: 500;
@@ -165,12 +191,13 @@
             padding: 15px 0;
             margin: 0;
             width: 100%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             transition: color 0.3s, padding-left 0.3s;
+            text-shadow: none;
         }
 
         .sidebar .nav-links a:hover {
-            color: var(--accent-yellow);
+            color: var(--brand-hover);
             padding-left: 10px;
         }
 
@@ -236,7 +263,7 @@
         .hero h1 {
             font-family: 'Oswald', sans-serif;
             color: white;
-            font-size: 4.5rem;
+            font-size: 6rem;
             font-weight: 700;
             line-height: 1;
             margin: 0;
@@ -273,7 +300,7 @@
             margin-left: -50vw;
             margin-right: -50vw;
             width: 100vw;
-            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+            background: transparent;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -608,7 +635,7 @@
             }
 
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 3.5rem;
                 margin-bottom: 8px;
                 line-height: 1.1;
             }
@@ -628,7 +655,7 @@
             .action-bar {
                 position: relative;
                 flex-direction: column;
-                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%);
+                background: transparent;
                 padding: 25px 20px;
                 gap: 12px;
                 left: auto;
@@ -648,14 +675,31 @@
                 font-size: 1rem;
             }
 
+            .action-bar a[href*="1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw"] {
+                display: none;
+            }
+
             nav {
                 flex-direction: row;
                 justify-content: space-between;
                 padding: 15px 20px;
+                position: absolute;
+                top: 0;
+                background: transparent;
             }
 
             .hamburger {
                 display: flex;
+                left: 20px;
+            }
+
+            .hamburger span {
+                width: 14px;
+                height: 2px;
+            }
+
+            .logo {
+                padding-left: 50px;
             }
 
             .nav-links {
@@ -664,6 +708,10 @@
 
             .logo {
                 font-size: 1.2rem;
+            }
+
+            .sidebar-close {
+                font-weight: 500;
             }
 
             .mission-section {
@@ -675,12 +723,36 @@
                 gap: 30px;
             }
 
+            .mission-text {
+                max-width: 100%;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+            }
+
             .mission-text h3 {
                 font-size: 2rem;
             }
 
             .mission-text p {
                 font-size: 1.1rem;
+            }
+
+            .mission-text ul {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                max-width: 100%;
+            }
+
+            .mission-text ul li {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                word-break: break-word;
+            }
+
+            .mission-text ul li a {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                word-break: break-all;
             }
 
             .ways-section {
@@ -779,7 +851,7 @@
 <body>
 
     <nav>
-        <div class="logo">No On Another Forever Tax</div>
+        <a href="index.html" class="logo">No On Another Forever Tax</a>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="volunteer.html">Volunteer</a>
@@ -797,6 +869,7 @@
     <!-- Sidebar -->
     <div class="overlay" id="overlay"></div>
     <div class="sidebar" id="sidebar">
+        <div class="sidebar-close" id="sidebar-close">×</div>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="volunteer.html">Volunteer</a>
@@ -813,10 +886,10 @@
         </div>
 
         <div class="action-bar">
+            <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary"
+                style="font-size: 1.3rem; letter-spacing: 2px; font-weight: 800;" target="_blank">DONATE</a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header"
                 class="btn btn-outline" target="_blank">Sign The Petition</a>
-                <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary"
-                style="font-size: 1.3rem; letter-spacing: 2px; font-weight: 800;" target="_blank">DONATE</a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header"
                 class="btn btn-outline mission-involve-btn" target="_blank">Order Yard Sign</a>
         </div>
@@ -839,18 +912,24 @@
                     <li><strong>Speak at City Council meetings</strong></li>
                     <li><strong>Email Council Members:</strong>
                         <ul>
-                            <li>William Ktsanes: <a href="mailto:wktsanes@elcerrito.gov" target="_blank">wktsanes@elcerrito.gov</a></li>
-                            <li>Lisa Moytoyama: <a href="mailto:lmotoyama@elcerrito.gov" target="_blank">lmotoyama@elcerrito.gov</a>
+                            <li>William Ktsanes: <a href="mailto:wktsanes@elcerrito.gov"
+                                    target="_blank">wktsanes@elcerrito.gov</a></li>
+                            <li>Lisa Moytoyama: <a href="mailto:lmotoyama@elcerrito.gov"
+                                    target="_blank">lmotoyama@elcerrito.gov</a>
                             </li>
-                            <li>Gabe Quinto: <a href="mailto:gquinto@elcerrito.gov" target="_blank">gquinto@elcerrito.gov</a></li>
-                            <li>Rebecca Saltzman: <a href="mailto:rsaltzman@elcerrito.gov" target="_blank">rsaltzman@elcerrito.gov</a>
+                            <li>Gabe Quinto: <a href="mailto:gquinto@elcerrito.gov"
+                                    target="_blank">gquinto@elcerrito.gov</a></li>
+                            <li>Rebecca Saltzman: <a href="mailto:rsaltzman@elcerrito.gov"
+                                    target="_blank">rsaltzman@elcerrito.gov</a>
                             </li>
-                            <li>Carolyn Wysinge: <a href="mailto:cwysinger@elcerrito.gov" target="_blank">cwysinger@elcerrito.gov</a>
+                            <li>Carolyn Wysinge: <a href="mailto:cwysinger@elcerrito.gov"
+                                    target="_blank">cwysinger@elcerrito.gov</a>
                             </li>
                         </ul>
                     </li>
                     <li><strong>Help behind the scenes</strong> - email us at <a
-                            href="mailto:NoOnAnotherForeverTax@gmail.com" target="_blank">NoOnAnotherForeverTax@gmail.com</a></li>
+                            href="mailto:NoOnAnotherForeverTax@gmail.com"
+                            target="_blank">NoOnAnotherForeverTax@gmail.com</a></li>
                 </ul>
             </div>
 
@@ -863,7 +942,8 @@
                         style="color: #333; border-color: #ddd; background: white; text-shadow: none;" target="_blank">
                         Get Involved
                     </a>
-                    <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary mission-donate-btn" target="_blank">
+                    <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary mission-donate-btn"
+                        target="_blank">
                         Donate <span>&rarr;</span>
                     </a>
                 </div>
@@ -888,7 +968,8 @@
                     DONATE NOW
                 </a>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header"
-                    class="btn btn-outline" style="color: #333; border-color: #ddd; background: white; text-shadow: none;" target="_blank">
+                    class="btn btn-outline"
+                    style="color: #333; border-color: #ddd; background: white; text-shadow: none;" target="_blank">
                     Order Yard Sign
                 </a>
             </div>
@@ -924,6 +1005,12 @@
 
         hamburger.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
+
+        // Close sidebar when clicking close button
+        const sidebarClose = document.getElementById('sidebar-close');
+        if (sidebarClose) {
+            sidebarClose.addEventListener('click', toggleMenu);
+        }
 
         // Close sidebar when clicking on links
         const sidebarLinks = sidebar.querySelectorAll('a');
