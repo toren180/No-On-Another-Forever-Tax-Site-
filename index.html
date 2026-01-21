@@ -251,6 +251,18 @@
             padding: 0 20px 100px 20px;
         }
 
+        /* Desktop-only: slightly darker bottom gradient for better button contrast */
+        @media (min-width: 769px) {
+            .hero {
+                background-image: linear-gradient(to bottom,
+                        rgba(0, 0, 0, 0.5) 0%,
+                        rgba(0, 0, 0, 0.0) 30%,
+                        rgba(0, 0, 0, 0.12) 70%,
+                        rgba(0, 0, 0, 0.45) 100%),
+                    url('library.jpeg');
+            }
+        }
+
         .hero-content {
             width: 100%;
             max-width: 1200px;
@@ -1124,10 +1136,10 @@
 
         <div class="action-bar">
             <a href="volunteer.html" class="btn btn-outline">Volunteer</a>
-            <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary"
-                style="font-size: 1.3rem; letter-spacing: 2px; font-weight: 800;" target="_blank">DONATE</a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header"
                 class="btn btn-outline" target="_blank">Sign The Petition </a>
+            <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary"
+                style="font-size: 1.3rem; letter-spacing: 2px; font-weight: 800;" target="_blank">DONATE</a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header"
                 class="btn btn-outline" target="_blank">Order Yard Sign</a>
             <a href="faq.html" class="btn btn-outline">FAQ</a>
