@@ -21,6 +21,28 @@ body {
     overflow-x: hidden;
 }
 
+/* --- NAV GRADIENT --- */
+.nav-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(ellipse 140% 220% at 85% -20%,
+            rgba(0, 0, 0, 0.48) 0%,
+            rgba(0, 0, 0, 0.38) 12%,
+            rgba(0, 0, 0, 0.26) 22%,
+            rgba(0, 0, 0, 0.16) 32%,
+            rgba(0, 0, 0, 0.09) 42%,
+            rgba(0, 0, 0, 0.04) 52%,
+            rgba(0, 0, 0, 0.015) 62%,
+            rgba(0, 0, 0, 0.004) 72%,
+            transparent 82%);
+    z-index: 5;
+    pointer-events: none;
+}
+
 /* --- NAVIGATION --- */
 nav {
     display: flex;
@@ -219,87 +241,143 @@ nav {
 
 /* --- HERO SECTION --- */
 .hero {
-    height: 90vh;
+    min-height: 100vh;
     position: relative;
-            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0) 30%, rgba(0, 0, 0, 0.1) 100%), url('../images/library.jpeg');
+    background-image: url('../images/library.jpeg');
     background-size: cover;
-    background-position: center 15%;
+    background-position: center 18%;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px 100px 20px;
+    justify-content: flex-end;
+    align-items: flex-start;
+    text-align: left;
+    padding: 120px 6% 100px 6%;
+    overflow: hidden;
 }
 
-/* Desktop-only: slightly darker bottom gradient for better button contrast */
-@media (min-width: 769px) {
-    .hero {
-        background-image: linear-gradient(to bottom,
-                rgba(0, 0, 0, 0.5) 0%,
-                rgba(0, 0, 0, 0.0) 30%,
-                rgba(0, 0, 0, 0.12) 70%,
-                rgba(0, 0, 0, 0.45) 100%),
-                    url('../images/library.jpeg');
-    }
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(105deg,
+            rgba(0, 0, 0, 0.82) 0%,
+            rgba(0, 0, 0, 0.45) 40%,
+            rgba(0, 0, 0, 0.15) 70%,
+            transparent 100%);
+    z-index: 1;
 }
 
 .hero-content {
+    position: relative;
+    z-index: 2;
     width: 100%;
-    max-width: 1200px;
+    max-width: 680px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+}
+
+.hero-heading-group {
+    display: inline-block;
+    margin-bottom: 0.6em;
 }
 
 .hero h1 {
     font-family: 'Oswald', sans-serif;
-    color: white;
-    font-size: 4.5rem;
+    color: #fff;
+    font-size: clamp(2.5rem, 5.5vw, 3.75rem);
     font-weight: 700;
-    line-height: 1;
+    line-height: 1.05;
     margin: 0;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.separator-bar {
+.hero-separator-bar {
     width: 100%;
-    max-width: 1000px;
-    height: 14px;
-    background-color: var(--brand-color);
-    margin: 25px 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    height: 4px;
+    background: var(--brand-color);
+    border-radius: 2px;
+    margin: 0.75em 0 0 0;
+    box-shadow: 0 0 20px rgba(254, 82, 82, 0.35);
 }
 
 .hero h2 {
     font-family: 'Oswald', sans-serif;
-    color: var(--accent-yellow);
-    font-size: 4.5rem;
+    color: #fff;
+    font-size: clamp(2.5rem, 5.5vw, 3.75rem);
     font-weight: 700;
-    line-height: 1;
-    margin: 0;
+    line-height: 1.05;
+    margin: 0.35em 0 0 0;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.btn-hero-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 28px;
+    background: var(--brand-color);
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 4px 14px rgba(254, 82, 82, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-hero-primary:hover {
+    background: var(--brand-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(254, 82, 82, 0.45);
+}
+
+.btn-hero-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 28px;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+}
+
+.btn-hero-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
 }
 
 /* --- ACTION BAR --- */
 .action-bar {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    width: 100vw;
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding: 80px 20px 40px 20px;
-    z-index: 5;
-    flex-wrap: wrap;
+    display: none;
 }
 
 /* --- BUTTON STYLES --- */
@@ -859,81 +937,43 @@ nav {
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
     .hero {
-        height: auto;
         min-height: 100vh;
-        padding: 80px 20px 30px 20px;
-        justify-content: center;
-        padding-top: 100px;
-    }
-
-    .hero-content {
-        width: 100%;
-        padding: 0;
-        margin-top: auto;
-        margin-bottom: auto;
+        padding: 100px 24px 72px 24px;
+        background-attachment: scroll;
     }
 
     .hero h1 {
-        font-size: 3rem;
-        margin-bottom: 8px;
-        line-height: 1.1;
+        font-size: clamp(2rem, 6vw, 2.5rem);
     }
 
     .hero h2 {
-        font-size: 3rem;
-        line-height: 1.1;
+        font-size: clamp(2rem, 6vw, 2.5rem);
+        margin-top: 0.3em;
     }
 
-    .separator-bar {
-        height: 6px;
-        margin: 12px 0;
-        width: 100%;
-        max-width: 300px;
+    .hero-heading-group {
+        margin-bottom: 0.5em;
     }
 
-    .action-bar {
-        position: relative;
+    .hero-separator-bar {
+        height: 3px;
+        margin: 0.6em 0 0 0;
+    }
+
+    .hero-buttons {
         flex-direction: column;
-        /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%); */
-        background-color: transparent;
-        padding: 25px 20px;
-        gap: 12px;
-        left: auto;
-        right: auto;
-        margin: 30px auto 0 auto;
-        width: calc(100% - 40px);
-        max-width: 100%;
-        transform: none;
-        border-radius: 8px;
-    }
-
-    .btn {
         width: 100%;
-        max-width: 100%;
-        margin: 0;
+        max-width: 280px;
+        margin-top: 1.75rem;
+        gap: 14px;
+    }
+
+    .hero-buttons .btn-hero-primary,
+    .hero-buttons .btn-hero-secondary {
+        width: 100%;
         padding: 14px 24px;
-        font-size: 1rem;
-    }
-
-    .action-bar a[href="volunteer.html"],
-    .action-bar a[href="faq.html"] {
-        display: none;
-    }
-
-    /* Show yard sign button on mobile, positioned after donation button */
-    .action-bar a[href*="1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw"] {
-        display: block;
-        order: 3;
-    }
-
-    /* Ensure donation button appears before yard sign */
-    .action-bar a[href*="buy.stripe.com"] {
-        order: 2;
-    }
-
-    /* Sign petition button order */
-    .action-bar a[href*="1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg"] {
-        order: 1;
+        font-size: 0.9rem;
+        letter-spacing: 0.1em;
     }
 
     nav {
@@ -1086,5 +1126,20 @@ nav {
     .events-table td {
         padding: 10px 12px;
     }
+
+    .hero h1 {
+        font-size: 1.85rem;
+    }
+
+    .hero h2 {
+        font-size: 1.85rem;
+    }
+
+    .hero-heading-group {
+        margin-bottom: 0.45em;
+    }
+
+    .hero-separator-bar {
+        margin: 0.5em 0 0 0;
+    }
 }
-    </style>
