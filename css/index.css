@@ -936,44 +936,59 @@ nav {
 
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
+    .nav-gradient {
+        position: absolute;
+    }
+
     .hero {
         min-height: 100vh;
         padding: 100px 24px 72px 24px;
         background-attachment: scroll;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 
-    .hero h1 {
-        font-size: clamp(2rem, 6vw, 2.5rem);
-    }
-
-    .hero h2 {
-        font-size: clamp(2rem, 6vw, 2.5rem);
-        margin-top: 0.3em;
+    .hero-content {
+        align-items: center;
     }
 
     .hero-heading-group {
+        text-align: center;
         margin-bottom: 0.5em;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.5rem, 8vw, 3.25rem);
+        text-align: center;
+    }
+
+    .hero h2 {
+        font-size: clamp(2.5rem, 8vw, 3.25rem);
+        margin-top: 0.3em;
+        text-align: center;
     }
 
     .hero-separator-bar {
         height: 3px;
-        margin: 0.6em 0 0 0;
+        margin: 0.6em auto 0 auto;
     }
 
     .hero-buttons {
         flex-direction: column;
-        width: 100%;
-        max-width: 280px;
-        margin-top: 1.75rem;
-        gap: 14px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2.25rem;
+        gap: 12px;
     }
 
     .hero-buttons .btn-hero-primary,
     .hero-buttons .btn-hero-secondary {
         width: 100%;
+        max-width: 260px;
         padding: 14px 24px;
-        font-size: 0.9rem;
-        letter-spacing: 0.1em;
+        font-size: 0.85rem;
+        letter-spacing: 0.06em;
     }
 
     nav {
@@ -1128,11 +1143,11 @@ nav {
     }
 
     .hero h1 {
-        font-size: 1.85rem;
+        font-size: 2.2rem;
     }
 
     .hero h2 {
-        font-size: 1.85rem;
+        font-size: 2.2rem;
     }
 
     .hero-heading-group {
