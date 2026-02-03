@@ -21,6 +21,29 @@ body {
     overflow-x: hidden;
 }
 
+/* --- LOGO GRADIENT (top-left, seamless blend, no visible edges) --- */
+.logo-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 760px;
+    height: 200px;
+    background: radial-gradient(ellipse 95% 85% at 0% 0%,
+            rgba(0, 0, 0, 0.82) 0%,
+            rgba(0, 0, 0, 0.68) 15%,
+            rgba(0, 0, 0, 0.52) 28%,
+            rgba(0, 0, 0, 0.38) 40%,
+            rgba(0, 0, 0, 0.26) 50%,
+            rgba(0, 0, 0, 0.16) 58%,
+            rgba(0, 0, 0, 0.09) 65%,
+            rgba(0, 0, 0, 0.04) 72%,
+            rgba(0, 0, 0, 0.015) 78%,
+            rgba(0, 0, 0, 0.004) 84%,
+            transparent 90%);
+    z-index: 2;
+    pointer-events: none;
+}
+
 /* --- NAV GRADIENT (only over hero, scrolls with it) --- */
 .nav-gradient {
     position: absolute;
@@ -252,7 +275,7 @@ nav {
     justify-content: flex-end;
     align-items: flex-start;
     text-align: left;
-    padding: 120px 6% 100px 6%;
+    padding: 120px 6% 48px 6%;
     overflow: hidden;
 }
 
@@ -262,10 +285,12 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(105deg,
-            rgba(0, 0, 0, 0.82) 0%,
-            rgba(0, 0, 0, 0.45) 40%,
-            rgba(0, 0, 0, 0.15) 70%,
+    /* Darken only bottom-left where text/buttons sit; keep rest of image brighter */
+    background: radial-gradient(ellipse 90% 75% at 15% 92%,
+            rgba(0, 0, 0, 0.78) 0%,
+            rgba(0, 0, 0, 0.5) 30%,
+            rgba(0, 0, 0, 0.2) 55%,
+            rgba(0, 0, 0, 0.06) 75%,
             transparent 100%);
     z-index: 1;
 }
