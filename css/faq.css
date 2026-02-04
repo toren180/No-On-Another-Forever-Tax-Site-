@@ -234,28 +234,6 @@ nav {
     overflow: hidden;
 }
 
-.logo-gradient {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 760px;
-    height: 200px;
-    background: radial-gradient(ellipse 95% 85% at 0% 0%,
-            rgba(0, 0, 0, 0.82) 0%,
-            rgba(0, 0, 0, 0.68) 15%,
-            rgba(0, 0, 0, 0.52) 28%,
-            rgba(0, 0, 0, 0.38) 40%,
-            rgba(0, 0, 0, 0.26) 50%,
-            rgba(0, 0, 0, 0.16) 58%,
-            rgba(0, 0, 0, 0.09) 65%,
-            rgba(0, 0, 0, 0.04) 72%,
-            rgba(0, 0, 0, 0.015) 78%,
-            rgba(0, 0, 0, 0.004) 84%,
-            transparent 90%);
-    z-index: 2;
-    pointer-events: none;
-}
-
 .hero-overlay {
     position: absolute;
     top: 0;
