@@ -1183,3 +1183,263 @@ nav {
         margin: 0.5em 0 0 0;
     }
 }
+
+/* --- FUNDRAISING POPUP --- */
+.fundraise-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.fundraise-popup-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.fundraise-popup {
+    position: relative;
+    background: white;
+    color: var(--text-dark);
+    max-width: 480px;
+    width: 100%;
+    padding: 32px 28px 28px;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    font-family: 'Open Sans', sans-serif;
+    margin: auto;
+}
+
+.fundraise-popup-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 1.75rem;
+    line-height: 1;
+    color: #888;
+    cursor: pointer;
+    padding: 12px;
+    margin: -8px -8px 0 0;
+    transition: color 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.fundraise-popup-close:hover {
+    color: var(--text-dark);
+}
+
+.fundraise-popup-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-dark);
+    margin: 0 0 12px 0;
+    padding-right: 28px;
+}
+
+.fundraise-popup-bar {
+    height: 4px;
+    background: var(--brand-color);
+    border-radius: 2px;
+    width: 100%;
+    margin-bottom: 18px;
+    box-shadow: 0 0 14px rgba(254, 82, 82, 0.3);
+}
+
+.fundraise-equation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, rgba(254, 82, 82, 0.06) 0%, rgba(249, 212, 102, 0.04) 100%);
+    border-radius: 12px;
+    border: 1px solid rgba(254, 82, 82, 0.18);
+}
+
+.fundraise-eq-num,
+.fundraise-eq-op,
+.fundraise-eq-result {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.fundraise-eq-num {
+    font-size: 2rem;
+    color: #222;
+}
+
+.fundraise-eq-op {
+    font-size: 1.5rem;
+    color: #444;
+    opacity: 0.85;
+}
+
+.fundraise-eq-result {
+    font-size: 2.4rem;
+    color: var(--brand-color);
+    filter: drop-shadow(0 2px 6px rgba(254, 82, 82, 0.3));
+}
+
+.fundraise-emphasis {
+    font-weight: 700;
+    color: var(--brand-color);
+}
+
+.fundraise-popup-text {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin: 0 0 14px 0;
+    color: var(--text-dark);
+}
+
+.fundraise-countdown-wrap {
+    margin-bottom: 18px;
+}
+
+.fundraise-countdown {
+    font-weight: 700;
+    color: #111;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+}
+
+.fundraise-popup-text:last-of-type {
+    margin-bottom: 20px;
+}
+
+.fundraise-popup-tiers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.fundraise-tier-btn {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 12px;
+    background: var(--brand-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 2px solid var(--brand-color);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    box-shadow: 0 4px 14px rgba(254, 82, 82, 0.4);
+}
+
+.fundraise-tier-btn:hover {
+    background: var(--brand-hover);
+    border-color: var(--brand-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(254, 82, 82, 0.45);
+    color: white;
+}
+
+.fundraise-tier-amount {
+    font-size: 1.25rem;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.fundraise-tier-becomes {
+    font-size: 0.95rem;
+    font-weight: 700;
+    opacity: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.fundraise-popup-custom {
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.fundraise-popup-custom:hover {
+    color: var(--brand-color);
+}
+
+@media (max-width: 520px) {
+    .fundraise-popup-overlay {
+        padding: 16px;
+        align-items: flex-start;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .fundraise-popup {
+        padding: 28px 20px 24px;
+    }
+
+    .fundraise-popup-headline {
+        font-size: 1.5rem;
+    }
+
+    .fundraise-popup-close {
+        top: 8px;
+        right: 8px;
+        padding: 14px;
+        margin: -6px -6px 0 0;
+    }
+
+    .fundraise-popup-tiers {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .fundraise-tier-btn {
+        padding: 16px 14px;
+    }
+
+    .fundraise-tier-amount {
+        font-size: 1.35rem;
+    }
+
+    .fundraise-tier-becomes {
+        font-size: 1rem;
+    }
+
+    .fundraise-equation {
+        padding: 14px 16px;
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .fundraise-eq-num {
+        font-size: 1.7rem;
+    }
+
+    .fundraise-eq-op {
+        font-size: 1.3rem;
+    }
+
+    .fundraise-eq-result {
+        font-size: 2rem;
+    }
+}
