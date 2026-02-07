@@ -1,3 +1,44 @@
+// Sliding nav underline — moves to hovered link, shows under current by default
+(function () {
+    var navUnderline = document.getElementById('nav-link-underline');
+    if (!navUnderline) return;
+    var container = navUnderline.closest('.nav-links');
+    if (!container) return;
+    var pageLinks = container.querySelectorAll('a:not(.nav-btn)');
+    function positionUnderline(link) {
+        var cr = container.getBoundingClientRect();
+        var lr = link.getBoundingClientRect();
+        var left = lr.left - cr.left;
+        var width = Math.max(lr.width, 20);
+        navUnderline.style.left = left + 'px';
+        navUnderline.style.width = width + 'px';
+    }
+    function underlineUnderCurrent() {
+        var current = container.querySelector('a.current');
+        if (current) {
+            positionUnderline(current);
+        } else if (pageLinks.length) {
+            positionUnderline(pageLinks[0]);
+        }
+    }
+    function init() {
+        underlineUnderCurrent();
+        for (var i = 0; i < pageLinks.length; i++) {
+            pageLinks[i].addEventListener('mouseenter', function () {
+                positionUnderline(this);
+            });
+        }
+        container.addEventListener('mouseleave', underlineUnderCurrent);
+        window.addEventListener('resize', underlineUnderCurrent);
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+    window.addEventListener('load', underlineUnderCurrent);
+})();
+
 // Hamburger menu toggle
 const hamburger = document.getElementById('hamburger');
 const sidebar = document.getElementById('sidebar');

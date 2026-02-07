@@ -1,3 +1,30 @@
+// Sliding nav underline — moves to hovered link
+(function () {
+    var navUnderline = document.getElementById('nav-link-underline');
+    if (!navUnderline) return;
+    var container = navUnderline.closest('.nav-links');
+    if (!container) return;
+    var pageLinks = container.querySelectorAll('a:not(.nav-btn)');
+    function positionUnderline(link) {
+        var cr = container.getBoundingClientRect();
+        var lr = link.getBoundingClientRect();
+        navUnderline.style.left = (lr.left - cr.left) + 'px';
+        navUnderline.style.width = lr.width + 'px';
+    }
+    function underlineUnderCurrent() {
+        var current = container.querySelector('a.current');
+        if (current) positionUnderline(current);
+    }
+    underlineUnderCurrent();
+    for (var i = 0; i < pageLinks.length; i++) {
+        pageLinks[i].addEventListener('mouseenter', function () {
+            positionUnderline(this);
+        });
+    }
+    container.addEventListener('mouseleave', underlineUnderCurrent);
+    window.addEventListener('resize', underlineUnderCurrent);
+})();
+
 // Chart instances
 let taxChart = null;
 let revenueChart = null;

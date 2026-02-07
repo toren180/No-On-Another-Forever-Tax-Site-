@@ -46,37 +46,66 @@ nav {
 .nav-links {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
     margin-left: 25px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 500;
     font-size: 1.1rem;
-    text-transform: uppercase;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    text-transform: capitalize;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 2px 12px rgba(0, 0, 0, 0.35);
     transition: color 0.3s;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
 }
 
 .nav-links a:hover {
-    color: var(--accent-yellow);
+    color: var(--brand-color);
+}
+
+.nav-links a.current {
+    border-bottom-color: transparent;
+}
+
+.nav-link-underline {
+    position: absolute;
+    bottom: 1px;
+    height: 2px;
+    background: var(--brand-color);
+    transition: left 0.25s ease-out, width 0.25s ease-out;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.nav-links > a {
+    position: relative;
+    z-index: 1;
 }
 
 .nav-links .nav-btn {
     background-color: var(--brand-color);
-    padding: 8px 24px;
+    color: white;
+    padding: 8px 36px;
     border-radius: 50px;
     border: 2px solid var(--brand-color);
     text-shadow: none;
     transition: all 0.3s;
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
 }
 
 .nav-links .nav-btn:hover {
     background-color: var(--brand-hover);
     border-color: var(--brand-hover);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(254, 82, 82, 0.45);
 }
 
 /* --- HAMBURGER MENU --- */
@@ -164,16 +193,21 @@ nav {
 .sidebar .nav-links a {
     color: var(--brand-color);
     text-decoration: none;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 500;
     font-size: 1.2rem;
-    text-transform: uppercase;
+    text-transform: capitalize;
     padding: 15px 0;
     margin: 0;
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     transition: color 0.3s, padding-left 0.3s;
     text-shadow: none;
+}
+
+.sidebar .nav-links a.current {
+    border-bottom-color: var(--brand-color);
+    border-bottom-width: 2px;
 }
 
 .sidebar .nav-links a:hover {
@@ -190,6 +224,10 @@ nav {
     background-color: var(--brand-color);
     color: white;
     border: 2px solid var(--brand-color);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-transform: uppercase;
 }
 
 .sidebar .nav-links .nav-btn:hover {
@@ -336,21 +374,21 @@ nav {
     gap: 16px;
     flex-wrap: wrap;
     margin-top: 2rem;
-    align-items: center;
 }
 
 .btn-hero-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 16px 28px;
+    padding: 12px 30px;
+    min-width: 200px;
     background: var(--brand-color);
     color: white;
     font-family: 'Oswald', sans-serif;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 1px;
     text-decoration: none;
     border-radius: 50px;
     border: none;
@@ -368,14 +406,15 @@ nav {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 16px 28px;
+    padding: 12px 30px;
+    min-width: 200px;
     background: rgba(255, 255, 255, 0.08);
     color: white;
     font-family: 'Oswald', sans-serif;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 1px;
     text-decoration: none;
     border-radius: 50px;
     border: 2px solid rgba(255, 255, 255, 0.6);
@@ -570,4 +609,3 @@ nav {
     }
 }
 
-</style>
