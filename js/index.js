@@ -30,26 +30,26 @@ sidebarLinks.forEach(link => {
     });
 });
 
-// Fundraising popup — show after short delay, once per session
-const fundraiseOverlay = document.getElementById('fundraise-popup-overlay');
-const fundraiseClose = document.getElementById('fundraise-popup-close');
-if (fundraiseOverlay && fundraiseClose) {
-    if (!sessionStorage.getItem('fundraise-popup-seen')) {
-        setTimeout(function () {
-            fundraiseOverlay.classList.add('is-visible');
-            document.body.style.overflow = 'hidden';
-        }, 800);
-    }
-    function closeFundraisePopup() {
-        fundraiseOverlay.classList.remove('is-visible');
-        document.body.style.overflow = '';
-        sessionStorage.setItem('fundraise-popup-seen', '1');
-    }
-    fundraiseClose.addEventListener('click', closeFundraisePopup);
-    fundraiseOverlay.addEventListener('click', function (e) {
-        if (e.target === fundraiseOverlay) closeFundraisePopup();
-    });
-}
+// Fundraising popup — commented out so it no longer appears on home page
+// const fundraiseOverlay = document.getElementById('fundraise-popup-overlay');
+// const fundraiseClose = document.getElementById('fundraise-popup-close');
+// if (fundraiseOverlay && fundraiseClose) {
+//     if (!sessionStorage.getItem('fundraise-popup-seen')) {
+//         setTimeout(function () {
+//             fundraiseOverlay.classList.add('is-visible');
+//             document.body.style.overflow = 'hidden';
+//         }, 800);
+//     }
+//     function closeFundraisePopup() {
+//         fundraiseOverlay.classList.remove('is-visible');
+//         document.body.style.overflow = '';
+//         sessionStorage.setItem('fundraise-popup-seen', '1');
+//     }
+//     fundraiseClose.addEventListener('click', closeFundraisePopup);
+//     fundraiseOverlay.addEventListener('click', function (e) {
+//         if (e.target === fundraiseOverlay) closeFundraisePopup();
+//     });
+// }
 
 // Countdown to Midnight Feb 7, 2026 Pacific Time (PST = UTC-8 → 08:00 UTC Feb 7)
 const countdownEl = document.getElementById('fundraise-countdown');
