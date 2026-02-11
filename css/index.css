@@ -634,6 +634,16 @@ nav {
     font-weight: 700;
 }
 
+.city-plan-learn-more {
+    color: var(--brand-color);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.city-plan-learn-more:hover {
+    text-decoration: underline;
+}
+
 /* --- NEW: TESTIMONIALS SECTION --- */
 /* --- HORIZONTAL SCROLL TESTIMONIALS --- */
 .testimonials-section {
