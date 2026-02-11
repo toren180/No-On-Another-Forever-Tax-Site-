@@ -1484,3 +1484,222 @@ nav {
         font-size: 2rem;
     }
 }
+
+/* --- YARD SIGN / DONATE POPUP --- */
+.yardsign-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.yardsign-popup-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.yardsign-popup {
+    position: relative;
+    background: #fff;
+    border-radius: 20px;
+    max-width: 860px;
+    width: 100%;
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.04),
+        0 4px 24px rgba(0, 0, 0, 0.06),
+        0 24px 56px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.yardsign-popup-overlay.is-visible .yardsign-popup {
+    transform: scale(1);
+}
+
+.yardsign-popup-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(0, 0, 0, 0.04);
+    color: #555;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 50%;
+    transition: color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.yardsign-popup-close:hover {
+    color: #222;
+    background: rgba(0, 0, 0, 0.08);
+    transform: scale(1.05);
+}
+
+.yardsign-popup-inner {
+    display: flex;
+    flex-direction: row;
+}
+
+.yardsign-popup-content {
+    flex: 1;
+    padding: 32px 28px 28px 32px;
+    min-width: 0;
+}
+
+.yardsign-popup-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.yardsign-popup-title::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--brand-color);
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+.yardsign-popup-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin-bottom: 10px;
+}
+
+.yardsign-popup-inline-link {
+    color: var(--brand-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s, text-decoration 0.2s;
+}
+
+.yardsign-popup-inline-link:hover {
+    color: var(--brand-hover);
+    text-decoration: underline;
+}
+
+.yardsign-popup-donate-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 18px;
+    letter-spacing: 0.01em;
+}
+
+.yardsign-popup-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.yardsign-popup-btn {
+    flex: 1;
+    display: inline-block;
+    padding: 14px 20px;
+    min-width: 0;
+    background: var(--brand-color);
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(254, 82, 82, 0.35);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.yardsign-popup-btn:hover {
+    background: var(--brand-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(254, 82, 82, 0.4);
+}
+
+.yardsign-popup-custom {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--brand-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s, opacity 0.2s;
+}
+
+.yardsign-popup-custom:hover {
+    color: var(--brand-hover);
+    text-decoration: underline;
+}
+
+.yardsign-popup-image-wrap {
+    flex-shrink: 0;
+    width: 320px;
+    min-height: 260px;
+    background: linear-gradient(180deg, #fafafa 0%, #f5f5f5 100%);
+    padding: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.yardsign-popup-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+    .yardsign-popup-inner {
+        flex-direction: column;
+    }
+
+    .yardsign-popup-image-wrap {
+        width: 100%;
+        min-height: 200px;
+        padding: 24px;
+        border-left: none;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .yardsign-popup-content {
+        padding: 28px 24px 24px;
+    }
+
+    .yardsign-popup-title {
+        font-size: 1.45rem;
+    }
+
+    .yardsign-popup-buttons {
+        flex-wrap: wrap;
+    }
+
+    .yardsign-popup-btn {
+        flex: 1;
+        min-width: 80px;
+    }
+}

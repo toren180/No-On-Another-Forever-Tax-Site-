@@ -71,26 +71,28 @@ sidebarLinks.forEach(link => {
     });
 });
 
-// Fundraising popup — commented out so it no longer appears on home page
-// const fundraiseOverlay = document.getElementById('fundraise-popup-overlay');
-// const fundraiseClose = document.getElementById('fundraise-popup-close');
-// if (fundraiseOverlay && fundraiseClose) {
-//     if (!sessionStorage.getItem('fundraise-popup-seen')) {
-//         setTimeout(function () {
-//             fundraiseOverlay.classList.add('is-visible');
-//             document.body.style.overflow = 'hidden';
-//         }, 800);
-//     }
-//     function closeFundraisePopup() {
-//         fundraiseOverlay.classList.remove('is-visible');
-//         document.body.style.overflow = '';
-//         sessionStorage.setItem('fundraise-popup-seen', '1');
-//     }
-//     fundraiseClose.addEventListener('click', closeFundraisePopup);
-//     fundraiseOverlay.addEventListener('click', function (e) {
-//         if (e.target === fundraiseOverlay) closeFundraisePopup();
-//     });
-// }
+// Yard sign / donate popup (home page)
+const yardsignPopupOverlay = document.getElementById('yardsign-popup-overlay');
+const yardsignPopupClose = document.getElementById('yardsign-popup-close');
+if (yardsignPopupOverlay && yardsignPopupClose) {
+    if (!sessionStorage.getItem('yardsign-popup-seen')) {
+        setTimeout(function () {
+            yardsignPopupOverlay.classList.add('is-visible');
+            yardsignPopupOverlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }, 600);
+    }
+    function closeYardsignPopup() {
+        yardsignPopupOverlay.classList.remove('is-visible');
+        yardsignPopupOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        sessionStorage.setItem('yardsign-popup-seen', '1');
+    }
+    yardsignPopupClose.addEventListener('click', closeYardsignPopup);
+    yardsignPopupOverlay.addEventListener('click', function (e) {
+        if (e.target === yardsignPopupOverlay) closeYardsignPopup();
+    });
+}
 
 // Countdown to Midnight Feb 7, 2026 Pacific Time (PST = UTC-8 → 08:00 UTC Feb 7)
 const countdownEl = document.getElementById('fundraise-countdown');
