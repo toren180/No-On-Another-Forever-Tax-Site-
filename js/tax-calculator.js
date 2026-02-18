@@ -106,22 +106,22 @@ function updateSummaryStats(baseData, measureTData, measureHData) {
     document.getElementById('currentTax').innerHTML = '$' + currentBase.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',') +
         '<div style="font-size: 0.6rem; color: #94a3b8; margin-top: 2px;">Excludes parcel taxes</div>';
 
-    let fiveYear = 0, tenYear = 0, twentyYear = 0;
+    let tenYear = 0, twentyYear = 0, thirtyYear = 0;
 
     // Only count TOD parcel tax
-    for (let i = 0; i < baseData.length && i < 5; i++) {
-        fiveYear += baseData[i];
-    }
     for (let i = 0; i < baseData.length && i < 10; i++) {
         tenYear += baseData[i];
     }
     for (let i = 0; i < baseData.length && i < 20; i++) {
         twentyYear += baseData[i];
     }
+    for (let i = 0; i < baseData.length && i < 30; i++) {
+        thirtyYear += baseData[i];
+    }
 
-    document.getElementById('fiveYearTotal').textContent = '$' + fiveYear.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     document.getElementById('tenYearTotal').textContent = '$' + tenYear.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     document.getElementById('twentyYearTotal').textContent = '$' + twentyYear.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    document.getElementById('thirtyYearTotal').textContent = '$' + thirtyYear.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 function updateTaxChart(labels, baseData, confidence75Data, confidence95Data, measureTData, measureHData) {

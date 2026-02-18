@@ -968,6 +968,11 @@ nav {
     display: block;
 }
 
+.action-card-donate .action-card-image {
+    height: 280px;
+    object-position: center top;
+}
+
 .action-card-content {
     padding: 25px;
     display: flex;
