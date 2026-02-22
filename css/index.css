@@ -1023,14 +1023,26 @@ nav {
 
     .hero {
         min-height: 100vh;
-        padding: 100px 24px 72px 24px;
+        padding: 100px 24px 48px 24px;
         background-attachment: scroll;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         text-align: center;
     }
 
     .hero-content {
+        align-items: center;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-text-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
     }
 
@@ -1056,16 +1068,19 @@ nav {
     }
 
     .hero-buttons {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: nowrap;
         align-items: center;
         justify-content: center;
-        margin-top: 2.25rem;
+        width: 100%;
+        padding-top: 2rem;
         gap: 12px;
     }
 
     .hero-buttons .btn-hero-primary,
     .hero-buttons .btn-hero-secondary {
-        width: 100%;
+        flex: 1;
+        min-width: 0;
         max-width: 260px;
         padding: 14px 24px;
         font-size: 0.85rem;
