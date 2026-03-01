@@ -585,7 +585,7 @@ nav {
 
 /* --- CITY PLAN SECTION --- */
 .city-plan-section {
-    background-color: white;
+    background: linear-gradient(180deg, #fafafa 0%, #f0f0f0 100%);
     padding: 100px 20px;
 }
 
@@ -594,43 +594,75 @@ nav {
     margin: 0 auto;
 }
 
+.city-plan-header {
+    margin-bottom: 48px;
+}
+
 .city-plan-section h3 {
     font-family: 'Oswald', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2.75rem;
     color: #222;
     line-height: 1.1;
-    margin-bottom: 40px;
+    margin-bottom: 0;
     text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.city-plan-row {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
 }
 
 .city-plan-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.city-plan-list li {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: #444;
-    margin-bottom: 25px;
-    padding-left: 30px;
-    position: relative;
+.city-plan-card {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    background: white;
+    border-radius: 10px;
+    padding: 24px 28px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.3s, transform 0.2s, border-color 0.2s;
 }
 
-.city-plan-list li::before {
-    content: '•';
-    color: var(--brand-color);
+.city-plan-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transform: translateX(4px);
+    border-color: rgba(254, 82, 82, 0.2);
+}
+
+.city-plan-number {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-color);
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
     font-weight: 700;
-    font-size: 1.5rem;
-    position: absolute;
-    left: 0;
-    line-height: 1.4;
+    border-radius: 8px;
 }
 
-.city-plan-list li strong {
-    color: #222;
+.city-plan-card p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #444;
+    margin: 0;
+}
+
+.city-plan-card strong {
+    color: var(--brand-color);
     font-weight: 700;
 }
 
@@ -638,10 +670,27 @@ nav {
     color: var(--brand-color);
     font-weight: 700;
     text-decoration: none;
+    transition: opacity 0.2s;
 }
 
 .city-plan-learn-more:hover {
     text-decoration: underline;
+    opacity: 0.9;
+}
+
+.city-plan-video {
+    flex-shrink: 0;
+    max-width: 360px;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.city-plan-video iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 12px;
 }
 
 /* --- NEW: TESTIMONIALS SECTION --- */
@@ -1147,13 +1196,36 @@ nav {
         padding: 60px 20px;
     }
 
+    .city-plan-header {
+        margin-bottom: 36px;
+    }
+
     .city-plan-section h3 {
         font-size: 2rem;
     }
 
-    .city-plan-list li {
-        font-size: 1.1rem;
-        padding-left: 25px;
+    .city-plan-row {
+        flex-direction: column;
+    }
+
+    .city-plan-card {
+        padding: 20px 22px;
+        gap: 16px;
+    }
+
+    .city-plan-card p {
+        font-size: 1rem;
+    }
+
+    .city-plan-number {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    .city-plan-video {
+        margin: 0 auto;
+        max-width: 300px;
     }
 
     .footer {
