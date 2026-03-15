@@ -1843,12 +1843,25 @@ nav {
         flex-direction: column;
     }
 
+    .events-and-social-row {
+        flex-direction: column;
+    }
+
     .events-column {
         max-width: none;
+        width: 100%;
+        min-width: 100%;
+        overflow: visible;
+        order: 1;
     }
 
     .social-card {
         width: 100%;
+        order: 2;
+    }
+
+    .social-card h3 {
+        font-size: 0.95rem;
     }
 
     .events-and-social-section h3 {
