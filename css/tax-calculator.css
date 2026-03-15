@@ -551,5 +551,33 @@ nav {
     opacity: 0.8;
     text-decoration: underline;
 }
+/* Footer social icons - white, smaller, centered at bottom */
+.footer-social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.footer-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: white;
+    transition: opacity 0.2s;
+}
+
+.footer-social-link:hover {
+    opacity: 0.85;
+}
+
+.footer-social-icon {
+    width: 24px;
+    height: 24px;
+}
+
 
 </style>

@@ -5,6 +5,10 @@
     --accent-yellow: #F9D466;
     --text-dark: #222;
     --section-bg: #f4f4f4;
+    --body-text-size: 1.08rem;
+    --body-text-line-height: var(--body-text-line-height);
+    --body-text-color: #333;
+    --body-text-letter-spacing: 0.02em;
 }
 
 /* --- RESET --- */
@@ -512,16 +516,21 @@ nav {
 }
 
 .mission-text p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #444;
+    font-size: var(--body-text-size);
+    line-height: var(--body-text-line-height);
+    color: var(--body-text-color);
+    letter-spacing: var(--body-text-letter-spacing);
+    font-weight: 400;
     margin-bottom: 25px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .mission-text ul {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: #444;
+    font-size: var(--body-text-size);
+    line-height: var(--body-text-line-height);
+    color: var(--body-text-color);
+    letter-spacing: var(--body-text-letter-spacing);
     margin-bottom: 25px;
     margin-left: 25px;
 }
@@ -658,17 +667,22 @@ nav {
 
 .way-card p {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.6;
+    font-size: var(--body-text-size);
+    color: var(--body-text-color);
+    line-height: var(--body-text-line-height);
+    letter-spacing: var(--body-text-letter-spacing);
+    font-weight: 400;
     margin-bottom: 15px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .way-card ul {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.8;
+    font-size: var(--body-text-size);
+    color: var(--body-text-color);
+    line-height: var(--body-text-line-height);
+    letter-spacing: var(--body-text-letter-spacing);
     margin-left: 20px;
     margin-bottom: 15px;
 }
@@ -693,7 +707,7 @@ nav {
     min-width: 0;
     width: auto;
     padding: 10px 25px;
-    font-size: 1rem;
+    font-size: var(--body-text-size);
 }
 
 .council-list {
@@ -729,10 +743,14 @@ nav {
 
 .cta-section p {
     font-family: 'Open Sans', sans-serif;
-    font-size: 1.2rem;
-    color: #444;
-    line-height: 1.6;
+    font-size: var(--body-text-size);
+    color: var(--body-text-color);
+    line-height: var(--body-text-line-height);
+    letter-spacing: var(--body-text-letter-spacing);
+    font-weight: 400;
     margin-bottom: 30px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* --- MOBILE RESPONSIVENESS --- */
@@ -820,7 +838,7 @@ nav {
         max-width: 100%;
         margin: 0;
         padding: 14px 24px;
-        font-size: 1rem;
+        font-size: var(--body-text-size);
     }
 
     /* Show yard sign button on mobile, positioned after donation button */
@@ -984,4 +1002,31 @@ nav {
 .footer-content a:hover {
     opacity: 0.8;
     text-decoration: underline;
+}
+/* Footer social icons - white, smaller, centered at bottom */
+.footer-social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.footer-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: white;
+    transition: opacity 0.2s;
+}
+
+.footer-social-link:hover {
+    opacity: 0.85;
+}
+
+.footer-social-icon {
+    width: 24px;
+    height: 24px;
 }
