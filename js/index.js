@@ -71,7 +71,7 @@ sidebarLinks.forEach(link => {
     });
 });
 
-// Yard sign / donate popup (home page)
+/* Yard sign / donate popup (home page) - commented out
 const yardsignPopupOverlay = document.getElementById('yardsign-popup-overlay');
 const yardsignPopupClose = document.getElementById('yardsign-popup-close');
 if (yardsignPopupOverlay && yardsignPopupClose) {
@@ -93,6 +93,7 @@ if (yardsignPopupOverlay && yardsignPopupClose) {
         if (e.target === yardsignPopupOverlay) closeYardsignPopup();
     });
 }
+*/
 
 // Countdown to Midnight Feb 7, 2026 Pacific Time (PST = UTC-8 → 08:00 UTC Feb 7)
 const countdownEl = document.getElementById('fundraise-countdown');
