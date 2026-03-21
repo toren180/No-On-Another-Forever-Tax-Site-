@@ -71,6 +71,29 @@ sidebarLinks.forEach(link => {
     });
 });
 
+// Fundraising popup — show after short delay, once per session
+const fundraiseOverlay = document.getElementById('fundraise-popup-overlay');
+const fundraiseClose = document.getElementById('fundraise-popup-close');
+if (fundraiseOverlay && fundraiseClose) {
+    if (!sessionStorage.getItem('fundraise-popup-seen')) {
+        setTimeout(function () {
+            fundraiseOverlay.classList.add('is-visible');
+            fundraiseOverlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }, 800);
+    }
+    function closeFundraisePopup() {
+        fundraiseOverlay.classList.remove('is-visible');
+        fundraiseOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        sessionStorage.setItem('fundraise-popup-seen', '1');
+    }
+    fundraiseClose.addEventListener('click', closeFundraisePopup);
+    fundraiseOverlay.addEventListener('click', function (e) {
+        if (e.target === fundraiseOverlay) closeFundraisePopup();
+    });
+}
+
 /* Yard sign / donate popup (home page) - commented out
 const yardsignPopupOverlay = document.getElementById('yardsign-popup-overlay');
 const yardsignPopupClose = document.getElementById('yardsign-popup-close');
@@ -95,10 +118,10 @@ if (yardsignPopupOverlay && yardsignPopupClose) {
 }
 */
 
-// Countdown to Midnight Feb 7, 2026 Pacific Time (PST = UTC-8 → 08:00 UTC Feb 7)
+// Countdown to end of March 31, 2026 Pacific (April 1, 2026 00:00 PDT = April 1, 2026 07:00 UTC)
 const countdownEl = document.getElementById('fundraise-countdown');
 if (countdownEl) {
-    var matchEndUtc = Date.UTC(2026, 1, 7, 8, 0, 0); // Feb 7, 2026 08:00 UTC = midnight PST
+    var matchEndUtc = Date.UTC(2026, 3, 1, 7, 0, 0); // after March 31 PT (PDT = UTC-7)
 
     function updateCountdown() {
         var now = Date.now();
