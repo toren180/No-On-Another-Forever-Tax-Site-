@@ -597,13 +597,15 @@ nav {
     --city-plan-card-padding: 24px;
     --city-plan-number-width: 42px;
     background: linear-gradient(180deg, #fafafa 0%, #f0f0f0 100%);
-    padding: 100px 0;
+    /* Match .mission-section horizontal padding */
+    padding: 100px 20px;
 }
 
+/* Same width + side padding as .mission-container */
 .city-plan-container {
-    max-width: 1280px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 0 8px;
+    padding: 0 24px;
 }
 
 .city-plan-header {
@@ -620,135 +622,26 @@ nav {
     letter-spacing: 0.04em;
 }
 
-/* Three-row layout: video + text alternating sides */
+/* Text stack + video carousel */
 .city-plan-content {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 0;
     max-width: 100%;
     counter-reset: city-plan-counter;
 }
 
-.city-plan-row {
-    display: flex;
-    gap: 28px;
-    align-items: stretch;
-}
-
-.city-plan-row-video-left {
-    flex-direction: row;
-}
-
-.city-plan-row-video-right {
-    flex-direction: row;
-}
-
-.city-plan-row-highlighted {
-    background: #f5f5f5;
-    padding: 16px 0;
-    border-radius: 12px;
-    /* No horizontal padding: video aligns with row 1, text boxes 3–4 match width of 1–2 */
-}
-
-.city-plan-row-highlighted .city-plan-block {
-    background: #fff;
-    border-radius: 10px;
-}
-
-/* video-left: video on left, text on right */
-.city-plan-row-video-left .city-plan-video-embed {
-    order: 1;
-}
-
-.city-plan-row-video-left .city-plan-row-text {
-    order: 2;
-}
-
-/* video-right: text on left, video on right */
-.city-plan-row-video-right .city-plan-video-embed {
-    order: 2;
-}
-
-.city-plan-row-video-right .city-plan-video-card {
-    order: 2;
-}
-
-.city-plan-row-video-right .city-plan-row-text {
-    order: 1;
-}
-
-.city-plan-row-text {
-    flex: 1;
-    min-width: 0;
+.city-plan-text-stack {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    align-self: stretch;
-}
-
-.city-plan-row-text .city-plan-block {
-    flex: 1;
-    min-height: 0;
-}
-
-.city-plan-row:not(.city-plan-row-portrait) .city-plan-video-embed {
-    align-self: stretch;
-    display: flex;
-    align-items: stretch;
-}
-
-.city-plan-row:not(.city-plan-row-portrait) .city-plan-video-inner {
-    flex: 1;
-    min-height: 0;
-    height: 100%;
-    width: auto;
-    aspect-ratio: 16 / 9;
-}
-
-.city-plan-row .city-plan-block+.city-plan-block {
-    margin-top: 0;
-}
-
-.city-plan-row .city-plan-video-embed {
-    flex-shrink: 0;
-    margin: 0;
-    align-self: stretch;
-}
-
-.city-plan-row:not(.city-plan-row-portrait) .city-plan-video-embed {
-    flex: 0 0 440px;
-    min-width: 300px;
-    max-width: 440px;
-}
-
-.city-plan-row .city-plan-video-inner {
     width: 100%;
 }
 
-.city-plan-row-portrait {
-    align-items: stretch;
-}
-
-.city-plan-row-portrait .city-plan-video-embed {
+.city-plan-text-cluster {
     display: flex;
-    align-items: stretch;
-    align-self: stretch;
-    min-height: 100%;
-}
-
-.city-plan-row-portrait .city-plan-video-inner {
-    flex: 1;
-    min-height: 0;
-    height: 100%;
-    width: auto;
-    aspect-ratio: 9 / 16;
-}
-
-.city-plan-row:not(.city-plan-row-portrait) .city-plan-video-inner {
-    max-width: 100%;
-    height: 100%;
-    width: auto;
-    aspect-ratio: 16 / 9;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .city-plan-block {
@@ -756,35 +649,21 @@ nav {
     padding: var(--city-plan-card-padding, 24px);
     background: #fff;
     border-radius: 10px;
+    border: 1px solid rgba(254, 82, 82, 0.35);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     counter-increment: city-plan-counter;
     overflow: visible;
+    transition: box-shadow 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
 }
 
-/* Row 1: first card shorter (tighter padding), second card taller by same amount */
-.city-plan-content .city-plan-row:first-child .city-plan-row-text .city-plan-block:first-child {
-    padding-top: 16px;
-    padding-bottom: 16px;
+.city-plan-block:hover {
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.09), 0 2px 8px rgba(254, 82, 82, 0.14);
+    border-color: rgba(254, 82, 82, 0.5);
+    transform: translateY(-2px);
 }
 
-.city-plan-content .city-plan-row:first-child .city-plan-row-text .city-plan-block:nth-child(2) {
-    padding-top: 32px;
-    padding-bottom: 32px;
-}
-
-/* Row 2: first card shorter (tighter padding), second card taller by same amount */
-.city-plan-content .city-plan-row:nth-child(2) .city-plan-row-text .city-plan-block:first-child {
-    padding-top: 16px;
-    padding-bottom: 16px;
-}
-
-.city-plan-content .city-plan-row:nth-child(2) .city-plan-row-text .city-plan-block:nth-child(2) {
-    padding-top: 32px;
-    padding-bottom: 32px;
-}
-
-/* First 4 cards (rows 1–2): center text vertically */
-.city-plan-content .city-plan-row:nth-child(-n+2) .city-plan-row-text .city-plan-block {
+/* First two clusters (points 1–4): center text vertically in each card */
+.city-plan-text-cluster:nth-child(-n+2) .city-plan-block {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -858,53 +737,110 @@ nav {
     transform: translateX(3px);
 }
 
-/* Video card wrapper - modern minimalist */
-.city-plan-row .city-plan-video-card {
+/* --- City plan: horizontal video carousel (compact; aligned with events block) --- */
+.city-plan-videos-wrap {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    width: 100%;
+}
+
+/* Fills .city-plan-container (already matches .mission-container / events width) */
+.city-plan-videos-inner {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.city-plan-videos-strip {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Next control: vertically centered with video row (matches flex align-items) */
+.city-plan-videos-strip .scroll-btn {
     flex-shrink: 0;
-    flex: 0 0 50%;
-    min-width: 320px;
-    max-width: 560px;
-    order: 2;
+    align-self: center;
 }
 
-.city-plan-row-video-right .city-plan-video-card {
-    order: 2;
+.city-plan-videos-scroll {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 8px 4px;
+    margin: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
 }
 
-.city-plan-row-video-right .city-plan-row-text {
-    order: 1;
+.city-plan-videos-scroll::-webkit-scrollbar {
+    display: none;
 }
 
-.city-plan-video-card {
-    background: #fff;
-    padding: 28px;
-    border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+.city-plan-videos-scroll:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px rgba(254, 82, 82, 0.25);
+    border-radius: 12px;
 }
 
-.city-plan-video-card:hover {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
-    transform: translateY(-4px);
+.city-plan-video-slide {
+    flex: 0 0 auto;
+    /* Start alignment: avoids center-snapping that can reveal the next slide */
+    scroll-snap-align: start;
 }
 
-.city-plan-video-title {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--brand-color);
-    margin: 0 0 20px 0;
-    line-height: 1.4;
-    letter-spacing: 0.02em;
+/*
+ * Each landscape = exactly half of the scroll viewport minus the gap, so
+ * L1 + gap + L2 fills 100% — the portrait slide is fully off-screen until you scroll.
+ */
+.city-plan-video-slide-landscape {
+    flex: 0 0 calc((100% - 16px) / 2);
+    width: calc((100% - 16px) / 2);
+    max-width: calc((100% - 16px) / 2);
+    min-width: 0;
 }
 
-/* Video embeds interspersed in content */
+.city-plan-video-slide-portrait {
+    flex: 0 0 auto;
+    width: min(200px, 40vw);
+    max-width: 220px;
+}
+
+.city-plan-video-slide .city-plan-video-embed {
+    margin: 0;
+    height: 100%;
+}
+
+.city-plan-video-slide-landscape .city-plan-video-inner {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    max-width: 100%;
+}
+
+.city-plan-video-slide-portrait .city-plan-video-inner {
+    aspect-ratio: 9 / 16;
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+    max-height: min(440px, 62vh);
+}
+
+/* Video embeds in carousel */
 .city-plan-video-embed {
-    margin: 24px 0;
-}
-
-.city-plan-video-card .city-plan-video-embed {
     margin: 0;
 }
 
@@ -918,6 +854,15 @@ nav {
 
 .city-plan-video-inner:hover {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+}
+
+.city-plan-videos-wrap .city-plan-video-inner {
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.city-plan-videos-wrap .city-plan-video-inner:hover {
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14);
 }
 
 .city-plan-video-inner iframe {
@@ -935,6 +880,46 @@ nav {
 .city-plan-video-landscape .city-plan-video-inner {
     max-width: 900px;
     aspect-ratio: 16 / 9;
+}
+
+@media (max-width: 700px) {
+    .city-plan-videos-wrap {
+        margin-top: 28px;
+        padding-top: 20px;
+    }
+
+    .city-plan-videos-strip {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 0;
+    }
+
+    .city-plan-videos-scroll {
+        width: 100%;
+        padding: 8px 0;
+        margin: 0;
+    }
+
+    .city-plan-video-nav-next {
+        align-self: flex-end;
+    }
+
+    .city-plan-video-slide-landscape {
+        flex: 0 0 calc((100% - 16px) / 2);
+        width: calc((100% - 16px) / 2);
+        max-width: calc((100% - 16px) / 2);
+    }
+
+    .city-plan-video-slide-portrait {
+        width: min(180px, 42vw);
+        max-width: 200px;
+    }
+
+    .city-plan-video-slide-portrait .city-plan-video-inner {
+        max-width: 200px;
+        max-height: min(280px, 50vh);
+    }
 }
 
 /* --- FOLLOW US ON SOCIAL MEDIA --- */
@@ -1304,6 +1289,122 @@ nav {
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.events-table-scroll-wrap {
+    position: relative;
+}
+
+.events-table-scroll {
+    max-height: min(960px, 90vh);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(254, 82, 82, 0.45) rgba(0, 0, 0, 0.06);
+}
+
+.events-table-scroll-hint {
+    position: absolute;
+    left: 0;
+    right: 8px;
+    bottom: 0;
+    width: auto;
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 8px 8px;
+    gap: 4px;
+    margin: 0;
+    border: none;
+    font: inherit;
+    -webkit-appearance: none;
+    appearance: none;
+    text-align: center;
+    cursor: pointer;
+    background: linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0.94) 38%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: auto;
+    transition: opacity 0.28s ease, visibility 0.28s ease, background 0.2s ease;
+}
+
+.events-table-scroll-hint:hover {
+    background: linear-gradient(to top, #fafafa 0%, rgba(255, 255, 255, 0.96) 42%, rgba(255, 255, 255, 0) 100%);
+}
+
+.events-table-scroll-hint:hover .events-table-scroll-hint-icon {
+    color: var(--brand-hover);
+}
+
+.events-table-scroll-hint:focus-visible {
+    outline: 2px solid var(--brand-color);
+    outline-offset: 2px;
+    z-index: 2;
+}
+
+.events-table-scroll-wrap.is-at-end .events-table-scroll-hint,
+.events-table-scroll-wrap.no-overflow .events-table-scroll-hint {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.events-table-scroll-hint-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #777;
+}
+
+.events-table-scroll-hint-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--brand-color);
+    flex-shrink: 0;
+    animation: events-scroll-hint-nudge 1.75s ease-in-out infinite;
+}
+
+@keyframes events-scroll-hint-nudge {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    45% {
+        transform: translateY(5px);
+    }
+}
+
+.events-table-scroll-wrap.is-at-end .events-table-scroll-hint-icon,
+.events-table-scroll-wrap.no-overflow .events-table-scroll-hint-icon {
+    animation: none;
+}
+
+.events-table-scroll:focus-visible {
+    outline: 2px solid var(--brand-color);
+    outline-offset: 2px;
+}
+
+.events-table-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.events-table-scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 0 10px 10px 0;
+}
+
+.events-table-scroll::-webkit-scrollbar-thumb {
+    background: rgba(254, 82, 82, 0.4);
+    border-radius: 4px;
+}
+
+.events-table-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(254, 82, 82, 0.6);
 }
 
 .events-and-social-section h3 {
@@ -1725,37 +1826,12 @@ nav {
     }
 
     .city-plan-content {
-        gap: 28px;
+        gap: 0;
         max-width: 100%;
     }
 
-    .city-plan-section .city-plan-video-embed {
-        display: none !important;
-    }
-
-    .city-plan-row {
-        flex-direction: column;
-        gap: 24px;
-    }
-
-    .city-plan-row-video-right .city-plan-video-embed {
-        order: 0;
-    }
-
-    .city-plan-row-video-right .city-plan-row-text {
-        order: 0;
-    }
-
-    .city-plan-row-portrait .city-plan-video-inner {
+    .city-plan-text-stack {
         max-width: 100%;
-        margin: 0 auto;
-    }
-
-    .city-plan-row:not(.city-plan-row-portrait) .city-plan-video-inner {
-        max-width: 100%;
-        height: 100%;
-        width: auto;
-        aspect-ratio: 16 / 9;
     }
 
     .city-plan-point {
@@ -1766,13 +1842,8 @@ nav {
         font-size: 1rem;
     }
 
-    .city-plan-video-portrait .city-plan-video-inner {
-        max-width: 100%;
-        margin: 0 auto;
-    }
-
-    .city-plan-video-landscape .city-plan-video-inner {
-        max-width: 100%;
+    .city-plan-video-slide-portrait .city-plan-video-inner {
+        max-height: min(280px, 45vh);
     }
 
     .watch-section {
@@ -1853,6 +1924,15 @@ nav {
         min-width: 100%;
         overflow: visible;
         order: 1;
+    }
+
+    .events-table-scroll {
+        max-height: min(720px, 82vh);
+    }
+
+    .events-table-scroll-hint {
+        right: 0;
+        height: 58px;
     }
 
     .social-card {

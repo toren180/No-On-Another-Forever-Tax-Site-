@@ -140,3 +140,73 @@ if (countdownEl) {
     updateCountdown();
     setInterval(updateCountdown, 1000);
 }
+
+// The City's Plan — horizontal video carousel (mixed slide widths)
+(function () {
+    var scrollEl = document.getElementById('city-plan-videos-scroll');
+    var nextBtn = document.getElementById('city-plan-videos-next');
+    if (!scrollEl || !nextBtn) return;
+
+    function scrollToAdjacent(direction) {
+        var slides = scrollEl.querySelectorAll('.city-plan-video-slide');
+        if (!slides.length) return;
+        var cre = scrollEl.getBoundingClientRect();
+        var centerX = cre.left + cre.width / 2;
+        var best = 0;
+        var bestDist = Infinity;
+        for (var i = 0; i < slides.length; i++) {
+            var r = slides[i].getBoundingClientRect();
+            var cx = r.left + r.width / 2;
+            var d = Math.abs(cx - centerX);
+            if (d < bestDist) {
+                bestDist = d;
+                best = i;
+            }
+        }
+        var next = Math.max(0, Math.min(slides.length - 1, best + direction));
+        slides[next].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    }
+
+    nextBtn.addEventListener('click', function () {
+        scrollToAdjacent(1);
+    });
+})();
+
+// Upcoming events: show “scroll for more” hint until bottom (or hide if no overflow); hint click scrolls down
+(function () {
+    var wrap = document.getElementById('events-table-scroll-wrap');
+    var scrollEl = wrap && wrap.querySelector('.events-table-scroll');
+    var hintBtn = document.getElementById('events-table-scroll-hint');
+    if (!wrap || !scrollEl) return;
+
+    function sync() {
+        var overflow = scrollEl.scrollHeight > scrollEl.clientHeight + 2;
+        wrap.classList.toggle('no-overflow', !overflow);
+        if (!overflow) return;
+        var atEnd = scrollEl.scrollTop + scrollEl.clientHeight >= scrollEl.scrollHeight - 3;
+        wrap.classList.toggle('is-at-end', atEnd);
+    }
+
+    function scrollHintDown() {
+        var remaining = scrollEl.scrollHeight - scrollEl.scrollTop - scrollEl.clientHeight;
+        if (remaining <= 1) return;
+        var step = Math.min(scrollEl.clientHeight * 0.7, remaining);
+        scrollEl.scrollBy({ top: step, behavior: 'smooth' });
+    }
+
+    if (hintBtn) {
+        hintBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            scrollHintDown();
+        });
+    }
+
+    scrollEl.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', sync);
+    } else {
+        sync();
+    }
+    window.addEventListener('load', sync);
+})();

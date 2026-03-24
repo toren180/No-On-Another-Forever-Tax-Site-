@@ -1,0 +1,75 @@
+/* Click-to-play YouTube: avoids title overlay on thumbnail (iframe loads after tap) */
+.youtube-clickplay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+}
+
+.youtube-clickplay-poster {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: #111;
+    cursor: pointer;
+    border-radius: inherit;
+    overflow: hidden;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.youtube-clickplay-poster:hover .youtube-clickplay-icon {
+    background: rgba(254, 82, 82, 0.95);
+    transform: translate(-50%, -50%) scale(1.06);
+}
+
+.youtube-clickplay-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.youtube-clickplay-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.2s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+}
+
+.youtube-clickplay-icon svg {
+    margin-left: 3px;
+}
+
+.youtube-clickplay-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: inherit;
+    z-index: 2;
+}
+
+.youtube-clickplay-frame[hidden] {
+    display: none !important;
+}
+
+.city-plan-video-inner.youtube-clickplay {
+    position: relative;
+}

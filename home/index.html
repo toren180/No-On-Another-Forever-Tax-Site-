@@ -16,6 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans:wght@400;600;700&family=Outfit:wght@500;600&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/youtube-embed.css" />
 
 </head>
 
@@ -111,7 +112,7 @@
         </div>
     </section>
 
-    <!-- THE CITY'S PLAN (with embedded videos) -->
+    <!-- THE CITY'S PLAN: text first, then horizontal video carousel -->
 
     <section class="city-plan-section">
         <div class="city-plan-container">
@@ -119,9 +120,8 @@
                 <h3>The City's Plan</h3>
             </div>
             <div class="city-plan-content">
-                <!-- Row 1: Text on left, horizontal video on right (same as row 2) -->
-                <div class="city-plan-row city-plan-row-video-right">
-                    <div class="city-plan-row-text">
+                <div class="city-plan-text-stack">
+                    <div class="city-plan-text-cluster">
                         <div class="city-plan-block">
                             <p class="city-plan-point"><span class="city-plan-number" aria-hidden="true">1</span><strong class="city-plan-title">A $100 million tax:</strong>
                                 <span data-editable="source" data-path="/home/index.html" data-key="the-city's-plan-one"
@@ -142,27 +142,8 @@
                             </p>
                         </div>
                     </div>
-                    <div class="city-plan-video-embed city-plan-video-landscape">
-                        <div class="city-plan-video-inner">
-                            <iframe src="https://www.youtube.com/embed/ffx3XJvcRmg?si=rVp9q1O-z2p-qg44"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Row 2: Text on left, video on right -->
-                <div class="city-plan-row city-plan-row-video-right city-plan-row-highlighted">
-                    <div class="city-plan-video-embed city-plan-video-landscape">
-                        <div class="city-plan-video-inner">
-                            <iframe src="https://www.youtube.com/embed/dmEwCkZu_Pk?si=cd9PgTK_vv7_xJas"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="city-plan-row-text">
+                    <div class="city-plan-text-cluster">
                         <div class="city-plan-block">
                             <p class="city-plan-point"><span class="city-plan-number" aria-hidden="true">3</span><strong class="city-plan-title">The tax will fall on renters
                                     too:</strong> <span data-editable="source" data-path="/home/index.html"
@@ -182,11 +163,8 @@
                             </p>
                         </div>
                     </div>
-                </div>
 
-                <!-- Row 3: Text on left, vertical video on right -->
-                <div class="city-plan-row city-plan-row-video-right city-plan-row-portrait">
-                    <div class="city-plan-row-text">
+                    <div class="city-plan-text-cluster">
                         <div class="city-plan-block">
                             <p class="city-plan-point"><span class="city-plan-number" aria-hidden="true">5</span><strong class="city-plan-title">No guarantee the library will
                                     actually get built:</strong> <span data-editable="source"
@@ -217,12 +195,63 @@
                             </p>
                         </div>
                     </div>
-                    <div class="city-plan-video-embed city-plan-video-portrait">
-                        <div class="city-plan-video-inner">
-                            <iframe src="https://www.youtube.com/embed/VwZwZpECKF8" title="YouTube video"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                </div>
+
+                <div class="city-plan-videos-wrap">
+                    <div class="city-plan-videos-inner">
+                        <div class="city-plan-videos-strip">
+                            <div class="city-plan-videos-scroll" id="city-plan-videos-scroll" tabindex="0" role="region"
+                                aria-roledescription="carousel" aria-label="Related videos">
+                            <div class="city-plan-video-slide city-plan-video-slide-landscape">
+                                <div class="city-plan-video-embed city-plan-video-landscape">
+                                    <div class="city-plan-video-inner youtube-clickplay">
+                                        <button type="button" class="youtube-clickplay-poster" aria-label="Play video">
+                                            <img src="https://i.ytimg.com/vi/ffx3XJvcRmg/maxresdefault.jpg?v=2" alt="" loading="lazy" width="1280" height="720"
+                                                onerror="if(this.src.indexOf('maxres')!==-1){this.src='https://i.ytimg.com/vi/ffx3XJvcRmg/sddefault.jpg?v=2';}else if(this.src.indexOf('sddefault')!==-1){this.src='https://i.ytimg.com/vi/ffx3XJvcRmg/hqdefault.jpg?v=2';}else{this.onerror=null;}" />
+                                            <span class="youtube-clickplay-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+                                        </button>
+                                        <iframe class="youtube-clickplay-frame" hidden data-embed-src="https://www.youtube.com/embed/ffx3XJvcRmg?si=rVp9q1O-z2p-qg44"
+                                            title="YouTube video player"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            referrerpolicy="strict-origin-when-cross-origin"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="city-plan-video-slide city-plan-video-slide-landscape">
+                                <div class="city-plan-video-embed city-plan-video-landscape">
+                                    <div class="city-plan-video-inner youtube-clickplay">
+                                        <button type="button" class="youtube-clickplay-poster" aria-label="Play video">
+                                            <img src="https://i.ytimg.com/vi/dmEwCkZu_Pk/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720"
+                                                onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/dmEwCkZu_Pk/hqdefault.jpg';" />
+                                            <span class="youtube-clickplay-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+                                        </button>
+                                        <iframe class="youtube-clickplay-frame" hidden data-embed-src="https://www.youtube.com/embed/dmEwCkZu_Pk?si=cd9PgTK_vv7_xJas"
+                                            title="YouTube video player"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            referrerpolicy="strict-origin-when-cross-origin"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="city-plan-video-slide city-plan-video-slide-portrait">
+                                <div class="city-plan-video-embed city-plan-video-portrait">
+                                    <div class="city-plan-video-inner youtube-clickplay">
+                                        <button type="button" class="youtube-clickplay-poster" aria-label="Play video">
+                                            <img src="https://i.ytimg.com/vi/VwZwZpECKF8/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720"
+                                                onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/VwZwZpECKF8/hqdefault.jpg';" />
+                                            <span class="youtube-clickplay-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+                                        </button>
+                                        <iframe class="youtube-clickplay-frame" hidden data-embed-src="https://www.youtube.com/embed/VwZwZpECKF8"
+                                            title="YouTube video"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <button type="button" class="scroll-btn city-plan-video-nav-next" id="city-plan-videos-next"
+                                aria-label="Next video">&rarr;</button>
                         </div>
                     </div>
                 </div>
@@ -236,66 +265,116 @@
             <h3>UPCOMING EVENTS</h3>
             <div class="events-and-social-row">
                 <div class="events-column">
+                    <div class="events-table-scroll-wrap" id="events-table-scroll-wrap">
+                    <div class="events-table-scroll" tabindex="0" role="region" aria-label="Upcoming events list">
                     <table class="events-table">
                 <tbody>
                     <tr>
                         <td class="event-date" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-eleven" data-type="text">Friday March 13, 2:30 PM - 4:30 PM</td>
+                            data-key="table-entry-mar2026-01" data-type="text">Thursday March 26, 3:00 PM - 5:00 PM</td>
                         <td class="event-description" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-twelve" data-type="text">El Cerrito Natural Foods, 10367 San Pablo
-                            Avenue</td>
+                            data-key="table-entry-mar2026-02" data-type="text">Giovanni's Market, 1600 Liberty Street</td>
                     </tr>
                     <tr>
                         <td class="event-date" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-thirteen" data-type="text">Saturday March 14, 9:30 AM - 11:30 AM</td>
+                            data-key="table-entry-mar2026-03" data-type="text">Friday March 27, 2:30 PM - 4:30 PM</td>
                         <td class="event-description" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-fourteen" data-type="text">Well Grounded Coffee, 6925 Stockton Ave
-                        </td>
+                            data-key="table-entry-mar2026-04" data-type="text">El Cerrito Natural Foods, 10367 San Pablo Avenue</td>
                     </tr>
                     <tr>
                         <td class="event-date" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-fifteen" data-type="text">Thursday March 19, 3:00 PM - 5:00 PM</td>
+                            data-key="table-entry-mar2026-05" data-type="text">Saturday March 28, 10:00 AM - 12:00 PM</td>
                         <td class="event-description" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-sixteen" data-type="text">Giovanni's Market, 1600 Liberty Street,
-                            Corner of Liberty and Potrero</td>
+                            data-key="table-entry-mar2026-06" data-type="text">Well Grounded Coffee, 6925 Stockton Street</td>
                     </tr>
                     <tr>
                         <td class="event-date" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-seventeen" data-type="text">Friday March 20, 2:30 PM - 4:30 PM</td>
+                            data-key="table-entry-apr2026-01" data-type="text">Thursday April 2, 3:00 PM - 5:00 PM</td>
                         <td class="event-description" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-eighteen" data-type="text">El Cerrito Natural Foods, 10367 San Pablo
-                            Avenue</td>
+                            data-key="table-entry-apr2026-02" data-type="text">Giovanni's Market, 1600 Liberty Street</td>
                     </tr>
                     <tr>
                         <td class="event-date" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-nineteen" data-type="text">Saturday March 21, 10:00 AM - 12:00 PM</td>
+                            data-key="table-entry-apr2026-11" data-type="text">Friday April 3, 2:30 PM - 4:30 PM</td>
                         <td class="event-description" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-twenty" data-type="text">Well Grounded Coffee, 6925 Stockton Ave</td>
+                            data-key="table-entry-apr2026-12" data-type="text">El Cerrito Natural Foods, 10367 San Pablo Avenue</td>
                     </tr>
                     <tr>
                         <td class="event-date" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-twentyone" data-type="text">Thursday March 26, 3:00 PM - 5:00 PM</td>
+                            data-key="table-entry-apr2026-19" data-type="text">Saturday April 4, 9:00 AM - 11:00 AM</td>
                         <td class="event-description" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-twentytwo" data-type="text">Giovanni's Market, 1600 Liberty Street,
-                            Corner of Liberty and Potrero</td>
+                            data-key="table-entry-apr2026-20" data-type="text">Well Grounded Coffee, 6925 Stockton Street</td>
                     </tr>
                     <tr>
                         <td class="event-date" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-twentythree" data-type="text">Friday March 27, 2:30 PM - 4:30 PM</td>
+                            data-key="table-entry-apr2026-03" data-type="text">Thursday April 9, 3:00 PM - 5:00 PM</td>
                         <td class="event-description" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-twentyfour" data-type="text">El Cerrito Natural Foods, 10367 San Pablo
-                            Avenue</td>
+                            data-key="table-entry-apr2026-04" data-type="text">Giovanni's Market, 1600 Liberty Street</td>
                     </tr>
                     <tr>
                         <td class="event-date" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-twentyfive" data-type="text">Saturday March 28, 10:00 AM - 12:00 PM
-                        </td>
+                            data-key="table-entry-apr2026-13" data-type="text">Friday April 10, 2:30 PM - 4:30 PM</td>
                         <td class="event-description" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-twentysix" data-type="text">Well Grounded Coffee, 6925 Stockton Ave
-                        </td>
+                            data-key="table-entry-apr2026-14" data-type="text">El Cerrito Natural Foods, 10367 San Pablo Avenue</td>
+                    </tr>
+                    <tr>
+                        <td class="event-date" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-23" data-type="text">Saturday April 11, 9:30 AM - 11:30 AM</td>
+                        <td class="event-description" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-24" data-type="text">Semifreddi's (no table set up, flier distribution only), 372 Colusa in the Kensington Circle</td>
+                    </tr>
+                    <tr>
+                        <td class="event-date" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-05" data-type="text">Thursday April 16, 3:00 PM - 5:00 PM</td>
+                        <td class="event-description" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-06" data-type="text">Giovanni's Market, 1600 Liberty Street</td>
+                    </tr>
+                    <tr>
+                        <td class="event-date" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-15" data-type="text">Friday April 17, 2:30 PM - 4:30 PM</td>
+                        <td class="event-description" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-16" data-type="text">El Cerrito Natural Foods, 10367 San Pablo Avenue</td>
+                    </tr>
+                    <tr>
+                        <td class="event-date" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-21" data-type="text">Saturday April 18, 9:00 AM - 11:00 AM</td>
+                        <td class="event-description" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-22" data-type="text">Well Grounded Coffee, 6925 Stockton Street</td>
+                    </tr>
+                    <tr>
+                        <td class="event-date" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-07" data-type="text">Thursday April 23, 3:00 PM - 5:00 PM</td>
+                        <td class="event-description" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-08" data-type="text">Giovanni's Market, 1600 Liberty Street</td>
+                    </tr>
+                    <tr>
+                        <td class="event-date" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-17" data-type="text">Friday April 24, 2:30 PM - 4:30 PM</td>
+                        <td class="event-description" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-18" data-type="text">El Cerrito Natural Foods, 10367 San Pablo Avenue</td>
+                    </tr>
+                    <tr>
+                        <td class="event-date" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-25" data-type="text">Saturday April 25, 9:30 AM - 11:30 AM</td>
+                        <td class="event-description" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-26" data-type="text">Semifreddi's (no table set up, flier distribution only), 372 Colusa in the Kensington Circle</td>
+                    </tr>
+                    <tr>
+                        <td class="event-date" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-09" data-type="text">Thursday April 30, 3:00 PM - 5:00 PM</td>
+                        <td class="event-description" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-10" data-type="text">Giovanni's Market, 1600 Liberty Street</td>
                     </tr>
                 </tbody>
             </table>
+                    </div>
+                    <button type="button" class="events-table-scroll-hint" id="events-table-scroll-hint" aria-label="Scroll down for more events">
+                        <span class="events-table-scroll-hint-text" aria-hidden="true">Scroll for more</span>
+                        <svg class="events-table-scroll-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </button>
+                    </div>
             </div>
             <div class="social-card">
                 <h3>Follow us on social media</h3>
@@ -623,6 +702,7 @@
     </div>
     -->
 
+    <script src="../js/youtube-embed.js"></script>
     <script src="../js/index.js"></script>
 </body>
 

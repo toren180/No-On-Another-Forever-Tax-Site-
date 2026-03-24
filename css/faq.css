@@ -31,19 +31,20 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
-    position: absolute;
+    position: relative;
     top: 0;
     width: 100%;
     z-index: 10;
+    background: white;
+    border-bottom: 1px solid #eee;
 }
 
 .logo {
-    color: white;
+    color: var(--text-dark);
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-size: 1.5rem;
     text-transform: uppercase;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
     cursor: pointer;
 }
 
@@ -54,14 +55,13 @@ nav {
 }
 
 .nav-links a {
-    color: white;
+    color: var(--text-dark);
     text-decoration: none;
     margin-left: 25px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     font-size: 1.1rem;
     text-transform: capitalize;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 2px 12px rgba(0, 0, 0, 0.35);
     transition: color 0.3s;
     padding-bottom: 2px;
     border-bottom: 2px solid transparent;
@@ -128,7 +128,7 @@ nav {
 .hamburger span {
     width: 18px;
     height: 2.5px;
-    background-color: white;
+    background-color: var(--text-dark);
     margin: 3px 0;
     transition: 0.3s;
     border-radius: 2px;
@@ -259,242 +259,47 @@ nav {
     visibility: visible;
 }
 
-/* --- LOGO GRADIENT (top-left, seamless blend) --- */
-.logo-gradient {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 760px;
-    height: 200px;
-    background: radial-gradient(ellipse 95% 85% at 0% 0%,
-            rgba(0, 0, 0, 0.82) 0%,
-            rgba(0, 0, 0, 0.68) 15%,
-            rgba(0, 0, 0, 0.52) 28%,
-            rgba(0, 0, 0, 0.38) 40%,
-            rgba(0, 0, 0, 0.26) 50%,
-            rgba(0, 0, 0, 0.16) 58%,
-            rgba(0, 0, 0, 0.09) 65%,
-            rgba(0, 0, 0, 0.04) 72%,
-            rgba(0, 0, 0, 0.015) 78%,
-            rgba(0, 0, 0, 0.004) 84%,
-            transparent 90%);
-    z-index: 2;
-    pointer-events: none;
+/* --- FAQ PAGE (matches tax calculator: title + content) --- */
+.faq-section {
+    background-color: var(--section-bg);
+    padding: 100px 20px;
 }
 
-/* --- NAV GRADIENT (over hero) --- */
-.nav-gradient {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    background: radial-gradient(ellipse 140% 220% at 85% -20%,
-            rgba(0, 0, 0, 0.48) 0%,
-            rgba(0, 0, 0, 0.38) 12%,
-            rgba(0, 0, 0, 0.26) 22%,
-            rgba(0, 0, 0, 0.16) 32%,
-            rgba(0, 0, 0, 0.09) 42%,
-            rgba(0, 0, 0, 0.04) 52%,
-            rgba(0, 0, 0, 0.015) 62%,
-            rgba(0, 0, 0, 0.004) 72%,
-            transparent 82%);
-    z-index: 2;
-    pointer-events: none;
+.faq-container {
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-/* --- HERO SECTION --- */
-.hero {
-    min-height: 100vh;
-    position: relative;
-    background-image: url('../images/library.jpeg');
-    background-size: cover;
-    background-position: center 18%;
-    background-attachment: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    text-align: left;
-    padding: 120px 6% 48px 6%;
-    overflow: hidden;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* Darken only bottom-left where text/buttons sit; keep rest of image brighter */
-    background: radial-gradient(ellipse 90% 75% at 15% 92%,
-            rgba(0, 0, 0, 0.78) 0%,
-            rgba(0, 0, 0, 0.5) 30%,
-            rgba(0, 0, 0, 0.2) 55%,
-            rgba(0, 0, 0, 0.06) 75%,
-            transparent 100%);
-    z-index: 1;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 680px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.hero-heading-group {
-    display: inline-block;
-    margin-bottom: 0.6em;
-}
-
-.hero h1 {
+.faq-page-title {
     font-family: 'Oswald', sans-serif;
-    color: #fff;
-    font-size: clamp(2.5rem, 5.5vw, 3.75rem);
+    font-size: clamp(2rem, 4.5vw, 2.85rem);
     font-weight: 700;
-    line-height: 1.05;
-    margin: 0;
-    letter-spacing: 0.02em;
+    color: #222;
+    letter-spacing: 0.06em;
+    line-height: 1.12;
+    margin: 0 auto 52px;
+    max-width: 52rem;
+    text-align: center;
     text-transform: uppercase;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.hero-separator-bar {
-    width: 100%;
+.faq-page-title::after {
+    content: '';
+    display: block;
+    width: min(88px, 22vw);
     height: 4px;
+    margin: 0.65em auto 0;
     background: var(--brand-color);
     border-radius: 2px;
-    margin: 0.75em 0 0 0;
-    box-shadow: 0 0 20px rgba(254, 82, 82, 0.35);
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-}
-
-.btn-hero-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 30px;
-    min-width: 200px;
-    background: var(--brand-color);
-    color: white;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-decoration: none;
-    border-radius: 50px;
-    border: none;
-    box-shadow: 0 4px 14px rgba(254, 82, 82, 0.4);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.btn-hero-primary:hover {
-    background: var(--brand-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(254, 82, 82, 0.45);
-}
-
-.btn-hero-secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 30px;
-    min-width: 200px;
-    background: rgba(255, 255, 255, 0.08);
-    color: white;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-decoration: none;
-    border-radius: 50px;
-    border: 2px solid rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(8px);
-    transition: all 0.2s ease;
-}
-
-.btn-hero-secondary:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.9);
-    transform: translateY(-2px);
-}
-
-/* --- CONTENT SECTION --- */
-.content-section {
-    background-color: var(--section-bg);
-    padding: 100px 6%;
-}
-
-.content-container {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0;
-    display: flex;
-    gap: 3rem;
-    align-items: flex-start;
+    box-shadow: 0 0 22px rgba(254, 82, 82, 0.38);
 }
 
 .faq-article {
-    flex: 1;
-    min-width: 0;
     max-width: 780px;
+    margin: 0 auto;
     text-align: left;
-}
-
-.faq-video-wrap {
-    flex-shrink: 0;
-    padding-top: 60px;
-}
-
-.faq-video {
-    flex-shrink: 0;
-    max-width: 340px;
-    margin-right: 3rem;
-    aspect-ratio: 9 / 16;
-    overflow: visible;
-    border-radius: 12px;
-    position: relative;
-}
-
-.faq-video::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--brand-color);
-    border-radius: 12px;
-    transform: translate(14px, 14px);
-    z-index: -1;
-}
-
-.faq-video iframe {
-    width: 100%;
-    height: 100%;
-    display: block;
-    border-radius: 12px;
-}
-
-.content-section p {
-    font-family: 'Open Sans', sans-serif;
-    font-size: var(--body-text-size);
-    color: var(--body-text-color);
-    line-height: var(--body-text-line-height);
-    letter-spacing: var(--body-text-letter-spacing);
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 /* --- FAQ ARTICLE --- */
@@ -506,8 +311,6 @@ nav {
     text-transform: uppercase;
     letter-spacing: 0.04em;
     margin-bottom: 24px;
-    padding-bottom: 12px;
-    border-bottom: 3px solid var(--brand-color);
 }
 
 .faq-intro {
@@ -720,76 +523,14 @@ nav {
 
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
-    .hero {
-        height: auto;
-        min-height: 100vh;
-        padding: 100px 24px 48px 24px;
-        background-attachment: scroll;
-        justify-content: flex-start;
-        align-items: center;
-        text-align: center;
-    }
-
-    .hero-content {
-        width: 100%;
-        padding: 0;
-        align-items: center;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .hero-text-wrapper {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .hero-heading-group {
-        text-align: center;
-        margin-bottom: 0.5em;
-    }
-
-    .hero h1 {
-        font-size: clamp(2.5rem, 8vw, 3.25rem);
-        line-height: 1.05;
-        text-align: center;
-    }
-
-    .hero-separator-bar {
-        height: 3px;
-        margin: 0.6em auto 0 auto;
-    }
-
-    .hero-buttons {
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        padding-top: 2rem;
-        gap: 12px;
-    }
-
-    .hero-buttons .btn-hero-primary,
-    .hero-buttons .btn-hero-secondary {
-        flex: 1;
-        min-width: 0;
-        max-width: 260px;
-        padding: 14px 24px;
-        font-size: 0.85rem;
-        letter-spacing: 0.06em;
-    }
-
     nav {
         flex-direction: row;
         justify-content: space-between;
         padding: 15px 20px;
         position: absolute;
         top: 0;
-        background: transparent;
+        background: white;
+        border-bottom: 1px solid #eee;
     }
 
     .hamburger {
@@ -815,25 +556,22 @@ nav {
         font-weight: 500;
     }
 
-    .content-section {
-        padding: 60px 6%;
+    .faq-section {
+        padding: 60px 20px;
     }
 
-    .content-container {
-        flex-direction: column;
+    .faq-page-title {
+        font-size: clamp(1.65rem, 6vw, 2.1rem);
+        letter-spacing: 0.05em;
+        margin-bottom: 40px;
     }
 
-    .faq-video-wrap {
-        order: -1;
-        padding-top: 0;
+    .faq-page-title::after {
+        height: 3px;
+        margin-top: 0.55em;
     }
 
-    .faq-video {
-        margin: 0 auto 2rem auto;
-        max-width: 300px;
-    }
-
-    .content-section p {
+    .faq-article p {
         font-size: 1.05rem;
     }
 
