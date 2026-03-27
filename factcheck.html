@@ -4,40 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Don't Take Our Word For It. Read the Fine Print.</title>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-  :root{--red:#fe5252;--red-dark:#d63d3d;--blue:#1a3a5c;--blue-light:#2c5f8a;--yellow:#F9D466;--bg:#fafaf8;--text:#1a1a1a;--text-muted:#555;--border:#ddd;--highlight-bg:#fff8e1;--card-bg:#fff}
+  :root{--red:#c0392b;--red-dark:#922b21;--blue:#1a3a5c;--blue-light:#2c5f8a;--yellow:#f0c040;--bg:#fafaf8;--text:#1a1a1a;--text-muted:#555;--border:#ddd;--highlight-bg:#fff8e1;--card-bg:#fff}
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:'Source Sans 3',-apple-system,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
-  /* --- NAV --- */
-  nav{display:flex;justify-content:space-between;align-items:center;padding:20px 5%;position:absolute;top:0;width:100%;z-index:10}
-  .site-logo{color:white;font-family:'Oswald',sans-serif;font-weight:700;font-size:1.5rem;text-transform:uppercase;text-shadow:0 2px 4px rgba(0,0,0,0.6);text-decoration:none}
-  .nav-links{display:flex;align-items:center;position:relative}
-  .nav-links a{color:white;text-decoration:none;margin-left:25px;font-family:'Open Sans',sans-serif;font-weight:600;font-size:1.1rem;text-transform:capitalize;text-shadow:0 1px 3px rgba(0,0,0,0.5),0 2px 12px rgba(0,0,0,0.35);transition:color 0.3s;padding-bottom:2px;border-bottom:2px solid transparent}
-  .nav-links a:hover{color:var(--red)}
-  .nav-links a.current{border-bottom-color:var(--red)}
-  .nav-link-underline{position:absolute;bottom:1px;left:0;height:2px;width:40px;min-width:40px;background:var(--red);transition:left 0.25s ease-out,width 0.25s ease-out;pointer-events:none;z-index:0}
-  .nav-links>a{position:relative;z-index:1}
-  .nav-links .nav-btn{background-color:var(--red);color:white;padding:8px 36px;border-radius:50px;border:2px solid var(--red);text-shadow:none;transition:all 0.3s;font-family:'Oswald',sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase}
-  .nav-links .nav-btn:hover{background-color:var(--red-dark);border-color:var(--red-dark);transform:translateY(-2px)}
-  .hamburger{display:none;flex-direction:column;cursor:pointer;padding:5px;z-index:1001;position:absolute;left:20px;top:50%;transform:translateY(-50%)}
-  .hamburger span{width:18px;height:2.5px;background-color:white;margin:3px 0;transition:0.3s;border-radius:2px}
-  .hamburger.active span:nth-child(1){transform:rotate(-45deg) translate(-5px,6px)}
-  .hamburger.active span:nth-child(2){opacity:0}
-  .hamburger.active span:nth-child(3){transform:rotate(45deg) translate(-5px,-6px)}
-  .sidebar{position:fixed;top:0;left:-100%;width:280px;height:100vh;background-color:white;transition:left 0.3s ease-in-out;z-index:1000;padding:80px 30px 30px 30px;box-shadow:2px 0 10px rgba(0,0,0,0.3);overflow-y:auto}
-  .sidebar.active{left:0}
-  .sidebar-close{position:absolute;top:20px;left:20px;width:40px;height:40px;cursor:pointer;z-index:1001;display:flex;align-items:center;justify-content:center;font-size:36px;color:var(--red);font-weight:bold;font-family:Arial,sans-serif}
-  .sidebar .nav-links{display:flex;flex-direction:column;gap:0;align-items:flex-start;width:100%}
-  .sidebar .nav-links a{color:var(--red);text-decoration:none;font-family:'Open Sans',sans-serif;font-weight:600;font-size:1.2rem;text-transform:capitalize;padding:15px 0;margin:0;width:100%;border-bottom:1px solid rgba(0,0,0,0.1);transition:color 0.3s,padding-left 0.3s;text-shadow:none}
-  .sidebar .nav-links a.current{border-bottom-color:var(--red);border-bottom-width:2px}
-  .sidebar .nav-links a:hover{color:var(--red-dark);padding-left:10px}
-  .sidebar .nav-links .nav-btn{margin-top:10px;width:100%;text-align:center;border-radius:50px;padding:12px 24px;background-color:var(--red);color:white;border:2px solid var(--red);font-family:'Oswald',sans-serif;font-weight:700;font-size:1.2rem;text-transform:uppercase}
-  .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.7);z-index:999;opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s}
-  .overlay.active{opacity:1;visibility:visible}
-  @media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}}
-  /* --- HERO --- */
-  .hero{background:var(--blue);color:#fff;padding:120px 24px 60px;text-align:center;position:relative;overflow:hidden}
+  .hero{background:var(--blue);color:#fff;padding:80px 24px 60px;text-align:center;position:relative;overflow:hidden}
   .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--red),var(--yellow),var(--red))}
   .hero h1{font-family:'Playfair Display',Georgia,serif;font-weight:900;font-size:clamp(2rem,5vw,3.2rem);line-height:1.15;max-width:700px;margin:0 auto 20px}
   .hero h1 em{font-style:normal;color:var(--yellow)}
@@ -83,41 +55,10 @@
   .footer .vote-no{font-family:'Playfair Display',Georgia,serif;font-size:1.8rem;font-weight:900;color:var(--red);margin-bottom:6px}
   .footer .url{font-size:1rem;font-weight:600;color:var(--blue);margin-bottom:16px}
   .footer .fppc{font-size:.78rem;color:var(--text-muted);line-height:1.5}
-  @media(max-width:600px){.hero{padding:100px 20px 44px}.stat-row{flex-direction:column}.stat-card{min-width:unset}.data-table{font-size:.88rem}.data-table th,.data-table td{padding:8px 10px}}
+  @media(max-width:600px){.hero{padding:56px 20px 44px}.stat-row{flex-direction:column}.stat-card{min-width:unset}.data-table{font-size:.88rem}.data-table th,.data-table td{padding:8px 10px}}
 </style>
 </head>
 <body>
-
-<nav>
-  <a class="site-logo" href="/home/">No On Another Forever Tax</a>
-  <div class="nav-links">
-    <span class="nav-link-underline" id="nav-link-underline" aria-hidden="true"></span>
-    <a href="/home/">Home</a>
-    <a href="/volunteer/">Volunteer</a>
-    <a href="/tax-calculator/">Tax Calculator</a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header" target="_blank">Yard Signs</a>
-    <a href="/factcheck.html" class="current">Fact Check</a>
-    <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02?locale=en&__embed_source=buy_btn_1Sna8XEAriv54ByVvLc4qkan" class="nav-btn" target="_blank">Donate</a>
-  </div>
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</nav>
-
-<div class="overlay" id="overlay"></div>
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-close" id="sidebar-close">×</div>
-  <div class="nav-links">
-    <a href="/home/">Home</a>
-    <a href="/volunteer/">Volunteer</a>
-    <a href="/tax-calculator/">Tax Calculator</a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header" target="_blank">Yard Signs</a>
-    <a href="/factcheck.html" class="current">Fact Check</a>
-    <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02?locale=en&__embed_source=buy_btn_1Sna8XEAriv54ByVvLc4qkan" class="nav-btn" target="_blank">Donate</a>
-  </div>
-</div>
 
 <div class="hero">
   <h1>Don't Take Our Word For It.<br><em>Read the Fine Print.</em></h1>
@@ -307,10 +248,10 @@
 
   <div class="divider"></div>
 
-  <!-- FACT 7: LOCATION -->
+  <!-- FACT 7: LOCATION IS A LIE -->
   <div class="claim-section">
     <span class="section-label blue">Fact</span>
-    <h2>This Will Be Built at the BART Station</h2>
+    <h2>The Location Is a Lie</h2>
     <p>Now they're pretending the library might go elsewhere. Don't believe them.</p>
     <p>Their campaign committee is literally called <strong>"Citizens for a Plaza Station Library."</strong> The BART site is embedded in the city's Strategic Plan 2024–2029, which calls for the city to <em>"Create a downtown community hub anchored by the Plaza Transit-Oriented Development and a new library."</em></p>
     <div class="sources-list">
@@ -372,14 +313,6 @@
   <div class="url">nomoreforevertax.org</div>
   <div class="fppc">Paid for by Neighbors For a Better El Cerrito<br>FPPC #1485677</div>
 </div>
-
-<script>
-(function(){var u=document.getElementById('nav-link-underline');if(!u)return;var c=u.closest('.nav-links');if(!c)return;var links=c.querySelectorAll('a:not(.nav-btn)');function pos(l){var cr=c.getBoundingClientRect(),lr=l.getBoundingClientRect();u.style.left=(lr.left-cr.left)+'px';u.style.width=Math.max(lr.width,20)+'px'}function def(){var cur=c.querySelector('a.current');if(cur)pos(cur);else if(links.length)pos(links[0])}function init(){def();for(var i=0;i<links.length;i++)links[i].addEventListener('mouseenter',function(){pos(this)});c.addEventListener('mouseleave',def);window.addEventListener('resize',def)}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();window.addEventListener('load',def)})();
-var hamburger=document.getElementById('hamburger'),sidebar=document.getElementById('sidebar'),overlay=document.getElementById('overlay');
-function toggleMenu(){hamburger.classList.toggle('active');sidebar.classList.toggle('active');overlay.classList.toggle('active');document.body.style.overflow=sidebar.classList.contains('active')?'hidden':'';}
-hamburger.addEventListener('click',toggleMenu);overlay.addEventListener('click',toggleMenu);
-var sidebarClose=document.getElementById('sidebar-close');if(sidebarClose)sidebarClose.addEventListener('click',toggleMenu);
-</script>
 
 </body>
 </html>
