@@ -311,7 +311,7 @@ nav {
 .hero {
     min-height: 100vh;
     position: relative;
-    background-image: url('../images/library.jpeg');
+    background-image: url('/images/library.jpeg');
     background-size: cover;
     background-position: center 18%;
     background-attachment: fixed;
@@ -592,13 +592,189 @@ nav {
     font-style: italic;
 }
 
+/* --- VOLUNTEER / SUPPORTER SIGNUP FORM (home + volunteer page) --- */
+.volunteer-form-section {
+    background-color: white;
+    padding: 80px 20px 90px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.volunteer-form-container {
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.volunteer-form-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    color: #222;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.volunteer-form-intro {
+    font-family: 'Open Sans', sans-serif;
+    font-size: var(--body-text-size);
+    color: var(--body-text-color);
+    line-height: var(--body-text-line-height);
+    letter-spacing: var(--body-text-letter-spacing);
+    margin-bottom: 28px;
+}
+
+.volunteer-signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.volunteer-form-row--split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.volunteer-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.volunteer-form-field label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.volunteer-form-optional {
+    font-weight: 400;
+    color: #666;
+}
+
+.volunteer-form-field input,
+.volunteer-form-field select {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text-dark);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.volunteer-form-field input:focus,
+.volunteer-form-field select:focus {
+    outline: none;
+    border-color: var(--brand-color);
+    box-shadow: 0 0 0 3px rgba(254, 82, 82, 0.2);
+}
+
+.volunteer-form-field select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+}
+
+.volunteer-form-submit {
+    margin-top: 8px;
+    align-self: flex-start;
+    cursor: pointer;
+    border-style: solid;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+}
+
+/* --- SUPPORTER FORM + VIDEOS (home, above City’s Plan; uses .city-plan-container width) --- */
+.supporter-videos-section {
+    background: #fff;
+    padding: 100px 20px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Left edge matches the centered 1100px city-plan container; extra width extends right */
+.supporter-videos-section .city-plan-container {
+    max-width: 1200px;
+    margin-left: max(0px, calc(50% - 550px));
+    margin-right: auto;
+}
+
+/* Form + flex sidebar: no row gap — a fixed gap would add only on the form side and
+   break symmetry. Carousel is centered in the sidebar so
+   (form right → carousel left) == (arrow right → container right). */
+.city-plan-supporter-videos-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+    margin-bottom: 0;
+}
+
+.city-plan-supporter-col {
+    flex: 0 1 430px;
+    min-width: 0;
+    max-width: 430px;
+}
+
+.supporter-videos-section .city-plan-supporter-form-container {
+    max-width: 100%;
+    margin: 0;
+}
+
+.supporter-videos-section .city-plan-supporter-col .volunteer-form-title {
+    text-align: left;
+}
+
+.city-plan-videos-sidebar {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+
+.city-plan-videos-sidebar .city-plan-videos-scroll {
+    gap: 14px;
+    padding: 0;
+}
+
+.city-plan-videos-sidebar .city-plan-video-slide-landscape,
+.city-plan-videos-sidebar .city-plan-video-slide-portrait {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.city-plan-videos-sidebar .city-plan-video-slide-portrait .city-plan-video-inner {
+    max-width: 100%;
+    max-height: min(720px, 85vh);
+    margin: 0 auto;
+}
+
+.city-plan-videos-sidebar .city-plan-video-slide-landscape .city-plan-video-inner {
+    max-width: 100%;
+}
+
 /* --- CITY PLAN SECTION --- */
 .city-plan-section {
     --city-plan-card-padding: 24px;
     --city-plan-number-width: 42px;
     background: linear-gradient(180deg, #fafafa 0%, #f0f0f0 100%);
-    /* Match .mission-section horizontal padding */
-    padding: 100px 20px;
+    padding: 20px 20px 100px;
 }
 
 /* Same width + side padding as .mission-container */
@@ -622,7 +798,7 @@ nav {
     letter-spacing: 0.04em;
 }
 
-/* Text stack + video carousel */
+/* Text cards */
 .city-plan-content {
     display: flex;
     flex-direction: column;
@@ -745,6 +921,26 @@ nav {
     width: 100%;
 }
 
+/* Supporter row: later base .city-plan-videos-wrap would re-apply border; reset here */
+.city-plan-videos-wrap.city-plan-videos-wrap--sidebar {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    box-sizing: border-box;
+    min-width: 0;
+    width: 100%;
+    max-width: 1020px;
+}
+
+/* Desktop: inset from the form; align carousel toward the right edge */
+@media (min-width: 769px) {
+    .city-plan-videos-sidebar {
+        padding-left: clamp(28px, 5vw, 56px);
+        padding-right: 0;
+        align-items: flex-end;
+    }
+}
+
 /* Fills .city-plan-container (already matches .mission-container / events width) */
 .city-plan-videos-inner {
     width: 100%;
@@ -757,17 +953,128 @@ nav {
 .city-plan-videos-strip {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     gap: 12px;
     max-width: 100%;
     margin: 0;
     padding: 0;
 }
 
-/* Next control: vertically centered with video row (matches flex align-items) */
+/* Next control only; vertical offset set by JS from active slide */
+.city-plan-video-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
 .city-plan-videos-strip .scroll-btn {
     flex-shrink: 0;
     align-self: center;
+}
+
+/* Home carousel: chevron only */
+.city-plan-videos-strip .scroll-btn.city-plan-video-nav-next {
+    width: auto;
+    min-width: 48px;
+    min-height: 48px;
+    height: auto;
+    padding: 12px;
+    border-radius: 12px;
+    flex-direction: row;
+    gap: 0;
+    line-height: 1;
+}
+
+.city-plan-video-nav-next .city-plan-video-nav-chevron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.city-plan-video-nav-next .city-plan-video-nav-chevron svg {
+    display: block;
+}
+
+@keyframes city-plan-next-chevron-pulse {
+    0%,
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: translateX(5px);
+    }
+}
+
+.city-plan-video-nav-next.is-pulse-intro .city-plan-video-nav-chevron {
+    animation: city-plan-next-chevron-pulse 1.05s ease-in-out 3 both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .city-plan-video-nav-next.is-pulse-intro .city-plan-video-nav-chevron {
+        animation: none;
+    }
+}
+
+/* Dots sit in a JS-positioned band directly under the active video frame */
+.city-plan-video-dots-wrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 32px;
+    padding: 4px 0;
+    z-index: 2;
+}
+
+.city-plan-video-dots-wrap[hidden] {
+    display: none !important;
+}
+
+/* Slide indicators */
+.city-plan-video-dots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.city-plan-video-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(254, 82, 82, 0.28);
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.city-plan-video-dot:hover {
+    background: rgba(254, 82, 82, 0.5);
+}
+
+.city-plan-video-dot.is-active {
+    background: var(--brand-color);
+    transform: scale(1.2);
+}
+
+.city-plan-video-dot:focus-visible {
+    outline: 2px solid var(--brand-color);
+    outline-offset: 2px;
 }
 
 .city-plan-videos-scroll {
@@ -920,7 +1227,67 @@ nav {
         max-width: 200px;
         max-height: min(280px, 50vh);
     }
+
+    .city-plan-videos-sidebar .city-plan-videos-strip {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .city-plan-videos-sidebar .city-plan-video-slide-landscape {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .city-plan-videos-sidebar .city-plan-video-slide-portrait {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .city-plan-videos-sidebar .city-plan-video-slide-portrait .city-plan-video-inner {
+        max-width: 100%;
+    }
 }
+
+/* Force sidebar video + social card: zero all vertical spacing */
+.supporter-videos-section .city-plan-videos-sidebar .city-plan-videos-wrap {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    border-top: none !important;
+}
+
+.supporter-videos-section .city-plan-videos-sidebar .city-plan-videos-inner {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    position: relative !important;
+}
+
+.supporter-videos-section .city-plan-videos-sidebar .city-plan-videos-strip {
+    margin: 0 !important;
+    padding: 0 !important;
+    align-items: flex-start !important;
+}
+
+/* Nav column: JS sets margin-top from active video (landscape = center, portrait = bottom) */
+.supporter-videos-section .city-plan-videos-sidebar .city-plan-videos-strip .city-plan-video-controls {
+    align-self: flex-start !important;
+}
+
+.supporter-videos-section .city-plan-videos-sidebar .city-plan-videos-strip .scroll-btn.city-plan-video-nav-next {
+    align-self: center !important;
+    margin-top: 0 !important;
+}
+
+.supporter-videos-section .city-plan-videos-sidebar .city-plan-videos-scroll {
+    padding: 0 !important;
+    margin: 0 !important;
+    align-items: flex-start !important;
+}
+
 
 /* --- FOLLOW US ON SOCIAL MEDIA --- */
 .social-section {
@@ -1801,6 +2168,23 @@ nav {
         font-size: 1.1rem;
     }
 
+    .volunteer-form-section {
+        padding: 60px 20px;
+    }
+
+    .volunteer-form-title {
+        font-size: 1.65rem;
+    }
+
+    .volunteer-form-row--split {
+        grid-template-columns: 1fr;
+    }
+
+    .volunteer-form-submit {
+        width: 100%;
+        align-self: stretch;
+    }
+
     .testimonials-section {
         padding: 50px 20px;
     }
@@ -1813,6 +2197,10 @@ nav {
         padding-left: 32px;
     }
 
+    .supporter-videos-section {
+        padding: 60px 20px;
+    }
+
     .city-plan-section {
         padding: 60px 20px;
     }
@@ -1820,6 +2208,28 @@ nav {
     .city-plan-header {
         margin-bottom: 36px;
     }
+
+    .city-plan-supporter-videos-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 32px;
+        margin-bottom: 0;
+    }
+
+    .city-plan-supporter-col {
+        flex: 1 1 auto;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .city-plan-videos-sidebar {
+        flex: 1 1 auto;
+        max-width: 100%;
+        width: 100%;
+        padding: 0;
+        align-items: center;
+    }
+
 
     .city-plan-section h3 {
         font-size: 2rem;
