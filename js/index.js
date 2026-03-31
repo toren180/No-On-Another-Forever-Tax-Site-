@@ -145,11 +145,22 @@ if (countdownEl) {
 (function () {
     var scrollEl = document.getElementById('city-plan-videos-scroll');
     var nextBtn = document.getElementById('city-plan-videos-next');
+    var dotsEl = document.getElementById('city-plan-video-dots');
+    var dotsWrapEl = document.getElementById('city-plan-video-dots-wrap');
+    var stageEl = document.getElementById('city-plan-videos-stage');
+    var controlsEl = document.getElementById('city-plan-video-controls');
     if (!scrollEl || !nextBtn) return;
 
-    function scrollToAdjacent(direction) {
-        var slides = scrollEl.querySelectorAll('.city-plan-video-slide');
-        if (!slides.length) return;
+    var navRaf = null;
+    var pulseStorageKey = 'ec-home-carousel-next-pulse';
+
+    function getSlides() {
+        return scrollEl.querySelectorAll('.city-plan-video-slide');
+    }
+
+    function getClosestSlideIndex() {
+        var slides = getSlides();
+        if (!slides.length) return 0;
         var cre = scrollEl.getBoundingClientRect();
         var centerX = cre.left + cre.width / 2;
         var best = 0;
@@ -163,13 +174,216 @@ if (countdownEl) {
                 best = i;
             }
         }
+        return best;
+    }
+
+    function scrollToAdjacent(direction) {
+        var slides = getSlides();
+        if (!slides.length) return;
+        var best = getClosestSlideIndex();
         var next = Math.max(0, Math.min(slides.length - 1, best + direction));
         slides[next].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    }
+
+    function scrollToSlide(index) {
+        var slides = getSlides();
+        if (!slides.length) return;
+        var i = Math.max(0, Math.min(slides.length - 1, index));
+        slides[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    }
+
+    /** Align Next chevron with the vertical center of the active video (landscape or portrait). */
+    function syncNavPosition() {
+        if (!controlsEl) return;
+        var stripEl = controlsEl.closest('.city-plan-videos-strip');
+        if (!stripEl) return;
+        var slides = getSlides();
+        if (!slides.length) return;
+        var active = getClosestSlideIndex();
+        var slide = slides[active];
+        var inner = slide.querySelector('.city-plan-video-inner');
+        if (!inner) return;
+        var stripRect = stripEl.getBoundingClientRect();
+        var vr = inner.getBoundingClientRect();
+        var h = controlsEl.offsetHeight;
+        var mt = vr.top + vr.height / 2 - stripRect.top - h / 2;
+        if (mt < 0) {
+            mt = 0;
+        }
+        controlsEl.style.marginTop = Math.round(mt) + 'px';
+    }
+
+    /** Place dot row directly under the active video, horizontally centered in that band; reserve stage padding when needed. */
+    function syncDotsPosition() {
+        if (!stageEl || !dotsWrapEl) return;
+        var stripEl = scrollEl.closest('.city-plan-videos-strip');
+        if (!stripEl) return;
+        if (dotsWrapEl.hidden || !dotsEl || dotsEl.hidden) {
+            dotsWrapEl.style.left = '';
+            dotsWrapEl.style.top = '';
+            dotsWrapEl.style.width = '';
+            stageEl.style.setProperty('padding-bottom', '0', 'important');
+            return;
+        }
+        var slides = getSlides();
+        if (!slides.length) return;
+        var active = getClosestSlideIndex();
+        var slide = slides[active];
+        var inner = slide.querySelector('.city-plan-video-inner');
+        if (!inner) return;
+        var stageRect = stageEl.getBoundingClientRect();
+        var vr = inner.getBoundingClientRect();
+        var gap = 8;
+        dotsWrapEl.style.left = Math.round(vr.left - stageRect.left) + 'px';
+        dotsWrapEl.style.width = Math.round(vr.width) + 'px';
+        dotsWrapEl.style.top = Math.round(vr.bottom - stageRect.top + gap) + 'px';
+        var pad = Math.ceil(dotsWrapEl.getBoundingClientRect().bottom - stripEl.getBoundingClientRect().bottom);
+        if (pad < 0) {
+            pad = 0;
+        }
+        stageEl.style.setProperty('padding-bottom', (pad + 10) + 'px', 'important');
+    }
+
+    function syncDots() {
+        if (!dotsEl) return;
+        var dots = dotsEl.querySelectorAll('.city-plan-video-dot');
+        if (!dots.length) return;
+        var active = getClosestSlideIndex();
+        for (var j = 0; j < dots.length; j++) {
+            dots[j].classList.toggle('is-active', j === active);
+            if (j === active) {
+                dots[j].setAttribute('aria-current', 'true');
+            } else {
+                dots[j].removeAttribute('aria-current');
+            }
+        }
+    }
+
+    function syncCarouselChrome() {
+        syncNavPosition();
+        syncDotsPosition();
+        syncDots();
+    }
+
+    function scheduleCarouselSync() {
+        if (navRaf !== null) return;
+        navRaf = requestAnimationFrame(function () {
+            navRaf = null;
+            syncCarouselChrome();
+        });
+    }
+
+    function buildDots() {
+        if (!dotsEl) return;
+        dotsEl.innerHTML = '';
+        var slides = getSlides();
+        var n = slides.length;
+        if (n <= 1) {
+            dotsEl.hidden = true;
+            if (dotsWrapEl) {
+                dotsWrapEl.hidden = true;
+            }
+            if (stageEl) {
+                stageEl.style.setProperty('padding-bottom', '0', 'important');
+            }
+            scheduleCarouselSync();
+            return;
+        }
+        dotsEl.hidden = false;
+        if (dotsWrapEl) {
+            dotsWrapEl.hidden = false;
+        }
+        for (var i = 0; i < n; i++) {
+            (function (idx) {
+                var dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'city-plan-video-dot';
+                dot.setAttribute('aria-label', 'Go to video ' + (idx + 1) + ' of ' + n);
+                dot.addEventListener('click', function () {
+                    scrollToSlide(idx);
+                });
+                dotsEl.appendChild(dot);
+            })(i);
+        }
+        scheduleCarouselSync();
+    }
+
+    function bindPosterResize() {
+        var imgs = scrollEl.querySelectorAll('.city-plan-video-slide img');
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].addEventListener('load', scheduleCarouselSync);
+        }
     }
 
     nextBtn.addEventListener('click', function () {
         scrollToAdjacent(1);
     });
+
+    function setupFirstViewChevronPulse() {
+        if (!stageEl) return;
+        function markPulseDone() {
+            nextBtn.classList.remove('is-pulse-intro');
+            try {
+                localStorage.setItem(pulseStorageKey, '1');
+            } catch (e) {
+                /* ignore */
+            }
+        }
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            try {
+                localStorage.setItem(pulseStorageKey, '1');
+            } catch (e2) {
+                /* ignore */
+            }
+            return;
+        }
+        try {
+            if (localStorage.getItem(pulseStorageKey)) return;
+        } catch (e3) {
+            return;
+        }
+        var chevron = nextBtn.querySelector('.city-plan-video-nav-chevron');
+        var fallbackTimer = null;
+        var obs = new IntersectionObserver(
+            function (entries) {
+                entries.forEach(function (en) {
+                    if (!en.isIntersecting || en.intersectionRatio < 0.15) return;
+                    obs.disconnect();
+                    nextBtn.classList.add('is-pulse-intro');
+                    var settled = false;
+                    var finish = function () {
+                        if (settled) return;
+                        settled = true;
+                        if (fallbackTimer !== null) {
+                            clearTimeout(fallbackTimer);
+                            fallbackTimer = null;
+                        }
+                        markPulseDone();
+                    };
+                    if (chevron) {
+                        chevron.addEventListener('animationend', finish, { once: true });
+                        fallbackTimer = setTimeout(finish, 4000);
+                    } else {
+                        finish();
+                    }
+                });
+            },
+            { threshold: [0, 0.15, 0.35] }
+        );
+        obs.observe(stageEl);
+    }
+
+    buildDots();
+    setupFirstViewChevronPulse();
+    bindPosterResize();
+    scrollEl.addEventListener('scroll', scheduleCarouselSync, { passive: true });
+    window.addEventListener('resize', scheduleCarouselSync);
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', scheduleCarouselSync);
+    } else {
+        scheduleCarouselSync();
+    }
+    window.addEventListener('load', scheduleCarouselSync);
 })();
 
 // Upcoming events: show “scroll for more” hint until bottom (or hide if no overflow); hint click scrolls down

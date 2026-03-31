@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
     <title>Volunteer - No On The Library Tax - Save El Cerrito</title>
     <meta name="description" content="Join us in opposing the El Cerrito Library Tax. Volunteer to make a difference.">
 
@@ -16,7 +16,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans:wght@400;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../css/volunteer.css">
+    <link rel="stylesheet" href="/css/volunteer.css">
+    <link rel="stylesheet" href="/css/form-sheet.css">
 </head>
 
 <body>
@@ -25,10 +26,10 @@
         <div class="logo">No On Another Forever Tax</div>
         <div class="nav-links">
             <span class="nav-link-underline" id="nav-link-underline" aria-hidden="true"></span>
-            <a href="../home/">Home</a>
-            <a href="index.html" class="current">Volunteer</a>
-            <a href="../tax-calculator/">Tax Calculator</a>
+            <a href="/home/">Home</a>
+            <a href="/volunteer/" class="current">Volunteer</a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header" target="_blank">Yard Signs</a>
+            <a href="/factcheck/">Fact Check</a>
             <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="nav-btn" target="_blank">Donate</a>
         </div>
         <div class="hamburger" id="hamburger">
@@ -43,10 +44,10 @@
     <div class="sidebar" id="sidebar">
         <div class="sidebar-close" id="sidebar-close">×</div>
         <div class="nav-links">
-            <a href="../home/">Home</a>
-            <a href="index.html" class="current">Volunteer</a>
-            <a href="../tax-calculator/">Tax Calculator</a>
+            <a href="/home/">Home</a>
+            <a href="/volunteer/" class="current">Volunteer</a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header" target="_blank">Yard Signs</a>
+            <a href="/factcheck/">Fact Check</a>
             <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="nav-btn" target="_blank">Donate</a>
         </div>
     </div>
@@ -122,12 +123,12 @@
             </div>
 
             <div class="mission-image">
-                <img src="../images/tabling.jpeg" alt="El Cerrito Resident Volunteer with Bicycle and Yard Sign">
+                <img src="/images/tabling.jpeg" alt="El Cerrito Resident Volunteer with Bicycle and Yard Sign">
                 <span class="caption">Volunteers tabling at Natural Grocery</span>
                 <div class="mission-buttons">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header"
+                    <a href="#volunteer-interest-form"
                         class="btn btn-outline"
-                        style="color: #333; border-color: #ddd; background: white; text-shadow: none;" target="_blank">
+                        style="color: #333; border-color: #ddd; background: white; text-shadow: none;">
                         Get Involved
                     </a>
                     <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary mission-donate-btn"
@@ -139,6 +140,48 @@
         </div>
     </section>
 
+    <section class="volunteer-form-section" id="volunteer-interest-form" aria-labelledby="volunteer-form-heading">
+        <div class="volunteer-form-container">
+            <h2 id="volunteer-form-heading" class="volunteer-form-title">Volunteer interest form</h2>
+            <form class="volunteer-signup-form" data-sheet-form="volunteer" action="#" method="post">
+                <div class="form-honey" aria-hidden="true">
+                    <label for="volunteer-company">Company</label>
+                    <input type="text" id="volunteer-company" name="company" tabindex="-1" autocomplete="off">
+                </div>
+                <div class="volunteer-form-row volunteer-form-row--split">
+                    <div class="volunteer-form-field">
+                        <label for="volunteer-first-name">First name</label>
+                        <input type="text" id="volunteer-first-name" name="first_name" required autocomplete="given-name">
+                    </div>
+                    <div class="volunteer-form-field">
+                        <label for="volunteer-last-name">Last name</label>
+                        <input type="text" id="volunteer-last-name" name="last_name" required autocomplete="family-name">
+                    </div>
+                </div>
+                <div class="volunteer-form-field">
+                    <label for="volunteer-email">Email</label>
+                    <input type="email" id="volunteer-email" name="email" required autocomplete="email">
+                </div>
+                <div class="volunteer-form-field">
+                    <label for="volunteer-phone">Phone</label>
+                    <input type="tel" id="volunteer-phone" name="phone" autocomplete="tel">
+                </div>
+                <div class="volunteer-form-field">
+                    <label for="volunteer-interest">Volunteer <span class="volunteer-form-optional">(optional)</span></label>
+                    <select id="volunteer-interest" name="volunteer_interest">
+                        <option value="">Select an option</option>
+                        <option value="Tabling">Tabling</option>
+                        <option value="Flyer Distribution">Flyer Distribution</option>
+                        <option value="Canvassing">Canvassing</option>
+                        <option value="Help Behind The Scenes">Help Behind The Scenes</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary volunteer-form-submit">Submit</button>
+                <p class="form-sheet-status" data-form-status role="status" aria-live="polite" hidden></p>
+            </form>
+        </div>
+    </section>
+
     <section class="cta-section">
         <div class="cta-container">
             <h3>Ready To Make A Difference?</h3>
@@ -147,9 +190,9 @@
                 forever tax from being passed.
             </p>
             <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header"
+                <a href="#volunteer-interest-form"
                     class="btn btn-outline"
-                    style="color: #333; border-color: #ddd; background: white; text-shadow: none;" target="_blank">
+                    style="color: #333; border-color: #ddd; background: white; text-shadow: none;">
                     Get Involved
                 </a>
                 <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary" target="_blank">
@@ -189,7 +232,9 @@
         </div>
     </footer>
 
-    <script src="../js/volunteer.js"></script>
+    <script src="/js/form-config.js"></script>
+    <script src="/js/form-submit.js"></script>
+    <script src="/js/volunteer.js"></script>
 </body>
 
 </html>

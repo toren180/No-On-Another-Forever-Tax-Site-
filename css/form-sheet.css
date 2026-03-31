@@ -1,0 +1,35 @@
+/* Honeypot: off-screen, not keyboard-focusable in practice */
+.form-honey {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+.form-sheet-status {
+    margin-top: 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
+.form-sheet-status[hidden] {
+    display: none !important;
+}
+
+.form-sheet-status--success {
+    color: #1b5e20;
+}
+
+.form-sheet-status--error {
+    color: #c62828;
+}
+
+.form-sheet-status--info {
+    color: #444;
+}

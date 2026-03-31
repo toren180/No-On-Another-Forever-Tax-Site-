@@ -308,7 +308,7 @@ nav {
 .hero {
     min-height: 100vh;
     position: relative;
-    background-image: url('../images/library.jpeg');
+    background-image: url('/images/library.jpeg');
     background-size: cover;
     background-position: center 18%;
     background-attachment: fixed;
@@ -721,9 +721,111 @@ nav {
     padding-left: 0;
 }
 
+/* --- VOLUNTEER SIGNUP FORM --- */
+.volunteer-form-section {
+    background-color: white;
+    padding: 80px 20px 90px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    scroll-margin-top: 24px;
+}
+
+.volunteer-form-container {
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.volunteer-form-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    color: #222;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.volunteer-form-intro {
+    font-family: 'Open Sans', sans-serif;
+    font-size: var(--body-text-size);
+    color: var(--body-text-color);
+    line-height: var(--body-text-line-height);
+    letter-spacing: var(--body-text-letter-spacing);
+    margin-bottom: 28px;
+}
+
+.volunteer-signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.volunteer-form-row--split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.volunteer-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.volunteer-form-field label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.volunteer-form-optional {
+    font-weight: 400;
+    color: #666;
+}
+
+.volunteer-form-field input,
+.volunteer-form-field select {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text-dark);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.volunteer-form-field input:focus,
+.volunteer-form-field select:focus {
+    outline: none;
+    border-color: var(--brand-color);
+    box-shadow: 0 0 0 3px rgba(254, 82, 82, 0.2);
+}
+
+.volunteer-form-field select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+}
+
+.volunteer-form-submit {
+    margin-top: 8px;
+    align-self: flex-start;
+    cursor: pointer;
+    border-style: solid;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+}
+
 /* --- CALL TO ACTION SECTION --- */
 .cta-section {
-    background-color: white;
+    background-color: var(--section-bg);
     padding: 80px 20px;
     text-align: center;
 }
@@ -919,6 +1021,23 @@ nav {
 
     .ways-grid {
         grid-template-columns: 1fr;
+    }
+
+    .volunteer-form-section {
+        padding: 60px 20px;
+    }
+
+    .volunteer-form-title {
+        font-size: 1.65rem;
+    }
+
+    .volunteer-form-row--split {
+        grid-template-columns: 1fr;
+    }
+
+    .volunteer-form-submit {
+        width: 100%;
+        align-self: stretch;
     }
 
     .cta-section {

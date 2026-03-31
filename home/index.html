@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="../images/favicon.png" />
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
     <title>No On The Library Tax - Save El Cerrito</title>
     <meta name="description" content="Vote No on the El Cerrito Library Tax. A bad deal for our city." />
     <meta property="og:title" content="No On The Library Tax - Save El Cerrito" />
@@ -15,8 +15,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Open+Sans:wght@400;600;700&family=Outfit:wght@500;600&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="../css/index.css" />
-    <link rel="stylesheet" href="../css/youtube-embed.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/form-sheet.css" />
+    <link rel="stylesheet" href="/css/youtube-embed.css" />
 
 </head>
 
@@ -26,11 +27,11 @@
         <div class="logo">No On Another Forever Tax</div>
         <div class="nav-links">
             <span class="nav-link-underline" id="nav-link-underline" aria-hidden="true"></span>
-            <a href="index.html" class="current">Home</a>
-            <a href="../volunteer/">Volunteer</a>
-            <a href="../tax-calculator/">Tax Calculator</a>
+            <a href="/home/" class="current">Home</a>
+            <a href="/volunteer/">Volunteer</a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header"
                 target="_blank">Yard Signs</a>
+            <a href="/factcheck.html">Fact Check</a>
             <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02?locale=en&__embed_source=buy_btn_1Sna8XEAriv54ByVvLc4qkan"
                 class="nav-btn" target="_blank">Donate</a>
         </div>
@@ -46,11 +47,11 @@
     <div class="sidebar" id="sidebar">
         <div class="sidebar-close" id="sidebar-close">×</div>
         <div class="nav-links">
-            <a href="index.html" class="current">Home</a>
-            <a href="../volunteer/">Volunteer</a>
-            <a href="../tax-calculator/">Tax Calculator</a>
+            <a href="/home/" class="current">Home</a>
+            <a href="/volunteer/">Volunteer</a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header"
                 target="_blank">Yard Signs</a>
+            <a href="/factcheck.html">Fact Check</a>
             <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02?locale=en&__embed_source=buy_btn_1Sna8XEAriv54ByVvLc4qkan"
                 class="nav-btn" target="_blank">Donate</a>
         </div>
@@ -71,8 +72,8 @@
             <div class="hero-buttons">
                 <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-hero-primary"
                     target="_blank">Donate</a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header"
-                    class="btn btn-hero-secondary" target="_blank">Sign The Petition</a>
+                <a href="#become-a-supporter"
+                    class="btn btn-hero-secondary">Become A Supporter</a>
             </div>
         </div>
     </section>
@@ -101,7 +102,7 @@
             </div>
 
             <div class="mission-image">
-                <img src="../images/volunteer.jpeg" alt="El Cerrito Resident Volunteer with Bicycle and Yard Sign" />
+                <img src="/images/volunteer.jpeg" alt="El Cerrito Resident Volunteer with Bicycle and Yard Sign" />
 
 
                 <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary mission-donate-btn"
@@ -112,13 +113,132 @@
         </div>
     </section>
 
-    <!-- THE CITY'S PLAN: text first, then horizontal video carousel -->
+    <section class="supporter-videos-section" id="become-a-supporter">
+        <div class="city-plan-container">
+            <div class="city-plan-supporter-videos-row">
+                <div class="city-plan-supporter-col" aria-labelledby="home-supporter-form-heading">
+                    <div class="volunteer-form-container city-plan-supporter-form-container">
+                        <h2 id="home-supporter-form-heading" class="volunteer-form-title">Become A Supporter</h2>
+                        <form class="volunteer-signup-form" data-sheet-form="supporter" action="#" method="post">
+                            <div class="form-honey" aria-hidden="true">
+                                <label for="home-supporter-company">Company</label>
+                                <input type="text" id="home-supporter-company" name="company" tabindex="-1" autocomplete="off">
+                            </div>
+                            <div class="volunteer-form-row volunteer-form-row--split">
+                                <div class="volunteer-form-field">
+                                    <label for="home-supporter-first-name">First name</label>
+                                    <input type="text" id="home-supporter-first-name" name="first_name" required autocomplete="given-name">
+                                </div>
+                                <div class="volunteer-form-field">
+                                    <label for="home-supporter-last-name">Last name</label>
+                                    <input type="text" id="home-supporter-last-name" name="last_name" required autocomplete="family-name">
+                                </div>
+                            </div>
+                            <div class="volunteer-form-field">
+                                <label for="home-supporter-email">Email</label>
+                                <input type="email" id="home-supporter-email" name="email" required autocomplete="email">
+                            </div>
+                            <div class="volunteer-form-field">
+                                <label for="home-supporter-phone">Phone</label>
+                                <input type="tel" id="home-supporter-phone" name="phone" autocomplete="tel">
+                            </div>
+                            <div class="volunteer-form-field">
+                                <label for="home-supporter-interest">Volunteer <span class="volunteer-form-optional">(optional)</span></label>
+                                <select id="home-supporter-interest" name="volunteer_interest">
+                                    <option value="">Select an option</option>
+                                    <option value="Tabling">Tabling</option>
+                                    <option value="Flyer Distribution">Flyer Distribution</option>
+                                    <option value="Canvassing">Canvassing</option>
+                                    <option value="Help Behind The Scenes">Help Behind The Scenes</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary volunteer-form-submit">Submit</button>
+                            <p class="form-sheet-status" data-form-status role="status" aria-live="polite" hidden></p>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="city-plan-videos-sidebar">
+                    <div class="city-plan-videos-wrap city-plan-videos-wrap--sidebar">
+                        <div class="city-plan-videos-inner" id="city-plan-videos-stage">
+                            <div class="city-plan-videos-strip">
+                                <div class="city-plan-videos-scroll" id="city-plan-videos-scroll" tabindex="0" role="region"
+                                    aria-roledescription="carousel" aria-label="Related videos">
+                                    <div class="city-plan-video-slide city-plan-video-slide-landscape">
+                                        <div class="city-plan-video-embed city-plan-video-landscape">
+                                            <div class="city-plan-video-inner youtube-clickplay">
+                                                <button type="button" class="youtube-clickplay-poster" aria-label="Play video">
+                                                    <img src="https://i.ytimg.com/vi/ffx3XJvcRmg/maxresdefault.jpg?v=2" alt="" loading="lazy" width="1280" height="720"
+                                                        onerror="if(this.src.indexOf('maxres')!==-1){this.src='https://i.ytimg.com/vi/ffx3XJvcRmg/sddefault.jpg?v=2';}else if(this.src.indexOf('sddefault')!==-1){this.src='https://i.ytimg.com/vi/ffx3XJvcRmg/hqdefault.jpg?v=2';}else{this.onerror=null;}" />
+                                                    <span class="youtube-clickplay-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+                                                </button>
+                                                <iframe class="youtube-clickplay-frame" hidden data-embed-src="https://www.youtube.com/embed/ffx3XJvcRmg?si=rVp9q1O-z2p-qg44"
+                                                    title="YouTube video player"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    referrerpolicy="strict-origin-when-cross-origin"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="city-plan-video-slide city-plan-video-slide-landscape">
+                                        <div class="city-plan-video-embed city-plan-video-landscape">
+                                            <div class="city-plan-video-inner youtube-clickplay">
+                                                <button type="button" class="youtube-clickplay-poster" aria-label="Play video">
+                                                    <img src="https://i.ytimg.com/vi/dmEwCkZu_Pk/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720"
+                                                        onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/dmEwCkZu_Pk/hqdefault.jpg';" />
+                                                    <span class="youtube-clickplay-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+                                                </button>
+                                                <iframe class="youtube-clickplay-frame" hidden data-embed-src="https://www.youtube.com/embed/dmEwCkZu_Pk?si=cd9PgTK_vv7_xJas"
+                                                    title="YouTube video player"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    referrerpolicy="strict-origin-when-cross-origin"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="city-plan-video-slide city-plan-video-slide-portrait">
+                                        <div class="city-plan-video-embed city-plan-video-portrait">
+                                            <div class="city-plan-video-inner youtube-clickplay">
+                                                <button type="button" class="youtube-clickplay-poster" aria-label="Play video">
+                                                    <img src="https://i.ytimg.com/vi/VwZwZpECKF8/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720"
+                                                        onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/VwZwZpECKF8/hqdefault.jpg';" />
+                                                    <span class="youtube-clickplay-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+                                                </button>
+                                                <iframe class="youtube-clickplay-frame" hidden data-embed-src="https://www.youtube.com/embed/VwZwZpECKF8"
+                                                    title="YouTube video"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="city-plan-video-controls" id="city-plan-video-controls">
+                                    <button type="button" class="scroll-btn city-plan-video-nav-next" id="city-plan-videos-next"
+                                        aria-label="Next video">
+                                        <span class="city-plan-video-nav-chevron" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="city-plan-video-dots-wrap" id="city-plan-video-dots-wrap" hidden>
+                                <div class="city-plan-video-dots" id="city-plan-video-dots" role="group" aria-label="Video slides"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE CITY'S PLAN: text cards -->
 
     <section class="city-plan-section">
         <div class="city-plan-container">
             <div class="city-plan-header">
                 <h3>The City's Plan</h3>
             </div>
+
             <div class="city-plan-content">
                 <div class="city-plan-text-stack">
                     <div class="city-plan-text-cluster">
@@ -190,68 +310,9 @@
                                     data-key="the-city's-plan-seven" data-type="text">Forty percent of El Cerrito
                                     residents are 50 years and older. Many seniors live on fixed incomes. This measure
                                     is a substantial new annual expense—on top of rising costs for food, utilities, and
-                                    healthcare—that they will have to pay forever. <a href="../faq/"
-                                        class="city-plan-learn-more">Learn more.</a></span>
+                                    healthcare—that they will have to pay forever. <a href="/factcheck/"
+                                        class="city-plan-learn-more">See the fact check.</a></span>
                             </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="city-plan-videos-wrap">
-                    <div class="city-plan-videos-inner">
-                        <div class="city-plan-videos-strip">
-                            <div class="city-plan-videos-scroll" id="city-plan-videos-scroll" tabindex="0" role="region"
-                                aria-roledescription="carousel" aria-label="Related videos">
-                            <div class="city-plan-video-slide city-plan-video-slide-landscape">
-                                <div class="city-plan-video-embed city-plan-video-landscape">
-                                    <div class="city-plan-video-inner youtube-clickplay">
-                                        <button type="button" class="youtube-clickplay-poster" aria-label="Play video">
-                                            <img src="https://i.ytimg.com/vi/ffx3XJvcRmg/maxresdefault.jpg?v=2" alt="" loading="lazy" width="1280" height="720"
-                                                onerror="if(this.src.indexOf('maxres')!==-1){this.src='https://i.ytimg.com/vi/ffx3XJvcRmg/sddefault.jpg?v=2';}else if(this.src.indexOf('sddefault')!==-1){this.src='https://i.ytimg.com/vi/ffx3XJvcRmg/hqdefault.jpg?v=2';}else{this.onerror=null;}" />
-                                            <span class="youtube-clickplay-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
-                                        </button>
-                                        <iframe class="youtube-clickplay-frame" hidden data-embed-src="https://www.youtube.com/embed/ffx3XJvcRmg?si=rVp9q1O-z2p-qg44"
-                                            title="YouTube video player"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            referrerpolicy="strict-origin-when-cross-origin"
-                                            allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="city-plan-video-slide city-plan-video-slide-landscape">
-                                <div class="city-plan-video-embed city-plan-video-landscape">
-                                    <div class="city-plan-video-inner youtube-clickplay">
-                                        <button type="button" class="youtube-clickplay-poster" aria-label="Play video">
-                                            <img src="https://i.ytimg.com/vi/dmEwCkZu_Pk/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720"
-                                                onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/dmEwCkZu_Pk/hqdefault.jpg';" />
-                                            <span class="youtube-clickplay-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
-                                        </button>
-                                        <iframe class="youtube-clickplay-frame" hidden data-embed-src="https://www.youtube.com/embed/dmEwCkZu_Pk?si=cd9PgTK_vv7_xJas"
-                                            title="YouTube video player"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            referrerpolicy="strict-origin-when-cross-origin"
-                                            allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="city-plan-video-slide city-plan-video-slide-portrait">
-                                <div class="city-plan-video-embed city-plan-video-portrait">
-                                    <div class="city-plan-video-inner youtube-clickplay">
-                                        <button type="button" class="youtube-clickplay-poster" aria-label="Play video">
-                                            <img src="https://i.ytimg.com/vi/VwZwZpECKF8/maxresdefault.jpg" alt="" loading="lazy" width="1280" height="720"
-                                                onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/VwZwZpECKF8/hqdefault.jpg';" />
-                                            <span class="youtube-clickplay-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
-                                        </button>
-                                        <iframe class="youtube-clickplay-frame" hidden data-embed-src="https://www.youtube.com/embed/VwZwZpECKF8"
-                                            title="YouTube video"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                            <button type="button" class="scroll-btn city-plan-video-nav-next" id="city-plan-videos-next"
-                                aria-label="Next video">&rarr;</button>
                         </div>
                     </div>
                 </div>
@@ -397,6 +458,7 @@
                 </div>
             </div>
         </div>
+        </div>
     </section>
 
     <!-- TESTIMONIALS -->
@@ -522,7 +584,7 @@
 
         <div class="scroll-controls">
             <div class="testimonials-read-all">
-                <a href="../documents/responses.pdf" target="_blank" class="btn btn-primary">Read
+                <a href="/documents/responses.pdf" target="_blank" class="btn btn-primary">Read
                     All 180 Responses</a>
             </div>
             <div class="scroll-arrows">
@@ -543,18 +605,18 @@
         <div class="action-cards-container">
             <div class="action-cards-grid">
                 <div class="action-card">
-                    <img src="../images/library.jpeg" alt="El Cerrito Library" class="action-card-image" />
+                    <img src="/images/library.jpeg" alt="El Cerrito Library" class="action-card-image" />
                     <div class="action-card-content">
-                        <h4>Sign The Petition</h4>
-                        <p>Add your name to the growing list of El Cerrito residents and library users who oppose the
+                        <h4>Become A Supporter</h4>
+                        <p>Add your name and stay in touch—join El Cerrito residents and library users who oppose the
                             new Forever Tax.</p>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header"
-                            class="btn btn-primary" target="_blank">Sign Now</a>
+                        <a href="#become-a-supporter"
+                            class="btn btn-primary">Sign Up</a>
                     </div>
                 </div>
 
                 <div class="action-card">
-                    <img src="../images/volunteer.jpeg" alt="Yard Sign" class="action-card-image" />
+                    <img src="/images/volunteer.jpeg" alt="Yard Sign" class="action-card-image" />
                     <div class="action-card-content">
                         <h4>Donate</h4>
                         <p>Support our campaign to stop the Forever Tax.</p>
@@ -564,16 +626,16 @@
                 </div>
 
                 <div class="action-card">
-                    <img src="../images/tabling.jpeg" alt="Yard Sign" class="action-card-image" />
+                    <img src="/images/tabling.jpeg" alt="Yard Sign" class="action-card-image" />
                     <div class="action-card-content">
                         <h4>Volunteer</h4>
                         <p>Get involved and help us stop another Forever Tax.</p>
-                        <a href="../volunteer/" class="btn btn-primary">Volunteer</a>
+                        <a href="/volunteer/" class="btn btn-primary">Volunteer</a>
                     </div>
                 </div>
 
                 <div class="action-card">
-                    <img src="../images/yardsign.jpg" alt="Yard Sign" class="action-card-image" />
+                    <img src="/images/yardsign.jpg" alt="Yard Sign" class="action-card-image" />
                     <div class="action-card-content">
                         <h4>Order a Yard Sign</h4>
                         <p>Show your support!</p>
@@ -583,20 +645,20 @@
                 </div>
 
                 <div class="action-card">
-                    <img src="../images/cityhall.jpg" alt="Yard Sign" class="action-card-image" />
+                    <img src="/images/cityhall.jpg" alt="Yard Sign" class="action-card-image" />
                     <div class="action-card-content">
                         <h4>Calculate Your Personal Tax</h4>
                         <p>Find out how much the library tax will cost you personally.</p>
-                        <a href="../tax-calculator/" class="btn btn-primary">Calculate</a>
+                        <a href="/tax-calculator/" class="btn btn-primary">Calculate</a>
                     </div>
                 </div>
 
                 <div class="action-card">
-                    <img src="../images/talking.jpg" alt="FAQ" class="action-card-image" />
+                    <img src="/images/talking.jpg" alt="Fact check — sources and documents" class="action-card-image" />
                     <div class="action-card-content">
-                        <h4>FAQ</h4>
-                        <p>Get answers to frequently asked questions about the Forever Tax.</p>
-                        <a href="../faq/" class="btn btn-primary">View FAQ</a>
+                        <h4>Fact Check</h4>
+                        <p>Claims about Measure C backed by city documents, state law, and public data—with receipts.</p>
+                        <a href="/factcheck/" class="btn btn-primary">View Fact Check</a>
                     </div>
                 </div>
             </div>
@@ -687,15 +749,17 @@
                         target="_blank">Custom Amount</a>
                 </div>
                 <div class="yardsign-popup-image-wrap">
-                    <img src="../images/yardsignscan.jpeg" alt="Yard sign" class="yardsign-popup-image" />
+                    <img src="/images/yardsignscan.jpeg" alt="Yard sign" class="yardsign-popup-image" />
                 </div>
             </div>
         </div>
     </div>
     -->
 
-    <script src="../js/youtube-embed.js"></script>
-    <script src="../js/index.js"></script>
+    <script src="/js/form-config.js"></script>
+    <script src="/js/form-submit.js"></script>
+    <script src="/js/youtube-embed.js"></script>
+    <script src="/js/index.js"></script>
 </body>
 
 </html>
