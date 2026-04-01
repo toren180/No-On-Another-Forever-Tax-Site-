@@ -545,6 +545,20 @@ nav {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.mission-factcheck-link {
+    display: inline-block;
+    color: var(--brand-color);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.mission-factcheck-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
 .highlight {
     font-weight: 700;
     color: var(--brand-color);
@@ -696,7 +710,7 @@ nav {
 /* --- SUPPORTER FORM + VIDEOS (home, above City’s Plan; uses .city-plan-container width) --- */
 .supporter-videos-section {
     background: #fff;
-    padding: 100px 20px 10px;
+    padding: 100px 20px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
@@ -774,7 +788,7 @@ nav {
     --city-plan-card-padding: 24px;
     --city-plan-number-width: 42px;
     background: linear-gradient(180deg, #fafafa 0%, #f0f0f0 100%);
-    padding: 20px 20px 100px;
+    padding: 60px 20px 100px;
 }
 
 /* Same width + side padding as .mission-container */
@@ -999,6 +1013,7 @@ nav {
 }
 
 @keyframes city-plan-next-chevron-pulse {
+
     0%,
     100% {
         opacity: 1;
