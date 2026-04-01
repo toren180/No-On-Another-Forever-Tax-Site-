@@ -118,6 +118,36 @@ if (yardsignPopupOverlay && yardsignPopupClose) {
 }
 */
 
+// Get the Facts popup — show after short delay, once per session
+(function () {
+    var overlay = document.getElementById('facts-popup-overlay');
+    var closeBtn = document.getElementById('facts-popup-close');
+    if (!overlay || !closeBtn) return;
+
+    function close() {
+        overlay.classList.remove('is-visible');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        sessionStorage.setItem('facts-popup-seen', '1');
+    }
+
+    if (!sessionStorage.getItem('facts-popup-seen')) {
+        setTimeout(function () {
+            overlay.classList.add('is-visible');
+            overlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }, 1200);
+    }
+
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) close();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-visible')) close();
+    });
+})();
+
 // Countdown to end of March 31, 2026 Pacific (April 1, 2026 00:00 PDT = April 1, 2026 07:00 UTC)
 const countdownEl = document.getElementById('fundraise-countdown');
 if (countdownEl) {

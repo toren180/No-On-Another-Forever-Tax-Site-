@@ -546,17 +546,34 @@ nav {
 }
 
 .mission-factcheck-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     color: var(--brand-color);
+    font-family: 'Oswald', sans-serif;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.35rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
     text-decoration: none;
-    transition: opacity 0.2s;
+    margin-top: -10px;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--brand-color);
+    transition: gap 0.25s ease, border-color 0.25s ease;
+}
+
+.mission-factcheck-arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+    font-size: 1.1em;
+}
+
+.mission-factcheck-link:hover .mission-factcheck-arrow {
+    transform: translateX(4px);
 }
 
 .mission-factcheck-link:hover {
-    opacity: 0.8;
-    text-decoration: underline;
+    border-bottom-color: var(--brand-hover);
 }
 
 .highlight {
@@ -2904,5 +2921,121 @@ nav {
     .yardsign-popup-btn {
         flex: 1;
         min-width: 80px;
+    }
+}
+
+/* --- GET THE FACTS POPUP --- */
+.facts-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.facts-popup-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.facts-popup {
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    max-width: 420px;
+    width: 100%;
+    padding: 48px 36px 36px;
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.04),
+        0 24px 56px rgba(0, 0, 0, 0.14);
+    text-align: center;
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.35s ease;
+}
+
+.facts-popup-overlay.is-visible .facts-popup {
+    transform: translateY(0) scale(1);
+}
+
+.facts-popup-accent {
+    width: 100%;
+    height: 4px;
+    background: var(--brand-color);
+    border-radius: 2px;
+    margin: 0 auto 28px;
+    box-shadow: 0 0 16px rgba(254, 82, 82, 0.3);
+}
+
+.facts-popup-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: rgba(0, 0, 0, 0.04);
+    color: #666;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+    border-radius: 50%;
+    transition: color 0.2s, background 0.2s;
+}
+
+.facts-popup-close:hover {
+    color: #222;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.facts-popup-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-dark);
+    margin: 0 0 12px;
+}
+
+.facts-popup-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--brand-color);
+    margin: 0 0 28px;
+}
+
+.facts-popup-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    padding: 14px 36px;
+    font-size: 1rem;
+}
+
+@media (max-width: 480px) {
+    .facts-popup {
+        padding: 40px 24px 28px;
+        border-radius: 14px;
+    }
+
+    .facts-popup-heading {
+        font-size: 1.65rem;
+    }
+
+    .facts-popup-text {
+        font-size: 1.05rem;
     }
 }
