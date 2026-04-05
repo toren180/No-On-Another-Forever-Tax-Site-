@@ -143,15 +143,30 @@
                                 <label for="home-supporter-phone">Phone</label>
                                 <input type="tel" id="home-supporter-phone" name="phone" autocomplete="tel">
                             </div>
-                            <div class="volunteer-form-field">
-                                <label for="home-supporter-interest">Volunteer <span class="volunteer-form-optional">(optional)</span></label>
-                                <select id="home-supporter-interest" name="volunteer_interest">
-                                    <option value="">Select an option</option>
-                                    <option value="Tabling">Tabling</option>
-                                    <option value="Flyer Distribution">Flyer Distribution</option>
-                                    <option value="Canvassing">Canvassing</option>
-                                    <option value="Help Behind The Scenes">Help Behind The Scenes</option>
-                                </select>
+                            <div class="volunteer-form-field volunteer-multiselect" data-volunteer-multiselect>
+                                <label for="home-supporter-multiselect-trigger">Volunteer <span
+                                        class="volunteer-form-optional">(optional)</span></label>
+                                <div class="volunteer-multiselect-inner">
+                                    <button type="button" id="home-supporter-multiselect-trigger"
+                                        class="volunteer-multiselect-trigger" aria-expanded="false" aria-haspopup="true"
+                                        aria-controls="home-supporter-multiselect-panel">
+                                        <span class="volunteer-multiselect-trigger-text">Select options…</span>
+                                        <span class="volunteer-multiselect-chevron" aria-hidden="true"></span>
+                                    </button>
+                                    <div id="home-supporter-multiselect-panel" class="volunteer-multiselect-panel"
+                                        hidden role="group" aria-label="Volunteer interests">
+                                        <label class="volunteer-multiselect-row"><input type="checkbox"
+                                                name="volunteer_interest" value="Tabling"> Tabling</label>
+                                        <label class="volunteer-multiselect-row"><input type="checkbox"
+                                                name="volunteer_interest" value="Flyer Distribution"> Flyer
+                                            Distribution</label>
+                                        <label class="volunteer-multiselect-row"><input type="checkbox"
+                                                name="volunteer_interest" value="Canvassing"> Canvassing</label>
+                                        <label class="volunteer-multiselect-row"><input type="checkbox"
+                                                name="volunteer_interest" value="Help Behind The Scenes"> Help Behind The
+                                            Scenes</label>
+                                    </div>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary volunteer-form-submit">Submit</button>
                             <p class="form-sheet-status" data-form-status role="status" aria-live="polite" hidden></p>
@@ -649,7 +664,10 @@
                     <img src="/images/cityhall.jpg" alt="Yard Sign" class="action-card-image" />
                     <div class="action-card-content">
                         <h4>Calculate Your Personal Tax</h4>
-                        <p>Find out how much the library tax will cost you personally.</p>
+                        <p>Find out how much the library tax will cost you personally.
+                            <a href="https://irasharenow100.github.io/library_scenarios.htm"
+                                class="action-card-secondary-link" target="_blank" rel="noopener noreferrer">Learn more
+                                about the tax's impact on city finances</a></p>
                         <a href="/tax-calculator/" class="btn btn-primary">Calculate</a>
                     </div>
                 </div>
@@ -770,6 +788,7 @@
     </div>
 
     <script src="/js/form-config.js"></script>
+    <script src="/js/supporter-multiselect.js"></script>
     <script src="/js/form-submit.js"></script>
     <script src="/js/youtube-embed.js"></script>
     <script src="/js/index.js"></script>

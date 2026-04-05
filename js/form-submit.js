@@ -1,6 +1,6 @@
 /* global window, document, FormData, fetch */
 (function () {
-    var MAX_LEN = { first_name: 80, last_name: 80, email: 254, phone: 40, volunteer_interest: 80, company: 200 };
+    var MAX_LEN = { first_name: 80, last_name: 80, email: 254, phone: 40, volunteer_interest: 200, company: 200 };
     var ALLOWED_INTEREST = {
         '': true,
         Tabling: true,
@@ -46,12 +46,25 @@
         }
     }
 
+    function gatherVolunteerInterests(fd) {
+        var raw = fd.getAll('volunteer_interest');
+        var seen = {};
+        var parts = [];
+        for (var i = 0; i < raw.length; i++) {
+            var v = trimField(raw[i], 80);
+            if (!v || !ALLOWED_INTEREST[v] || seen[v]) {
+                continue;
+            }
+            seen[v] = true;
+            parts.push(v);
+        }
+        var joined = parts.join('; ');
+        return trimField(joined, MAX_LEN.volunteer_interest);
+    }
+
     function gatherFields(form) {
         var fd = new FormData(form);
-        var interest = trimField(fd.get('volunteer_interest'), MAX_LEN.volunteer_interest);
-        if (!ALLOWED_INTEREST[interest]) {
-            interest = '';
-        }
+        var interest = gatherVolunteerInterests(fd);
         return {
             first_name: trimField(fd.get('first_name'), MAX_LEN.first_name),
             last_name: trimField(fd.get('last_name'), MAX_LEN.last_name),

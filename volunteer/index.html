@@ -166,15 +166,27 @@
                     <label for="volunteer-phone">Phone</label>
                     <input type="tel" id="volunteer-phone" name="phone" autocomplete="tel">
                 </div>
-                <div class="volunteer-form-field">
-                    <label for="volunteer-interest">Volunteer <span class="volunteer-form-optional">(optional)</span></label>
-                    <select id="volunteer-interest" name="volunteer_interest">
-                        <option value="">Select an option</option>
-                        <option value="Tabling">Tabling</option>
-                        <option value="Flyer Distribution">Flyer Distribution</option>
-                        <option value="Canvassing">Canvassing</option>
-                        <option value="Help Behind The Scenes">Help Behind The Scenes</option>
-                    </select>
+                <div class="volunteer-form-field volunteer-multiselect" data-volunteer-multiselect>
+                    <label for="volunteer-multiselect-trigger">Volunteer <span
+                            class="volunteer-form-optional">(optional)</span></label>
+                    <div class="volunteer-multiselect-inner">
+                        <button type="button" id="volunteer-multiselect-trigger" class="volunteer-multiselect-trigger"
+                            aria-expanded="false" aria-haspopup="true" aria-controls="volunteer-multiselect-panel">
+                            <span class="volunteer-multiselect-trigger-text">Select options…</span>
+                            <span class="volunteer-multiselect-chevron" aria-hidden="true"></span>
+                        </button>
+                        <div id="volunteer-multiselect-panel" class="volunteer-multiselect-panel" hidden role="group"
+                            aria-label="Volunteer interests">
+                            <label class="volunteer-multiselect-row"><input type="checkbox" name="volunteer_interest"
+                                    value="Tabling"> Tabling</label>
+                            <label class="volunteer-multiselect-row"><input type="checkbox" name="volunteer_interest"
+                                    value="Flyer Distribution"> Flyer Distribution</label>
+                            <label class="volunteer-multiselect-row"><input type="checkbox" name="volunteer_interest"
+                                    value="Canvassing"> Canvassing</label>
+                            <label class="volunteer-multiselect-row"><input type="checkbox" name="volunteer_interest"
+                                    value="Help Behind The Scenes"> Help Behind The Scenes</label>
+                        </div>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary volunteer-form-submit">Submit</button>
                 <p class="form-sheet-status" data-form-status role="status" aria-live="polite" hidden></p>
@@ -233,6 +245,7 @@
     </footer>
 
     <script src="/js/form-config.js"></script>
+    <script src="/js/supporter-multiselect.js"></script>
     <script src="/js/form-submit.js"></script>
     <script src="/js/volunteer.js"></script>
 </body>

@@ -105,7 +105,7 @@ function doPost(e) {
         cache.put(rateKey, '1', 60);
 
         var phone = truncate_(body.phone, 40);
-        var interest = normalizeInterest_(body.volunteer_interest);
+        var interest = normalizeInterest_(body.volunteer_interest, 200);
 
         var formLabel = formType === 'supporter' ? 'Become a supporter' : 'Volunteer interest';
 
@@ -174,7 +174,25 @@ function isValidEmail_(e) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 }
 
-function normalizeInterest_(v) {
-    var t = truncate_(v, 80);
-    return ALLOWED_INTEREST[t] ? t : '';
+/**
+ * Accepts a single interest or multiple values separated by "; " (from multi-select checkboxes).
+ * Returns a validated, deduped string capped at maxTotalLen.
+ */
+function normalizeInterest_(v, maxTotalLen) {
+    var cap = maxTotalLen != null ? maxTotalLen : 200;
+    var s = v == null ? '' : String(v);
+    s = truncate_(s, 500);
+    var pieces = s.split(';');
+    var seen = {};
+    var out = [];
+    for (var i = 0; i < pieces.length; i++) {
+        var t = truncate_(pieces[i], 80).trim();
+        if (!t || !ALLOWED_INTEREST[t] || seen[t]) {
+            continue;
+        }
+        seen[t] = true;
+        out.push(t);
+    }
+    var joined = out.join('; ');
+    return truncate_(joined, cap);
 }
