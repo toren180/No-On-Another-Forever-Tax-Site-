@@ -4,6 +4,6 @@
  * Set formSecret to match Script property FORM_SECRET (Project Settings > Script properties).
  */
 window.SHEET_FORM_CONFIG = {
-    webAppUrl: 'https://script.google.com/u/1/home/projects/1uMC8gvEwjaQnYMKrqnnV8ApLs6akKJs4WFLKz8_-qouuyt1cOezDy7LN/edit',
+    webAppUrl: 'https://script.google.com/macros/s/AKfycbzILz2lY6bMMixjNRHGKB-MSqLumH6E7iIhi7JTNc_jwIlXlbqwYiUrPXoXkOM2CUa3mQ/exec',
     formSecret: ''
 };
