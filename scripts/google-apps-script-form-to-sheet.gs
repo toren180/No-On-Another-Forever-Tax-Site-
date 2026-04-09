@@ -12,6 +12,9 @@
  *    Execute as: Me
  *    Who has access: Anyone
  * 5. Copy the Web App URL into js/form-config.js as webAppUrl.
+ *
+ * If you already have a "Form responses" sheet with the old 7-column header, insert a column
+ * between "Phone" and "Volunteer interest", name it "Address", or add "Address" in row 1 to match HEADER_ROW.
  */
 var SHEET_TAB_NAME = 'Form responses';
 
@@ -22,6 +25,7 @@ var HEADER_ROW = [
     'Last name',
     'Email',
     'Phone',
+    'Address',
     'Volunteer interest'
 ];
 
@@ -105,6 +109,7 @@ function doPost(e) {
         cache.put(rateKey, '1', 60);
 
         var phone = truncate_(body.phone, 40);
+        var address = truncate_(body.address, 500);
         var interest = normalizeInterest_(body.volunteer_interest, 200);
 
         var formLabel = formType === 'supporter' ? 'Become a supporter' : 'Volunteer interest';
@@ -120,6 +125,7 @@ function doPost(e) {
                 last,
                 email,
                 phone,
+                address,
                 interest
             ]);
         } finally {

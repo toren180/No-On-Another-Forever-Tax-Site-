@@ -1,6 +1,14 @@
 /* global window, document, FormData, fetch */
 (function () {
-    var MAX_LEN = { first_name: 80, last_name: 80, email: 254, phone: 40, volunteer_interest: 200, company: 200 };
+    var MAX_LEN = {
+        first_name: 80,
+        last_name: 80,
+        email: 254,
+        phone: 40,
+        address: 500,
+        volunteer_interest: 200,
+        company: 200
+    };
     var ALLOWED_INTEREST = {
         '': true,
         Tabling: true,
@@ -70,6 +78,7 @@
             last_name: trimField(fd.get('last_name'), MAX_LEN.last_name),
             email: trimField(fd.get('email'), MAX_LEN.email).toLowerCase(),
             phone: trimField(fd.get('phone'), MAX_LEN.phone),
+            address: trimField(fd.get('address'), MAX_LEN.address),
             volunteer_interest: interest,
             company: trimField(fd.get('company'), MAX_LEN.company)
         };
@@ -91,14 +100,16 @@
                     try {
                         j = JSON.parse(text);
                     } catch (parseErr) {
-                        var retry = new Error('retry');
-                        retry._sheetFormRetryNoCors = true;
-                        throw retry;
+                        var bad = new Error(
+                            'The form server did not return valid JSON (often a wrong web app URL or an old deployment). Open the browser Network tab, inspect the POST response, and confirm the Apps Script is deployed as a Web app bound to your Sheet.'
+                        );
+                        bad._sheetFormServerRejected = true;
+                        throw bad;
                     }
                     if (!j || typeof j !== 'object') {
-                        var retry2 = new Error('retry');
-                        retry2._sheetFormRetryNoCors = true;
-                        throw retry2;
+                        var bad2 = new Error('The server response was not valid. Check your Web app URL and deployment.');
+                        bad2._sheetFormServerRejected = true;
+                        throw bad2;
                     }
                     if (!j.ok) {
                         var rej = new Error(j.error || 'Submission was rejected');
@@ -112,9 +123,11 @@
                 if (err && err._sheetFormServerRejected) {
                     return Promise.reject(err);
                 }
-                return fetch(url, Object.assign({ mode: 'no-cors' }, init)).then(function () {
-                    return { ok: true, opaque: true };
-                });
+                return Promise.reject(
+                    new Error(
+                        'Could not reach the form server (network or CORS). Check the Web app URL, use an HTTPS site (not opening the HTML file directly), and try again.'
+                    )
+                );
             });
     }
 
@@ -155,6 +168,7 @@
             last_name: data.last_name,
             email: data.email,
             phone: data.phone,
+            address: data.address,
             volunteer_interest: data.volunteer_interest
         };
 
