@@ -13,8 +13,7 @@
  *    Who has access: Anyone
  * 5. Copy the Web App URL into js/form-config.js as webAppUrl.
  *
- * If you already have a "Form responses" sheet with the old 7-column header, insert a column
- * between "Phone" and "Volunteer interest", name it "Address", or add "Address" in row 1 to match HEADER_ROW.
+ * Row 1 column order: Timestamp | Form | First name | Last name | Email | Phone | Address | Volunteer interest
  */
 var SHEET_TAB_NAME = 'Form responses';
 
