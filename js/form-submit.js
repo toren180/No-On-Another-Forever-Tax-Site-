@@ -150,7 +150,7 @@
         }
 
         var data = gatherFields(form);
-        if (!data.first_name || !data.last_name || !data.email) {
+        if (!data.first_name || !data.last_name || !data.email || !data.address) {
             setStatus(form, 'error', 'Please fill in all required fields.');
             return;
         }

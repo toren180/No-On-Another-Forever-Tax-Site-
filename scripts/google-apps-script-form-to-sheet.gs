@@ -109,6 +109,9 @@ function doPost(e) {
 
         var phone = truncate_(body.phone, 40);
         var address = truncate_(body.address, 500);
+        if (!address) {
+            return jsonResponse_(false, 'Address required');
+        }
         var interest = normalizeInterest_(body.volunteer_interest, 200);
 
         var formLabel = formType === 'supporter' ? 'Become a supporter' : 'Volunteer interest';

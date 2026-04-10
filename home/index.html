@@ -144,8 +144,8 @@
                                 <input type="tel" id="home-supporter-phone" name="phone" autocomplete="tel">
                             </div>
                             <div class="volunteer-form-field">
-                                <label for="home-supporter-address">Address <span class="volunteer-form-optional">(optional)</span></label>
-                                <input type="text" id="home-supporter-address" name="address" autocomplete="street-address" maxlength="500">
+                                <label for="home-supporter-address">Address</label>
+                                <input type="text" id="home-supporter-address" name="address" required autocomplete="street-address" maxlength="500">
                             </div>
                             <div class="volunteer-form-field volunteer-multiselect" data-volunteer-multiselect>
                                 <label for="home-supporter-multiselect-trigger">Volunteer <span
@@ -352,48 +352,6 @@
                 <tbody>
                     <tr>
                         <td class="event-date" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-mar2026-01" data-type="text">Thursday March 26, 3:00 PM - 5:00 PM</td>
-                        <td class="event-description" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-mar2026-02" data-type="text">Giovanni's Market, 1600 Liberty Street</td>
-                    </tr>
-                    <tr>
-                        <td class="event-date" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-mar2026-03" data-type="text">Friday March 27, 2:30 PM - 4:30 PM</td>
-                        <td class="event-description" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-mar2026-04" data-type="text">El Cerrito Natural Foods, 10367 San Pablo Avenue</td>
-                    </tr>
-                    <tr>
-                        <td class="event-date" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-mar2026-05" data-type="text">Saturday March 28, 10:00 AM - 12:00 PM</td>
-                        <td class="event-description" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-mar2026-06" data-type="text">Well Grounded Coffee, 6925 Stockton Street</td>
-                    </tr>
-                    <tr>
-                        <td class="event-date" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-apr2026-01" data-type="text">Thursday April 2, 3:00 PM - 5:00 PM</td>
-                        <td class="event-description" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-apr2026-02" data-type="text">Giovanni's Market, 1600 Liberty Street</td>
-                    </tr>
-                    <tr>
-                        <td class="event-date" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-apr2026-11" data-type="text">Friday April 3, 2:30 PM - 4:30 PM</td>
-                        <td class="event-description" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-apr2026-12" data-type="text">El Cerrito Natural Foods, 10367 San Pablo Avenue</td>
-                    </tr>
-                    <tr>
-                        <td class="event-date" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-apr2026-19" data-type="text">Saturday April 4, 9:00 AM - 11:00 AM</td>
-                        <td class="event-description" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-apr2026-20" data-type="text">Well Grounded Coffee, 6925 Stockton Street</td>
-                    </tr>
-                    <tr>
-                        <td class="event-date" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-apr2026-03" data-type="text">Thursday April 9, 3:00 PM - 5:00 PM</td>
-                        <td class="event-description" data-editable="source" data-path="/home/index.html"
-                            data-key="table-entry-apr2026-04" data-type="text">Giovanni's Market, 1600 Liberty Street</td>
-                    </tr>
-                    <tr>
-                        <td class="event-date" data-editable="source" data-path="/home/index.html"
                             data-key="table-entry-apr2026-13" data-type="text">Friday April 10, 2:30 PM - 4:30 PM</td>
                         <td class="event-description" data-editable="source" data-path="/home/index.html"
                             data-key="table-entry-apr2026-14" data-type="text">El Cerrito Natural Foods, 10367 San Pablo Avenue</td>
@@ -403,6 +361,12 @@
                             data-key="table-entry-apr2026-23" data-type="text">Saturday April 11, 9:30 AM - 11:30 AM</td>
                         <td class="event-description" data-editable="source" data-path="/home/index.html"
                             data-key="table-entry-apr2026-24" data-type="text">Semifreddi's (no table set up, flier distribution only), 372 Colusa in the Kensington Circle</td>
+                    </tr>
+                    <tr>
+                        <td class="event-date" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-27" data-type="text">Tuesday April 15, 7:00 PM</td>
+                        <td class="event-description" data-editable="source" data-path="/home/index.html"
+                            data-key="table-entry-apr2026-28" data-type="text">WHAT THEY DON'T TELL YOU about the bad library tax deal! Register to attend from the comfort of your couch. <a href="https://us06web.zoom.us/meeting/register/7XQ94hLRTNu_5JG44POAeg" target="_blank" rel="noopener noreferrer">Register on Zoom</a></td>
                     </tr>
                     <tr>
                         <td class="event-date" data-editable="source" data-path="/home/index.html"
@@ -785,9 +749,11 @@
         <div class="facts-popup" id="facts-popup" role="dialog" aria-labelledby="facts-popup-heading">
             <button type="button" class="facts-popup-close" id="facts-popup-close" aria-label="Close">&times;</button>
             <div class="facts-popup-accent" aria-hidden="true"></div>
-            <h2 class="facts-popup-heading" id="facts-popup-heading">GET THE FACTS</h2>
-            <p class="facts-popup-text">READ THE FINE PRINT!</p>
-            <a href="/factcheck/" class="btn btn-primary facts-popup-btn">View Fact Check <span aria-hidden="true">&rarr;</span></a>
+            <p class="facts-popup-eyebrow">Upcoming online event</p>
+            <h2 class="facts-popup-heading" id="facts-popup-heading">WHAT THEY DON'T TELL YOU about the bad library tax deal!</h2>
+            <p class="facts-popup-date">April 15 at 7PM</p>
+            <p class="facts-popup-text">Register to attend from the comfort of your couch.</p>
+            <a href="https://us06web.zoom.us/meeting/register/7XQ94hLRTNu_5JG44POAeg" class="btn btn-primary facts-popup-btn" target="_blank" rel="noopener noreferrer">Register on Zoom <span aria-hidden="true">&rarr;</span></a>
         </div>
     </div>
 

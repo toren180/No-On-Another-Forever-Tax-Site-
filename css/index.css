@@ -3044,9 +3044,12 @@ nav {
 .facts-popup-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1), transparent 45%),
+        radial-gradient(circle at 80% 15%, rgba(254, 82, 82, 0.16), transparent 38%),
+        rgba(10, 12, 20, 0.62);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3064,17 +3067,19 @@ nav {
 
 .facts-popup {
     position: relative;
-    background: #fff;
-    border-radius: 16px;
-    max-width: 420px;
+    background: linear-gradient(160deg, #ffffff 0%, #fff8f8 100%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    max-width: 520px;
     width: 100%;
-    padding: 48px 36px 36px;
+    padding: 46px 34px 34px;
     box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.04),
-        0 24px 56px rgba(0, 0, 0, 0.14);
+        0 2px 0 rgba(255, 255, 255, 0.6) inset,
+        0 30px 70px rgba(12, 14, 24, 0.3);
     text-align: center;
     transform: translateY(20px) scale(0.97);
     transition: transform 0.35s ease;
+    overflow: hidden;
 }
 
 .facts-popup-overlay.is-visible .facts-popup {
@@ -3083,11 +3088,11 @@ nav {
 
 .facts-popup-accent {
     width: 100%;
-    height: 4px;
+    height: 6px;
     background: var(--brand-color);
-    border-radius: 2px;
-    margin: 0 auto 28px;
-    box-shadow: 0 0 16px rgba(254, 82, 82, 0.3);
+    border-radius: 999px;
+    margin: 16px auto 20px;
+    box-shadow: 0 8px 24px rgba(254, 82, 82, 0.28);
 }
 
 .facts-popup-close {
@@ -3097,8 +3102,8 @@ nav {
     width: 36px;
     height: 36px;
     border: none;
-    background: rgba(0, 0, 0, 0.04);
-    color: #666;
+    background: rgba(0, 0, 0, 0.05);
+    color: #565656;
     font-size: 1.4rem;
     line-height: 1;
     cursor: pointer;
@@ -3109,27 +3114,50 @@ nav {
 
 .facts-popup-close:hover {
     color: #222;
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.facts-popup-eyebrow {
+    display: inline-block;
+    margin: 0 0 12px;
+    padding: 6px 11px;
+    border-radius: 999px;
+    background: rgba(254, 82, 82, 0.12);
+    color: #9e1f1f;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 .facts-popup-heading {
     font-family: 'Oswald', sans-serif;
-    font-size: 2rem;
+    font-size: 2.05rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+    text-transform: none;
+    letter-spacing: 0.015em;
+    line-height: 1.1;
     color: var(--text-dark);
-    margin: 0 0 12px;
+    margin: 0 0 14px;
+    text-wrap: balance;
+}
+
+.facts-popup-date {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: var(--brand-color);
+    margin: 0 0 10px;
 }
 
 .facts-popup-text {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.2rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.03rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--brand-color);
-    margin: 0 0 28px;
+    line-height: 1.5;
+    color: #333;
+    margin: 0 0 24px;
 }
 
 .facts-popup-btn {
@@ -3137,21 +3165,28 @@ nav {
     align-items: center;
     gap: 8px;
     min-width: 0;
-    padding: 14px 36px;
+    padding: 14px 28px;
     font-size: 1rem;
+    border-radius: 999px;
+    box-shadow: 0 10px 22px rgba(254, 82, 82, 0.24);
 }
 
 @media (max-width: 480px) {
     .facts-popup {
-        padding: 40px 24px 28px;
-        border-radius: 14px;
+        padding: 38px 22px 26px;
+        border-radius: 16px;
     }
 
     .facts-popup-heading {
-        font-size: 1.65rem;
+        font-size: 1.5rem;
+        line-height: 1.15;
+    }
+
+    .facts-popup-date {
+        font-size: 1.06rem;
     }
 
     .facts-popup-text {
-        font-size: 1.05rem;
+        font-size: 0.98rem;
     }
 }
