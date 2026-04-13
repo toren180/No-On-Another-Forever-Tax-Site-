@@ -57,55 +57,74 @@
         <div class="logo-gradient"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="hero-text-wrapper">
-                <div class="hero-heading-group">
-                    <h1>Volunteer</h1>
-                    <div class="hero-separator-bar"></div>
+            <div class="hero-main__copy">
+                <div class="hero-text-wrapper">
+                    <div class="hero-heading-group">
+                        <h1>Volunteer</h1>
+                        <div class="hero-separator-bar"></div>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-hero-primary"
+                        target="_blank">Donate</a>
+                    <a href="#volunteer-interest-form" class="btn btn-hero-secondary">Get Involved</a>
                 </div>
             </div>
-            <div class="hero-buttons">
-                <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-hero-primary"
-                    target="_blank">Donate</a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe98GRHbZyOyDjC06EeXMNBLA9HvJlLkyHVlwLbuUAbXt8iWg/viewform?usp=header"
-                    class="btn btn-hero-secondary" target="_blank">Get Involved</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="mission-section">
-        <div class="mission-container">
-            <div class="mission-text" data-editable="source" data-path="/volunteer/index.html" data-key="volunteer-intro" data-type="block">
-                <span class="eyebrow">GET INVOLVED</span>
-                <h3>WAYS TO HELP</h3>
-                <ul>
-                    <li>
-                        <p><strong>Drop flyers on doorsteps</strong>: Spread the word about the library tax!</p>
-                    </li>
-                    <li>
-                        <p><strong>Canvass</strong>: Help knock on doors and talk to neighbors!</p>
-                    </li>
-                    <li>
-                        <p><strong>Help at a table outside an El Cerrito establishment</strong>: Convince El Cerrito residents to vote no on Measure C!</p>
-                    </li>
-                    <li>
-                        <p><strong>Phone banking</strong>: Call El Cerrito contacts and ask them to vote no on the library tax!</p>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="mission-image">
-                <img src="/images/tabling.jpeg" alt="El Cerrito Resident Volunteer with Bicycle and Yard Sign">
-                <span class="caption">Volunteers tabling at Natural Grocery</span>
-                <div class="mission-buttons">
-                    <a href="#volunteer-interest-form"
-                        class="btn btn-outline"
-                        style="color: #333; border-color: #ddd; background: white; text-shadow: none;">
-                        Get Involved
-                    </a>
-                    <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary mission-donate-btn"
-                        target="_blank">
-                        Donate <span>&rarr;</span>
-                    </a>
+            <div class="hero-main__form" aria-labelledby="hero-volunteer-form-heading">
+                <div class="volunteer-form-container volunteer-form-container--hero-compact">
+                    <h2 id="hero-volunteer-form-heading" class="volunteer-form-title">SIGN UP TODAY!</h2>
+                    <form class="volunteer-signup-form" data-sheet-form="volunteer" action="#" method="post">
+                        <div class="form-honey" aria-hidden="true">
+                            <label for="hero-v-company">Company</label>
+                            <input type="text" id="hero-v-company" name="company" tabindex="-1" autocomplete="off">
+                        </div>
+                        <div class="volunteer-form-row volunteer-form-row--split">
+                            <div class="volunteer-form-field">
+                                <label for="hero-v-first-name">First name</label>
+                                <input type="text" id="hero-v-first-name" name="first_name" required autocomplete="given-name">
+                            </div>
+                            <div class="volunteer-form-field">
+                                <label for="hero-v-last-name">Last name</label>
+                                <input type="text" id="hero-v-last-name" name="last_name" required autocomplete="family-name">
+                            </div>
+                        </div>
+                        <div class="volunteer-form-field">
+                            <label for="hero-v-email">Email</label>
+                            <input type="email" id="hero-v-email" name="email" required autocomplete="email">
+                        </div>
+                        <div class="volunteer-form-field">
+                            <label for="hero-v-phone">Phone</label>
+                            <input type="tel" id="hero-v-phone" name="phone" autocomplete="tel">
+                        </div>
+                        <div class="volunteer-form-field">
+                            <label for="hero-v-address">Address</label>
+                            <input type="text" id="hero-v-address" name="address" required autocomplete="street-address" maxlength="500">
+                        </div>
+                        <div class="volunteer-form-field volunteer-multiselect" data-volunteer-multiselect>
+                            <label for="hero-v-multiselect-trigger">Volunteer <span
+                                    class="volunteer-form-optional">(optional)</span></label>
+                            <div class="volunteer-multiselect-inner">
+                                <button type="button" id="hero-v-multiselect-trigger" class="volunteer-multiselect-trigger"
+                                    aria-expanded="false" aria-haspopup="true" aria-controls="hero-v-multiselect-panel">
+                                    <span class="volunteer-multiselect-trigger-text">Select options…</span>
+                                    <span class="volunteer-multiselect-chevron" aria-hidden="true"></span>
+                                </button>
+                                <div id="hero-v-multiselect-panel" class="volunteer-multiselect-panel" hidden role="group"
+                                    aria-label="Volunteer interests">
+                                    <label class="volunteer-multiselect-row"><input type="checkbox" name="volunteer_interest"
+                                            value="Tabling"> Tabling</label>
+                                    <label class="volunteer-multiselect-row"><input type="checkbox" name="volunteer_interest"
+                                            value="Flyer Distribution"> Flyer Distribution</label>
+                                    <label class="volunteer-multiselect-row"><input type="checkbox" name="volunteer_interest"
+                                            value="Canvassing"> Canvassing</label>
+                                    <label class="volunteer-multiselect-row"><input type="checkbox" name="volunteer_interest"
+                                            value="Help Behind The Scenes"> Help Behind The Scenes</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary volunteer-form-submit">Submit</button>
+                        <p class="form-sheet-status" data-form-status role="status" aria-live="polite" hidden></p>
+                    </form>
                 </div>
             </div>
         </div>
@@ -166,6 +185,34 @@
                 <button type="submit" class="btn btn-primary volunteer-form-submit">Submit</button>
                 <p class="form-sheet-status" data-form-status role="status" aria-live="polite" hidden></p>
             </form>
+        </div>
+    </section>
+
+    <section class="mission-section">
+        <div class="mission-container">
+            <div class="mission-text" data-editable="source" data-path="/volunteer/index.html" data-key="volunteer-intro" data-type="block">
+                <span class="eyebrow">GET INVOLVED</span>
+                <h3>WAYS TO HELP</h3>
+                <ul>
+                    <li>
+                        <p><strong>Drop flyers on doorsteps</strong>: Spread the word about the library tax!</p>
+                    </li>
+                    <li>
+                        <p><strong>Canvass</strong>: Help knock on doors and talk to neighbors!</p>
+                    </li>
+                    <li>
+                        <p><strong>Help at a table outside an El Cerrito establishment</strong>: Convince El Cerrito residents to vote no on Measure C!</p>
+                    </li>
+                    <li>
+                        <p><strong>Phone banking</strong>: Call El Cerrito contacts and ask them to vote no on the library tax!</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mission-image">
+                <img src="/images/tabling.jpeg" alt="El Cerrito Resident Volunteer with Bicycle and Yard Sign">
+                <span class="caption">Volunteers tabling at Natural Grocery</span>
+            </div>
         </div>
     </section>
 

@@ -9,6 +9,8 @@
     --body-text-line-height: var(--body-text-line-height);
     --body-text-color: #333;
     --body-text-letter-spacing: 0.02em;
+    /* Matches `nav` horizontal padding so hero content aligns with the Donate button edge */
+    --volunteer-page-gutter: 5%;
 }
 
 /* --- RESET --- */
@@ -30,7 +32,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
+    padding: 20px var(--volunteer-page-gutter);
     position: absolute;
     top: 0;
     width: 100%;
@@ -314,10 +316,10 @@ nav {
     background-attachment: fixed;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: flex-start;
     text-align: left;
-    padding: 120px 6% 48px 6%;
+    padding: 120px var(--volunteer-page-gutter) 48px var(--volunteer-page-gutter);
     overflow: hidden;
 }
 
@@ -341,10 +343,139 @@ nav {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 680px;
+    max-width: none;
+    margin: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, min(360px, 100%));
+    align-items: center;
+    gap: 28px 40px;
+}
+
+.hero-main__copy {
+    min-width: 0;
+    max-width: 640px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.hero-main__form {
+    min-width: 0;
+    width: 100%;
+    max-width: 360px;
+}
+
+/* Compact volunteer form card in hero (desktop / wide tablet) */
+.volunteer-form-container--hero-compact {
+    max-width: none;
+    margin: 0;
+    min-width: 0;
+    padding: 16px 16px 14px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.04),
+        0 16px 48px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.volunteer-form-container--hero-compact .volunteer-form-title {
+    font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+    margin-bottom: 14px;
+    letter-spacing: 0.07em;
+    color: #222;
+}
+
+.volunteer-form-container--hero-compact .volunteer-signup-form {
+    gap: 10px;
+}
+
+.volunteer-form-container--hero-compact .volunteer-form-field {
+    gap: 4px;
+}
+
+.volunteer-form-container--hero-compact .volunteer-form-field label {
+    font-size: 0.72rem;
+}
+
+.volunteer-form-container--hero-compact .volunteer-form-field input,
+.volunteer-form-container--hero-compact .volunteer-multiselect-trigger {
+    font-size: 0.82rem;
+    padding: 8px 10px;
+    border-radius: 6px;
+}
+
+.volunteer-form-container--hero-compact .volunteer-form-field input {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.volunteer-form-container--hero-compact .volunteer-multiselect-trigger {
+    padding-right: 36px;
+}
+
+.volunteer-form-container--hero-compact .volunteer-multiselect-chevron {
+    right: 10px;
+}
+
+.volunteer-form-container--hero-compact .volunteer-form-row--split {
+    gap: 10px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    min-width: 0;
+}
+
+.volunteer-form-container--hero-compact .volunteer-form-row--split > .volunteer-form-field {
+    min-width: 0;
+}
+
+.volunteer-form-container--hero-compact .volunteer-multiselect-panel {
+    max-height: 200px;
+}
+
+.volunteer-form-container--hero-compact .volunteer-multiselect-row {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+}
+
+.volunteer-form-container--hero-compact .volunteer-form-submit {
+    margin-top: 4px;
+    width: 50%;
+    max-width: 50%;
+    min-width: 0;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    align-self: flex-start;
+    box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-main__copy {
+        max-width: none;
+        width: 100%;
+    }
+
+    .hero-main__form {
+        max-width: 100%;
+        margin-top: 4px;
+    }
+
+    .volunteer-form-container--hero-compact {
+        max-width: 400px;
+        margin: 0 auto;
+    }
 }
 
 .hero-heading-group {
@@ -968,25 +1099,36 @@ nav {
         min-height: 100vh;
         padding: 100px 24px 48px 24px;
         background-attachment: scroll;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         text-align: center;
     }
 
     .hero-content {
         width: 100%;
+        max-width: 100%;
         padding: 0;
         align-items: center;
-        flex: 1;
         display: flex;
         flex-direction: column;
     }
 
+    .hero-main__copy {
+        align-items: center;
+    }
+
+    .hero-main__form {
+        display: none;
+    }
+
+    .volunteer-form-container--hero-compact {
+        max-width: 100%;
+    }
+
     .hero-text-wrapper {
-        flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
     }
 
