@@ -316,7 +316,7 @@ nav {
     background-attachment: fixed;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: flex-start;
     text-align: left;
     padding: 120px var(--volunteer-page-gutter) 48px var(--volunteer-page-gutter);
@@ -347,7 +347,7 @@ nav {
     margin: 0;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(220px, min(360px, 100%));
-    align-items: center;
+    align-items: end;
     gap: 28px 40px;
 }
 
@@ -608,6 +608,29 @@ nav {
 }
 
 /* --- MISSION SECTION --- */
+.volunteer-content-flow {
+    display: flex;
+    flex-direction: column;
+}
+
+.volunteer-content-flow .volunteer-form-section {
+    order: 1;
+}
+
+.volunteer-content-flow .mission-section {
+    order: 2;
+}
+
+@media (min-width: 769px) {
+    .volunteer-content-flow .mission-section {
+        order: 1;
+    }
+
+    .volunteer-content-flow .volunteer-form-section {
+        order: 2;
+    }
+}
+
 .mission-section {
     background-color: var(--section-bg);
     padding: 100px 20px;
