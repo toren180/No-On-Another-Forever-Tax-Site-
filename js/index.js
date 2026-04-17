@@ -118,7 +118,7 @@ if (yardsignPopupOverlay && yardsignPopupClose) {
 }
 */
 
-// Get the Facts popup — show after short delay, once per session
+/* Get the Facts popup — commented out
 (function () {
     var overlay = document.getElementById('facts-popup-overlay');
     var closeBtn = document.getElementById('facts-popup-close');
@@ -147,6 +147,7 @@ if (yardsignPopupOverlay && yardsignPopupClose) {
         if (e.key === 'Escape' && overlay.classList.contains('is-visible')) close();
     });
 })();
+*/
 
 // Countdown to end of March 31, 2026 Pacific (April 1, 2026 00:00 PDT = April 1, 2026 07:00 UTC)
 const countdownEl = document.getElementById('fundraise-countdown');
