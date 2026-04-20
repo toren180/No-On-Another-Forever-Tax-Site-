@@ -326,7 +326,7 @@ nav {
 /* --- MAIN CONTENT --- */
 .main {
     max-width: 780px;
-    margin: 0 auto 0 5%;
+    margin: 0 auto;
     padding: 0 24px 24px;
 }
 
@@ -388,6 +388,11 @@ nav {
 #factcheck-index-list a.active {
     color: var(--red);
     border-left-color: var(--red);
+    font-weight: 700;
+}
+
+#factcheck-index-list .factcheck-index-bottom-link {
+    color: var(--red);
     font-weight: 700;
 }
 

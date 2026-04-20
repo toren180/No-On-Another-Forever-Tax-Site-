@@ -615,12 +615,12 @@ var sidebarClose=document.getElementById('sidebar-close');if(sidebarClose)sideba
 
   var sectionSummaries = [
     'The stated library cost jumped from $21M to $37.2M.',
-    'The tax can rise every year without another vote.',
+    'The city can raise the tax every year without another vote.',
     'The annual cost compounds significantly over time.',
     'Measure C allows collecting more than annual library needs.',
-    'After year 10, the tax outlasts the operating coverage.',
-    'The senior exemption is written to be extremely hard to use.',
-    'The project is still tied to the BART station plan.',
+    'After year 10, the city has to come up with money for operating costs.',
+    'The senior exemption is written so it is nearly impossible to qualify.',
+    'The project is still tied to the TOD BART plan.',
     'Renovating the current site is shown as the cheaper option.',
     'The city applies a tougher cost standard to non-BART options.'
   ];
@@ -641,6 +641,14 @@ var sidebarClose=document.getElementById('sidebar-close');if(sidebarClose)sideba
     links.push({ id: section.id, link: a, section: section });
   });
 
+  var seniorFallacyItem = document.createElement('li');
+  var seniorFallacyLink = document.createElement('a');
+  seniorFallacyLink.href = '/seniors/';
+  seniorFallacyLink.className = 'factcheck-index-bottom-link';
+  seniorFallacyLink.textContent = 'The Senior Exemption Fallacy';
+  seniorFallacyItem.appendChild(seniorFallacyLink);
+  indexList.appendChild(seniorFallacyItem);
+
   if (!links.length) return;
 
   function setActive(activeId) {
@@ -650,25 +658,40 @@ var sidebarClose=document.getElementById('sidebar-close');if(sidebarClose)sideba
   }
 
   function positionIndex() {
+    var mainEl = document.querySelector('.main');
+    var videosSection = document.querySelector('.fc-videos-section');
+    if (!mainEl) return;
+
     if (window.matchMedia('(max-width: 1260px)').matches) {
       indexEl.style.top = '';
       indexEl.style.left = '';
+      mainEl.style.marginLeft = '';
+      mainEl.style.marginRight = '';
+      if (videosSection) videosSection.style.paddingLeft = '';
       return;
     }
-
-    var mainEl = document.querySelector('.main');
-    if (!mainEl) return;
 
     var firstRect = sections[0].getBoundingClientRect();
     var topPx = Math.max(16, Math.round(firstRect.top));
     indexEl.style.top = topPx + 'px';
 
-    var mainRect = mainEl.getBoundingClientRect();
     var indexWidth = indexEl.offsetWidth || 280;
-    var centeredLeft = ((mainRect.right + window.innerWidth) / 2) - (indexWidth / 2);
-    var minLeft = mainRect.right + 16;
-    var maxLeft = window.innerWidth - indexWidth - 16;
-    var finalLeft = Math.max(minLeft, Math.min(centeredLeft, maxLeft));
+    var mainWidth = mainEl.offsetWidth || 828;
+    var gap = 16;
+    var groupWidth = mainWidth + gap + indexWidth;
+    var minGroupLeft = 16;
+    var maxGroupLeft = Math.max(minGroupLeft, window.innerWidth - groupWidth - 16);
+    var groupLeft = Math.max(minGroupLeft, Math.min((window.innerWidth - groupWidth) / 2, maxGroupLeft));
+
+    mainEl.style.marginLeft = Math.round(groupLeft) + 'px';
+    mainEl.style.marginRight = '0';
+
+    var mainRect = mainEl.getBoundingClientRect();
+    if (videosSection) {
+      videosSection.style.paddingLeft = Math.round(mainRect.left) + 'px';
+    }
+
+    var finalLeft = groupLeft + mainWidth + gap;
     indexEl.style.left = Math.round(finalLeft) + 'px';
   }
 
