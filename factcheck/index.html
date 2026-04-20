@@ -98,6 +98,13 @@
   </a>
 </div>
 
+<aside class="factcheck-index" id="factcheck-index" aria-label="Fact Check section index">
+  <div class="factcheck-index-card">
+    <h2>On This Page</h2>
+    <ul id="factcheck-index-list"></ul>
+  </div>
+</aside>
+
 <div class="main">
 
   <!-- FACT 1: BAIT & SWITCH -->
@@ -274,6 +281,7 @@
       <a class="source" href="https://lao.ca.gov/LAOEconTax/Article/Detail/800" target="_blank">LAO EconTax — PTP participation data (~1,337 statewide)</a>
       <a class="source" href="https://elcerritocommitteeforresponsiblegovernment.com/2025/06/07/el-cerritos-misguided-development-gamble/" target="_blank">ECCRG Blog — Measure H precedent, zero qualifications</a>
     </div>
+    <a href="/seniors/" class="mission-factcheck-link">LEARN MORE ABOUT THE SENIOR EXEMPTION <span class="mission-factcheck-arrow" aria-hidden="true">&rarr;</span></a>
   </div>
 
   <div class="divider"></div>
@@ -593,6 +601,109 @@ var sidebarClose=document.getElementById('sidebar-close');if(sidebarClose)sideba
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', scheduleCarouselSync);
     else scheduleCarouselSync();
     window.addEventListener('load', scheduleCarouselSync);
+})();
+</script>
+
+<script>
+(function () {
+  var indexEl = document.getElementById('factcheck-index');
+  var indexList = document.getElementById('factcheck-index-list');
+  if (!indexEl || !indexList) return;
+
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.main .claim-section'));
+  if (!sections.length) return;
+
+  var sectionSummaries = [
+    'The stated library cost jumped from $21M to $37.2M.',
+    'The tax can rise every year without another vote.',
+    'The annual cost compounds significantly over time.',
+    'Measure C allows collecting more than annual library needs.',
+    'After year 10, the tax outlasts the operating coverage.',
+    'The senior exemption is written to be extremely hard to use.',
+    'The project is still tied to the BART station plan.',
+    'Renovating the current site is shown as the cheaper option.',
+    'The city applies a tougher cost standard to non-BART options.'
+  ];
+
+  var links = [];
+  sections.forEach(function (section, idx) {
+    var heading = section.querySelector('h2');
+    if (!heading) return;
+
+    if (!section.id) section.id = 'fact-' + (idx + 1);
+
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.href = '#' + section.id;
+    a.textContent = (idx + 1) + '. ' + (sectionSummaries[idx] || heading.textContent.trim());
+    li.appendChild(a);
+    indexList.appendChild(li);
+    links.push({ id: section.id, link: a, section: section });
+  });
+
+  if (!links.length) return;
+
+  function setActive(activeId) {
+    links.forEach(function (item) {
+      item.link.classList.toggle('active', item.id === activeId);
+    });
+  }
+
+  function positionIndex() {
+    if (window.matchMedia('(max-width: 1260px)').matches) {
+      indexEl.style.top = '';
+      indexEl.style.left = '';
+      return;
+    }
+
+    var mainEl = document.querySelector('.main');
+    if (!mainEl) return;
+
+    var firstRect = sections[0].getBoundingClientRect();
+    var topPx = Math.max(16, Math.round(firstRect.top));
+    indexEl.style.top = topPx + 'px';
+
+    var mainRect = mainEl.getBoundingClientRect();
+    var indexWidth = indexEl.offsetWidth || 280;
+    var centeredLeft = ((mainRect.right + window.innerWidth) / 2) - (indexWidth / 2);
+    var minLeft = mainRect.right + 16;
+    var maxLeft = window.innerWidth - indexWidth - 16;
+    var finalLeft = Math.max(minLeft, Math.min(centeredLeft, maxLeft));
+    indexEl.style.left = Math.round(finalLeft) + 'px';
+  }
+
+  function updateActiveSection() {
+    var threshold = window.innerHeight * 0.32;
+    var activeId = links[0].id;
+
+    for (var i = 0; i < links.length; i++) {
+      var rect = links[i].section.getBoundingClientRect();
+      if (rect.top <= threshold) activeId = links[i].id;
+      else break;
+    }
+
+    setActive(activeId);
+  }
+
+  var scrollTicking = false;
+  function onScroll() {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(function () {
+      positionIndex();
+      updateActiveSection();
+      scrollTicking = false;
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', function () {
+    positionIndex();
+    updateActiveSection();
+  });
+  window.addEventListener('load', positionIndex);
+  positionIndex();
+  updateActiveSection();
 })();
 </script>
 

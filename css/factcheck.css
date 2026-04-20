@@ -326,8 +326,75 @@ nav {
 /* --- MAIN CONTENT --- */
 .main {
     max-width: 780px;
-    margin: 0 auto;
+    margin: 0 auto 0 5%;
     padding: 0 24px 24px;
+}
+
+/* --- FACT CHECK INDEX (desktop) --- */
+.factcheck-index {
+    position: fixed;
+    top: 88px;
+    left: calc(100% - 320px);
+    right: auto;
+    width: min(300px, 26vw);
+    z-index: 20;
+}
+
+.factcheck-index-card {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    padding: 14px 14px 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(4px);
+}
+
+.factcheck-index-card h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #555;
+    margin: 0 0 10px;
+}
+
+#factcheck-index-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: calc(100vh - 140px);
+    overflow: auto;
+}
+
+#factcheck-index-list a {
+    display: block;
+    color: #4f4f4f;
+    font-size: 0.82rem;
+    line-height: 1.3;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    padding: 2px 0 2px 8px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+#factcheck-index-list a:hover {
+    color: var(--red);
+}
+
+#factcheck-index-list a.active {
+    color: var(--red);
+    border-left-color: var(--red);
+    font-weight: 700;
+}
+
+@media (max-width: 1260px) {
+    .factcheck-index {
+        display: none;
+    }
 }
 
 .claim-section {
@@ -531,6 +598,37 @@ nav {
     gap: 8px;
 }
 
+.mission-factcheck-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--red);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-top: 20px;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--red);
+    transition: gap 0.25s ease, border-color 0.25s ease;
+}
+
+.mission-factcheck-link:hover {
+    border-bottom-color: var(--red-dark);
+}
+
+.mission-factcheck-arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+    font-size: 1.1em;
+}
+
+.mission-factcheck-link:hover .mission-factcheck-arrow {
+    transform: translateX(4px);
+}
+
 /* --- NUMBERED ITEMS --- */
 .numbered-item {
     display: flex;
@@ -655,13 +753,13 @@ nav {
 
 /* --- VIDEO CAROUSEL --- */
 .fc-videos-section {
-    padding: 20px 24px;
+    padding: 20px 24px 20px calc(5% + 24px);
     background: var(--bg);
 }
 
 .fc-videos-container {
     max-width: 560px;
-    margin: 0 auto;
+    margin: 0;
 }
 
 .city-plan-videos-inner {
@@ -928,6 +1026,7 @@ nav {
 
 @media (max-width: 600px) {
     .hero { padding: 100px 20px 44px; }
+    .main { margin: 0 auto; }
     .stat-row { flex-direction: column; }
     .stat-card { min-width: unset; }
     .data-table { font-size: .88rem; }

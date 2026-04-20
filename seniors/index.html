@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Senior Exemption Does Not Work &mdash; No on Measure C</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  :root {
+    --brand-color: #fe5252;
+  }
+  body {
+    background: #fff;
+    color: #1a1a1a;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+  }
+  .logo {
+    color: var(--brand-color);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .nav-links a {
+    color: #222;
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover {
+    color: var(--brand-color);
+  }
+  .nav-links .nav-btn {
+    background-color: var(--brand-color);
+    color: #fff;
+    padding: 8px 36px;
+    border-radius: 50px;
+    border: 2px solid var(--brand-color);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+  }
+  .nav-links .nav-btn:hover {
+    color: #fff;
+    opacity: 0.9;
+  }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+  }
+  .hamburger span {
+    width: 18px;
+    height: 2.5px;
+    background-color: #222;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+  }
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    background-color: #fff;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+    padding: 80px 30px 30px 30px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+  }
+  .sidebar.active {
+    left: 0;
+  }
+  .sidebar-close {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    color: var(--brand-color);
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+  }
+  .sidebar .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .sidebar .nav-links a {
+    color: var(--brand-color);
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    padding: 15px 0;
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .sidebar .nav-links .nav-btn {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    border-radius: 50px;
+    padding: 12px 24px;
+    background-color: var(--brand-color);
+    color: #fff;
+    border: 2px solid var(--brand-color);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ---------- PAGE HEADER ---------- */
+  .page-header {
+    background: var(--brand-color);
+    color: #fff;
+    padding: 48px 24px 40px;
+    margin-bottom: 36px;
+  }
+  .page-header .inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 12pt;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  h1.page-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 42pt;
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .page-header .lede {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14pt;
+    line-height: 1.5;
+    color: #fff;
+    margin-top: 18px;
+    max-width: 620px;
+  }
+
+  /* ---------- LEAD SUMMARY ---------- */
+  .lead-summary {
+    border-top: 4px solid var(--brand-color);
+    border-bottom: 4px solid var(--brand-color);
+    padding: 24px 0;
+    margin-bottom: 40px;
+  }
+  .lead-summary p {
+    font-size: 15pt;
+    line-height: 1.55;
+    color: #1a1a1a;
+  }
+  .lead-summary p + p { margin-top: 14px; }
+  .lead-summary strong { color: var(--brand-color); }
+  .lead-summary a { color: var(--brand-color); text-decoration: underline; }
+
+  /* ---------- SECTIONS ---------- */
+  section { margin-bottom: 48px; }
+
+  .section-num {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 10pt;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+  h2.section-head {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 24pt;
+    line-height: 1.15;
+    text-transform: uppercase;
+    color: var(--brand-color);
+    margin-bottom: 18px;
+    border-bottom: 3px solid var(--brand-color);
+    padding-bottom: 10px;
+  }
+
+  p.body {
+    font-size: 12pt;
+    line-height: 1.65;
+    color: #222;
+    margin-bottom: 14px;
+  }
+  p.body strong { color: var(--brand-color); }
+  p.body a {
+    color: var(--brand-color);
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 2px;
+  }
+  p.body a:hover { background: #ffec80; }
+
+  /* ---------- QUOTE BOX ---------- */
+  .quote {
+    background: #f4f4f4;
+    border-left: 6px solid var(--brand-color);
+    padding: 18px 22px;
+    margin: 20px 0;
+  }
+  .quote .attrib {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 10pt;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+  .quote .attrib a {
+    color: #555;
+    text-decoration: underline;
+  }
+  .quote .body-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 12pt;
+    line-height: 1.55;
+    color: #1a1a1a;
+    font-style: italic;
+  }
+  .quote .body-text em {
+    background: #ffec80;
+    font-style: normal;
+    padding: 1px 2px;
+  }
+
+  /* ---------- FIGURE (screenshot of official document) ---------- */
+  figure.doc-figure {
+    background: #fff;
+    border: 2px solid var(--brand-color);
+    padding: 0;
+    margin: 24px 0;
+  }
+  figure.doc-figure .source-tag {
+    background: var(--brand-color);
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 9.5pt;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+  }
+  figure.doc-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  figure.doc-figure figcaption {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10pt;
+    font-style: italic;
+    color: #555;
+    padding: 10px 14px 12px;
+    border-top: 1px solid #ddd;
+    background: #fafafa;
+  }
+  figure.doc-figure figcaption strong {
+    font-style: normal;
+    color: var(--brand-color);
+    background: #ffec80;
+    padding: 1px 4px;
+  }
+
+  /* ---------- CALLOUT ---------- */
+  .callout {
+    background: var(--brand-color);
+    color: #fff;
+    padding: 24px 26px;
+    margin: 28px 0;
+    text-align: center;
+  }
+  .callout .big {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 22pt;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .callout .small {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11.5pt;
+    color: #ccc;
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* ---------- COMPARISON (Measure C vs Measure T) ---------- */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .compare .col {
+    border: 2px solid var(--brand-color);
+    padding: 18px 20px;
+  }
+  .compare .col.bad {
+    background: var(--brand-color);
+    color: #fff;
+  }
+  .compare .col.good {
+    background: #fff;
+  }
+  .compare h4 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 13pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid currentColor;
+  }
+  .compare .col p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 10.5pt;
+    line-height: 1.5;
+  }
+  .compare .col.bad p { color: #fff5f5; }
+  .compare .col p + p { margin-top: 8px; }
+  .compare .col em {
+    background: #ffec80;
+    color: var(--brand-color);
+    font-style: normal;
+    padding: 1px 3px;
+  }
+
+  /* ---------- PULL QUOTE ---------- */
+  .pullquote {
+    border-left: 6px solid var(--brand-color);
+    padding: 8px 0 8px 20px;
+    margin: 24px 0;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 16pt;
+    line-height: 1.3;
+    color: var(--brand-color);
+  }
+
+  /* ---------- KEY STAT ---------- */
+  .keystat {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 20px 22px;
+    background: #f4f4f4;
+    border-left: 6px solid var(--brand-color);
+    margin: 20px 0;
+  }
+  .keystat .number {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 44pt;
+    line-height: 1;
+    color: var(--brand-color);
+  }
+  .keystat .label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 12pt;
+    line-height: 1.4;
+    color: #222;
+  }
+  .keystat .label a { color: var(--brand-color); text-decoration: underline; }
+
+  /* ---------- SOURCES ---------- */
+  .sources {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 3px solid var(--brand-color);
+  }
+  .sources h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 14pt;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .sources ol {
+    padding-left: 22px;
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: #444;
+  }
+  .sources li { margin-bottom: 8px; }
+  .sources a { color: var(--brand-color); text-decoration: underline; }
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    background-color: var(--brand-color);
+    padding: 50px 20px;
+    color: #fff;
+    margin-top: 60px;
+  }
+  .footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Open Sans', sans-serif;
+  }
+  .footer-campaign-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+  .footer-paid-for {
+    font-size: 0.95rem;
+    opacity: 0.95;
+  }
+  .footer-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+  .footer-info span {
+    opacity: 0.9;
+  }
+  .footer-content a {
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+  .footer-content a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+  .footer-social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 24px;
+  }
+  .footer-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: #fff;
+    transition: opacity 0.2s;
+  }
+  .footer-social-link:hover {
+    opacity: 0.85;
+  }
+  .footer-social-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media (max-width: 600px) {
+    h1.page-title { font-size: 30pt; }
+    h2.section-head { font-size: 19pt; }
+    .compare { grid-template-columns: 1fr; }
+    .keystat .number { font-size: 34pt; }
+    .callout .big { font-size: 17pt; }
+  }
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+    .hamburger {
+      display: flex;
+    }
+    .logo {
+      font-size: 1.2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/home/" class="logo">No On Another Forever Tax</a>
+  <div class="nav-links">
+    <a href="/home/">Home</a>
+    <a href="/volunteer/">Volunteer</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header" target="_blank">Yard Signs</a>
+    <a href="/factcheck/">Fact Check</a>
+    <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="nav-btn" target="_blank">Donate</a>
+  </div>
+  <div class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" role="button" tabindex="0">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<div class="overlay" id="overlay"></div>
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-close" id="sidebar-close">×</div>
+  <div class="nav-links">
+    <a href="/home/">Home</a>
+    <a href="/volunteer/">Volunteer</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-cdzUDl_bBwL6cJShUSnW3Vi0KNpHAPiv_LOApdbYyd2Vbw/viewform?usp=header" target="_blank">Yard Signs</a>
+    <a href="/factcheck/">Fact Check</a>
+    <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="nav-btn" target="_blank">Donate</a>
+  </div>
+</div>
+
+<header class="page-header">
+  <div class="inner">
+    <div class="eyebrow">Measure C &bull; Fact Check</div>
+    <h1 class="page-title">The senior exemption does not work</h1>
+    <p class="lede">
+      Backers told seniors they would be protected from Measure C.
+      They wrote the fine print to make qualifying nearly impossible.
+      We don&rsquo;t have to guess how it plays out &mdash; the city already uses the same exemption language in another parcel tax, and the city&rsquo;s own Finance Director told a local news site that the number of seniors who have ever qualified is&nbsp;zero.
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- =================================================== -->
+  <!-- LEAD SUMMARY -->
+  <!-- =================================================== -->
+  <div class="lead-summary">
+    <p>
+      <strong>What you need to know:</strong>
+      Measure C promises a senior exemption but conditions it on enrollment in one of two state programs.
+      The first <a href="https://www.livableelcerrito.org/post/tough-terms-for-senior-exemption">has been unfunded since 2008 and cannot process claims</a>.
+      The second requires the state to place a lien on your home.
+      Neither applies to renters.
+    </p>
+    <p>
+      El Cerrito has used this exact exemption language before in Measure H, the Parks and Recreation parcel tax.
+      <strong>Zero seniors have ever qualified</strong> &mdash; according to the city&rsquo;s Finance Director, who confirmed it to <a href="https://www.livableelcerrito.org/post/tough-terms-for-senior-exemption">Livable El Cerrito</a>.
+      There is no application form.
+      The city&rsquo;s own <a href="#sources">&sect;9212 Impact Report</a> acknowledges the first program is &ldquo;not currently funded by the State.&rdquo;
+      Other local measures &mdash; like <a href="https://www.livableelcerrito.org/post/tough-terms-for-senior-exemption">the school district&rsquo;s Measure T</a> &mdash; exempt any homeowner 65 and older with no state program required.
+      The backers could have written the exemption that way. They chose not to.
+    </p>
+  </div>
+
+  <!-- =================================================== -->
+  <!-- SECTION 1: WHAT BACKERS TOLD SENIORS -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-num">1. What they said</div>
+    <h2 class="section-head">Backers told seniors they would be exempt from the tax</h2>
+
+    <p class="body">
+      Throughout the signature-gathering campaign and on their website, supporters of Measure&nbsp;C told El Cerrito seniors they would be protected from the tax.
+      The <strong>official ballot question</strong> approved by the city &mdash; the one voters will actually see on their ballot &mdash; highlights &ldquo;senior exemptions&rdquo; as a feature of the measure, alongside audits and citizen oversight.
+    </p>
+
+    <figure class="doc-figure">
+      <div class="source-tag">Official Ballot Question &bull; Measure C &bull; June 2, 2026</div>
+      <img src="ballot_question.png" alt="Official ballot question for Measure C showing the measure ends with the phrase 'with independent audits/citizen oversight and senior exemptions, be adopted?'">
+      <figcaption>
+        The final line of the question voters will see on their ballot promises <strong>senior exemptions</strong>, alongside audits and citizen oversight. A reasonable voter would read this and conclude any senior who owns a home in El Cerrito can get out of paying the tax.
+      </figcaption>
+    </figure>
+
+    <p class="body">
+      Here is what makes the ballot language indefensible: the city knew, before drafting it, that the exemption does not work.
+      By the time the city finalized the ballot question, its own Finance Director had already told a local news site, on the record, that <strong>zero seniors have ever qualified for a senior exemption under the identical language in Measure H</strong>. The city also knew &mdash; because its own &sect;9212 Impact Report says so &mdash; that the first of the two referenced state programs is not currently funded.
+    </p>
+
+    <p class="body">
+      With that information in hand, the city still chose to tell voters the measure includes &ldquo;senior exemptions&rdquo; in the ballot question itself. Not a footnote. Not the fine print. The top-line pitch.
+    </p>
+
+    <p class="body">
+      That is the pitch. What follows is what the fine print actually says.
+    </p>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- SECTION 2: WHAT THE FINE PRINT REQUIRES -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-num">2. What they wrote</div>
+    <h2 class="section-head">The fine print requires enrollment in one of two state programs</h2>
+
+    <p class="body">
+      Buried several pages into the measure, the actual exemption condition appears.
+      It is not enough to be 65 and own a home. A senior must qualify for participation in one of two specific state programs &mdash; on top of meeting El Cerrito&rsquo;s own requirements.
+    </p>
+
+    <p class="body">
+      The first is the <strong>Gonzales-Deukmejian-Petris Senior Citizen Property Tax Assistance Law</strong> (also known as the HRA program).
+      The second is the <strong>Senior Citizen Property Tax Postponement Law</strong>, administered by the State Controller&rsquo;s Office.
+      Everything turns on those two programs. One has been defunct for over 15 years. The other places a state lien on the senior&rsquo;s home and excludes anyone with a reverse mortgage or more than roughly $55,000 in household income.
+    </p>
+
+    <p class="body">
+      <strong>Neither program applies to renters.</strong> The tax is levied on buildings, so landlords pay it and pass the cost through in rent. There is no exemption path for a senior who rents.
+    </p>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- SECTION 3: PROGRAM ONE IS DEFUNCT -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-num">3. Program one</div>
+    <h2 class="section-head">The first program has been unfunded since 2008 and cannot process claims</h2>
+
+    <p class="body">
+      The Gonzales-Deukmejian-Petris program was a state grant program for low-income older Californians.
+      It has not received state funding since the 2008 budget cycle. It does not take applications. It cannot approve participation.
+      <strong>No senior alive today can qualify under this program</strong> because the program no longer functions.
+    </p>
+
+    <p class="body">
+      This is not a campaign talking point. It was confirmed on the record by a state analyst who administers the program. According to <a href="https://www.livableelcerrito.org/post/tough-terms-for-senior-exemption">Livable El Cerrito&rsquo;s reporting</a>, the state&rsquo;s Franchise Tax Board told them so directly:
+    </p>
+
+    <div class="quote">
+      <div class="attrib">Cristina Perfino, Analyst, California Franchise Tax Board<br>
+      via <a href="https://www.livableelcerrito.org/post/tough-terms-for-senior-exemption">Livable El Cerrito, Feb. 9</a></div>
+      <div class="body-text">
+        The first state program referenced in Measure C is <em>&ldquo;unfunded&rdquo;</em> and <em>&ldquo;unavailable.&rdquo;</em> It has not been funded since 2008. A bill to activate the program and reset the income limit at $30,000 per year was introduced in 2019 but did not pass.
+      </div>
+    </div>
+
+    <p class="body">
+      The city agrees. Its own <strong>&sect;9212 Impact Report</strong>, delivered to the City Council on February 19, 2026, states in plain language:
+    </p>
+
+    <div class="quote">
+      <div class="attrib">City of El Cerrito &sect;9212 Impact Report &bull; p. 9</div>
+      <div class="body-text">
+        The HRA program provided a direct grant to individuals over the age of 62 or who are blind or disabled and whose income is below specified levels. <em>&ldquo;The program is not currently funded by the State.&rdquo;</em>
+      </div>
+    </div>
+
+    <p class="body">
+      The backers of Measure C wrote a senior exemption that depends, in part, on a state program the city itself admits does not exist anymore.
+    </p>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- SECTION 4: PROGRAM TWO IS A LIEN ON YOUR HOME -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-num">4. Program two</div>
+    <h2 class="section-head">The second program puts a state lien on your home</h2>
+
+    <p class="body">
+      The second referenced program &mdash; the <strong>Senior Citizen Property Tax Postponement Law</strong> &mdash; is real and does take applications. It also comes with conditions that eliminate most El Cerrito seniors.
+    </p>
+
+    <p class="body">
+      According to the California State Controller&rsquo;s Office, as quoted directly in the city&rsquo;s <a href="#sources">&sect;9212 report</a>, to qualify an owner must meet all of the following:
+    </p>
+
+    <div class="quote">
+      <div class="attrib">California State Controller&rsquo;s Office<br>via &sect;9212 Impact Report, p. 9</div>
+      <div class="body-text">
+        &bull; Be at least 62, or blind, or disabled<br>
+        &bull; Own and occupy the property as a principal residence<br>
+        &bull; Have <em>total household income of $55,181 or less</em><br>
+        &bull; Have <em>at least 40% equity</em> in the property<br>
+        &bull; <em>Not have a reverse mortgage</em> on the property
+      </div>
+    </div>
+
+    <p class="body">
+      There is one more detail the measure does not disclose and the ballot summary does not mention.
+      The program does not actually exempt the senior from paying the tax. It <strong>postpones</strong> the payment and <strong>records a state lien against the home</strong>. The state is later repaid with interest, typically when the home is sold or the owner dies. For most El Cerrito homeowners, accepting a state lien on their home in exchange for a $331 parcel tax credit is not a reasonable trade.
+    </p>
+
+    <p class="body">
+      An analyst from the State Controller&rsquo;s Office, <a href="https://www.livableelcerrito.org/post/tough-terms-for-senior-exemption">quoted by Livable El Cerrito</a>, confirmed the mechanics: the state pays the property taxes on the applicant&rsquo;s behalf, and a lien is placed on the property. It is not possible to confirm a homeowner qualifies unless they apply.
+    </p>
+
+    <p class="body">
+      Statewide, fewer than one percent of eligible seniors are enrolled in the Property Tax Postponement program. There is no reason to expect enrollment in El Cerrito to look any different.
+    </p>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- SECTION 5: THE TRACK RECORD -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-num">5. The track record</div>
+    <h2 class="section-head">El Cerrito already uses this exact exemption. Zero seniors have ever qualified.</h2>
+
+    <p class="body">
+      This is not a hypothetical.
+      El Cerrito has an existing parcel tax &mdash; <strong>Measure H, the Parks and Recreation facilities tax</strong> &mdash; that uses the exact same senior exemption language tied to the same two state programs.
+      Measure H was extended by voters in 2019 and has been on the books ever since. The city collects it every year.
+    </p>
+
+    <p class="body">
+      Greg Lyman, the former El Cerrito City Council member who is the principal author of Measure C, <a href="https://www.livableelcerrito.org/post/tough-terms-for-senior-exemption">confirmed in an email</a> to Livable El Cerrito that the senior exemption language in Measure C is similar to that used in Measure H.
+      That is a direct admission: the backers knew which exemption language they were copying, and they knew the existing version has a track record.
+    </p>
+
+    <p class="body">
+      <a href="https://www.livableelcerrito.org/post/tough-terms-for-senior-exemption">Livable El Cerrito reported the track record</a> on February 10, 2026. In an email to the local news site, El Cerrito&rsquo;s own Finance Director stated directly:
+    </p>
+
+    <div class="quote">
+      <div class="attrib">Crystal Reams, Finance Director and Tax Administrator, City of El Cerrito<br>
+      via email, Feb. 10, 2026 &mdash; as reported in <a href="https://www.livableelcerrito.org/post/tough-terms-for-senior-exemption">Livable El Cerrito</a></div>
+      <div class="body-text">
+        <em>&ldquo;There are currently no qualified exemptions to Measure H, and there is no application form available.&rdquo;</em>
+      </div>
+    </div>
+
+    <div class="keystat">
+      <div class="number">0</div>
+      <div class="label">
+        <strong>Zero seniors</strong> have ever qualified for a senior exemption from El Cerrito&rsquo;s existing Measure H parcel tax &mdash; which uses the identical exemption language the backers have now copied into Measure&nbsp;C. <em>Source:</em> <a href="https://www.livableelcerrito.org/post/tough-terms-for-senior-exemption">El Cerrito Finance Director Crystal Reams, via Livable El Cerrito</a>.
+      </div>
+    </div>
+
+    <p class="body">
+      The backers did not stumble into this language by accident. It is already in the El Cerrito Municipal Code. They copied it knowing full well how it works in practice. <strong>If Measure C passes, the senior exemption will produce the same result it has produced for Measure H: nothing.</strong>
+    </p>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- SECTION 6: NO APPLICATION FORM EXISTS -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-num">6. No application exists</div>
+    <h2 class="section-head">The city does not have an application form for the existing exemption</h2>
+
+    <p class="body">
+      Measure C says seniors &ldquo;must apply&rdquo; for the exemption and that the Tax Administrator shall provide forms.
+      For the existing Measure H senior exemption &mdash; which has used the same language for years &mdash; the city has never created one.
+    </p>
+
+    <p class="body">
+      This was confirmed by the Tax Administrator herself. In <a href="https://www.livableelcerrito.org/post/tough-terms-for-senior-exemption">the same Feb. 10 email</a> in which she told Livable El Cerrito that no seniors have qualified, Finance Director Crystal Reams stated directly that &ldquo;there is no application form available.&rdquo;
+    </p>
+
+    <p class="body">
+      She also explained what a senior would have to do if they wanted to attempt to qualify under Measure H today &mdash; and what they would have to attach to that submission:
+    </p>
+
+    <div class="quote">
+      <div class="attrib">Crystal Reams, Finance Director and Tax Administrator, City of El Cerrito<br>
+      via <a href="https://www.livableelcerrito.org/post/tough-terms-for-senior-exemption">Livable El Cerrito, Feb. 10, 2026</a></div>
+      <div class="body-text">
+        To qualify, one of the owners must qualify for participation in either the Gonzales-Deukmejian-Petris Senior Citizen Property Tax Assistance Law or the Senior Citizen Property Tax Postponement Law. <em>&ldquo;Proof from the State Controller&rsquo;s Office or Franchise Tax Board is required.&rdquo;</em>
+        The property owner must submit a letter to the Tax Administrator stating they would like to apply for the exemption and include the proof from the state.
+      </div>
+    </div>
+
+    <p class="body">
+      In other words: the only way to get the exemption is to produce a document proving enrollment in a state program that either no longer exists or requires a lien on the home. The city has had years to build an application process for Measure H and declined to do so. There is no credible reason to believe Measure C will be any different.
+    </p>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- SECTION 7: IT WAS A CHOICE -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-num">7. This was a choice</div>
+    <h2 class="section-head">Other local measures exempt any homeowner 65 and older. This one does not.</h2>
+
+    <p class="body">
+      Defenders of Measure C have argued the exemption language is standard boilerplate. It is not.
+      Other parcel taxes in the area exempt any homeowner 65 or older &mdash; full stop. No state program required. No income test. No lien.
+      The clearest local example is the <strong>West Contra Costa Unified School District&rsquo;s Measure T</strong>, the parcel tax that funds local schools.
+    </p>
+
+    <p class="body">
+      Measure T&rsquo;s exemption language, <a href="https://www.livableelcerrito.org/post/tough-terms-for-senior-exemption">quoted in full by Livable El Cerrito</a>, reads:
+    </p>
+
+    <div class="quote">
+      <div class="attrib">West Contra Costa Unified School District Measure T<br>Senior Exemption Language</div>
+      <div class="body-text">
+        &ldquo;An exemption shall be granted annually on any single-family residential parcel or multi-family dwelling unit owned by one or more persons <em>65 years of age or older</em> who occupies said parcel or unit as a principal residence, upon annual application to the District for exemption.&rdquo;
+      </div>
+    </div>
+
+    <p class="body">
+      That is what a real senior exemption looks like: age 65, own it, live in it, apply. Done.
+    </p>
+
+    <div class="compare">
+      <div class="col good">
+        <h4>Measure T (School District)</h4>
+        <p><strong>A senior exemption that works.</strong></p>
+        <p>Any homeowner 65 or older who owns and occupies a single-family residence or multi-family dwelling unit is exempt on annual application. No state program enrollment required. No income test. No lien.</p>
+        <p><em>Seniors who apply, qualify.</em></p>
+      </div>
+      <div class="col bad">
+        <h4>Measure C (Library Tax)</h4>
+        <p><strong>A senior exemption that doesn&rsquo;t.</strong></p>
+        <p>Exemption requires proof of enrollment in a defunct state grant program or the Property Tax Postponement program &mdash; which imposes an income cap of roughly $55,000, a 40% equity floor, a ban on reverse mortgages, and a state lien on the home.</p>
+        <p><em>Zero seniors have qualified under identical language in Measure H.</em></p>
+      </div>
+    </div>
+
+    <p class="body">
+      The backers of Measure C know Measure T exists. They live in the same school district. Measure T&rsquo;s exemption language was available to copy. It was not copied.
+    </p>
+
+    <div class="pullquote">
+      &ldquo;If they had wanted a senior exemption that worked, they would have written one. They didn&rsquo;t.&rdquo;
+    </div>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- SECTION 8: RENTERS -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-num">8. Renters</div>
+    <h2 class="section-head">Senior renters get nothing</h2>
+
+    <p class="body">
+      A significant share of El Cerrito households rent their homes, and many are older residents on fixed incomes.
+      The tax is levied on improvements &mdash; square footage of buildings &mdash; so landlords pay it on every unit in every apartment building in the city.
+      Those costs get passed through in rent. It is a basic feature of how parcel taxes on rental property work.
+    </p>
+
+    <p class="body">
+      The exemption language in Measure C does not reach renters at all. Both referenced state programs are tied to homeownership. A 78-year-old living on Social Security in an apartment on San Pablo Avenue has no path to an exemption, even in theory, even under the measure&rsquo;s most generous reading.
+    </p>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- BOTTOM LINE CALLOUT -->
+  <!-- =================================================== -->
+  <div class="callout">
+    <div class="big">A senior exemption that exempts no one is not a senior exemption.</div>
+    <div class="small">It is a talking point printed on the ballot to make a tax easier to pass.</div>
+  </div>
+
+  <!-- =================================================== -->
+  <!-- SOURCES -->
+  <!-- =================================================== -->
+  <div class="sources" id="sources">
+    <h3>Sources</h3>
+    <ol>
+      <li>Livable El Cerrito, &ldquo;<a href="https://www.livableelcerrito.org/post/tough-terms-for-senior-exemption">Tough Terms for Senior Exemption</a>&rdquo; (Feb. 11, 2026) &mdash; reporting statements from Cristina Perfino (Franchise Tax Board), an analyst at the State Controller&rsquo;s Office, and an email from El Cerrito Finance Director Crystal Reams confirming that no seniors have qualified for a Measure H exemption and that no application form exists.</li>
+      <li>Livable El Cerrito, &ldquo;<a href="https://www.livableelcerrito.org/post/new-senior-exemption-concerns">New Senior Exemption Concerns</a>&rdquo; (Mar. 17, 2026) &mdash; follow-up coverage of pre-election demands and the City Council&rsquo;s April 7 study session on the exemption.</li>
+      <li>City of El Cerrito, <em>California Elections Code &sect;9212 Impact Report on The El Cerrito Library Initiative</em> (February 19, 2026), pp. 9&ndash;10. Confirms that the HRA program &ldquo;is not currently funded by the State&rdquo; and lists the State Controller&rsquo;s eligibility requirements for the Property Tax Postponement Law.</li>
+      <li>El Cerrito Library Initiative (Measure C), full measure text, Section 4.58.030(C)(3) and Section 2(I).</li>
+      <li>Official Ballot Question and City Attorney&rsquo;s Impartial Analysis, June 2, 2026 consolidated election.</li>
+      <li>West Contra Costa Unified School District, Measure T parcel tax &mdash; senior exemption text as quoted in Livable El Cerrito&rsquo;s coverage.</li>
+      <li>California State Controller&rsquo;s Office, Property Tax Postponement Program eligibility requirements, 2025&ndash;26 tax year.</li>
+    </ol>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-campaign-name">No On Another Forever Tax</div>
+    <div class="footer-paid-for">Paid for by Neighbors For a Better El Cerrito</div>
+    <div class="footer-info">
+      <span>FPPC #1485677</span>
+      <span>|</span>
+      <a href="mailto:NoOnAnotherForeverTax@gmail.com">NoOnAnotherForeverTax@gmail.com</a>
+    </div>
+    <div class="footer-social-links">
+      <a href="https://www.instagram.com/better_elcerrito" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">
+        <svg class="footer-social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@NoonAnotherForeverTax/videos" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="YouTube">
+        <svg class="footer-social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/Nomoreforevertax" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook">
+        <svg class="footer-social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var hamburger = document.getElementById('hamburger');
+    var sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('overlay');
+    var closeBtn = document.getElementById('sidebar-close');
+
+    if (!hamburger || !sidebar || !overlay || !closeBtn) return;
+
+    function closeMenu() {
+      hamburger.classList.remove('active');
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+
+    function openMenu() {
+      hamburger.classList.add('active');
+      sidebar.classList.add('active');
+      overlay.classList.add('active');
+      hamburger.setAttribute('aria-expanded', 'true');
+    }
+
+    hamburger.addEventListener('click', function () {
+      if (sidebar.classList.contains('active')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    hamburger.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        if (sidebar.classList.contains('active')) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      }
+    });
+
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+  })();
+</script>
+
+</body>
+</html>
