@@ -256,6 +256,7 @@ nav {
 @media (max-width: 768px) {
     .nav-links { display: none; }
     .hamburger { display: flex; }
+    .site-logo { padding-left: 50px; }
 }
 
 /* --- HERO --- */
