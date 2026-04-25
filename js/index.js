@@ -149,10 +149,10 @@ if (yardsignPopupOverlay && yardsignPopupClose) {
 })();
 */
 
-// Countdown to end of March 31, 2026 Pacific (April 1, 2026 00:00 PDT = April 1, 2026 07:00 UTC)
+// Countdown to end of April 30, 2026 Pacific (May 1, 2026 00:00 PDT = May 1, 2026 07:00 UTC)
 const countdownEl = document.getElementById('fundraise-countdown');
 if (countdownEl) {
-    var matchEndUtc = Date.UTC(2026, 3, 1, 7, 0, 0); // after March 31 PT (PDT = UTC-7)
+    var matchEndUtc = Date.UTC(2026, 4, 1, 7, 0, 0); // after April 30 PT (PDT = UTC-7)
 
     function updateCountdown() {
         var now = Date.now();
