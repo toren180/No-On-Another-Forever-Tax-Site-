@@ -71,22 +71,28 @@ sidebarLinks.forEach(link => {
     });
 });
 
-// Fundraising popup — show after short delay, once per session
+// Fundraising popup — show after short delay, once per session; auto-close after 30s
 const fundraiseOverlay = document.getElementById('fundraise-popup-overlay');
 const fundraiseClose = document.getElementById('fundraise-popup-close');
 if (fundraiseOverlay && fundraiseClose) {
+    var fundraiseAutoCloseTimer = null;
+    function closeFundraisePopup() {
+        if (fundraiseAutoCloseTimer !== null) {
+            clearTimeout(fundraiseAutoCloseTimer);
+            fundraiseAutoCloseTimer = null;
+        }
+        fundraiseOverlay.classList.remove('is-visible');
+        fundraiseOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        sessionStorage.setItem('fundraise-popup-seen', '1');
+    }
     if (!sessionStorage.getItem('fundraise-popup-seen')) {
         setTimeout(function () {
             fundraiseOverlay.classList.add('is-visible');
             fundraiseOverlay.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
+            fundraiseAutoCloseTimer = setTimeout(closeFundraisePopup, 30000);
         }, 800);
-    }
-    function closeFundraisePopup() {
-        fundraiseOverlay.classList.remove('is-visible');
-        fundraiseOverlay.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-        sessionStorage.setItem('fundraise-popup-seen', '1');
     }
     fundraiseClose.addEventListener('click', closeFundraisePopup);
     fundraiseOverlay.addEventListener('click', function (e) {

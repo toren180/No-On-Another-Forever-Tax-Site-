@@ -86,7 +86,7 @@ nav {
     color: white;
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     text-transform: uppercase;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
     cursor: pointer;
@@ -2030,7 +2030,7 @@ nav {
 
 .footer-campaign-name {
     font-family: 'Oswald', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -2038,7 +2038,7 @@ nav {
 }
 
 .footer-paid-for {
-    font-size: 0.95rem;
+    font-size: 1.12rem;
     opacity: 0.95;
 }
 
@@ -2048,7 +2048,7 @@ nav {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     margin-top: 10px;
 }
 
@@ -2291,7 +2291,7 @@ nav {
     }
 
     .logo {
-        font-size: 1.2rem;
+        font-size: 1.55rem;
         padding-left: 50px;
     }
 
