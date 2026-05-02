@@ -71,35 +71,6 @@ sidebarLinks.forEach(link => {
     });
 });
 
-// Fundraising popup — show after short delay, once per session; auto-close after 30s
-const fundraiseOverlay = document.getElementById('fundraise-popup-overlay');
-const fundraiseClose = document.getElementById('fundraise-popup-close');
-if (fundraiseOverlay && fundraiseClose) {
-    var fundraiseAutoCloseTimer = null;
-    function closeFundraisePopup() {
-        if (fundraiseAutoCloseTimer !== null) {
-            clearTimeout(fundraiseAutoCloseTimer);
-            fundraiseAutoCloseTimer = null;
-        }
-        fundraiseOverlay.classList.remove('is-visible');
-        fundraiseOverlay.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-        sessionStorage.setItem('fundraise-popup-seen', '1');
-    }
-    if (!sessionStorage.getItem('fundraise-popup-seen')) {
-        setTimeout(function () {
-            fundraiseOverlay.classList.add('is-visible');
-            fundraiseOverlay.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-            fundraiseAutoCloseTimer = setTimeout(closeFundraisePopup, 30000);
-        }, 800);
-    }
-    fundraiseClose.addEventListener('click', closeFundraisePopup);
-    fundraiseOverlay.addEventListener('click', function (e) {
-        if (e.target === fundraiseOverlay) closeFundraisePopup();
-    });
-}
-
 /* Yard sign / donate popup (home page) - commented out
 const yardsignPopupOverlay = document.getElementById('yardsign-popup-overlay');
 const yardsignPopupClose = document.getElementById('yardsign-popup-close');
@@ -154,29 +125,6 @@ if (yardsignPopupOverlay && yardsignPopupClose) {
     });
 })();
 */
-
-// Countdown to end of April 30, 2026 Pacific (May 1, 2026 00:00 PDT = May 1, 2026 07:00 UTC)
-const countdownEl = document.getElementById('fundraise-countdown');
-if (countdownEl) {
-    var matchEndUtc = Date.UTC(2026, 4, 1, 7, 0, 0); // after April 30 PT (PDT = UTC-7)
-
-    function updateCountdown() {
-        var now = Date.now();
-        var diff = matchEndUtc - now;
-        if (diff <= 0) {
-            countdownEl.textContent = 'Match ended';
-            return;
-        }
-        var days = Math.floor(diff / 86400000);
-        var hours = Math.floor((diff % 86400000) / 3600000);
-        var mins = Math.floor((diff % 3600000) / 60000);
-        var secs = Math.floor((diff % 60000) / 1000);
-        countdownEl.textContent = days + 'd ' + hours + 'h ' + mins + 'm ' + secs + 's';
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-}
 
 // The City's Plan — horizontal video carousel (mixed slide widths)
 (function () {
