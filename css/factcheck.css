@@ -545,6 +545,64 @@ nav {
     color: var(--red-dark);
 }
 
+.business-table-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin: 28px 0 8px;
+    text-transform: uppercase;
+    color: var(--blue);
+}
+
+.table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.business-cost-table {
+    min-width: 560px;
+}
+
+.business-cost-table th.r,
+.business-cost-table td.r {
+    text-align: right;
+}
+
+.business-cost-table td.r {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: .9rem;
+}
+
+.business-cost-table--basis {
+    min-width: 720px;
+}
+
+.business-cost-table--basis th:last-child {
+    text-align: left;
+}
+
+.business-cost-table--basis td:last-child {
+    text-align: left;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: .85rem;
+    color: var(--text-muted);
+}
+
+.business-estimate-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.business-estimate-grid .business-cost-table {
+    min-width: 0;
+    margin-top: 0;
+}
+
 /* --- SCREENSHOTS --- */
 .screenshot {
     margin: 20px 0;
@@ -1037,6 +1095,8 @@ nav {
     .stat-card { min-width: unset; }
     .data-table { font-size: .88rem; }
     .data-table th, .data-table td { padding: 8px 10px; }
+    .business-estimate-grid { grid-template-columns: 1fr; }
+    .business-estimate-grid .business-cost-table { min-width: 520px; }
     .fc-videos-section { padding: 0 16px; }
     .footer { padding: 30px 20px; }
     .footer-content { flex-direction: column; gap: 15px; text-align: center; }

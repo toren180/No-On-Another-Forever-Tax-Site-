@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Why Measure C Is Bad for Business</title>
+<style>
+  /* ── Reset ── */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── Print page breaks ── */
+  @media print {
+    .page-break { page-break-after: always; }
+  }
+  .page-break { border: none; margin: 40px 0; border-top: 2px dashed #ccc; }
+
+  /* ── Page 1 styles ── */
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Georgia, 'Times New Roman', serif; background: #fff; color: #111; width: 1044px; }
+  .flyer { width: 1044px; padding: 52px 68px 48px; }
+
+  .eyebrow { font-family: Helvetica, Arial, sans-serif; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #555; margin-bottom: 5px; }
+  .headline { font-family: Helvetica, Arial, sans-serif; font-size: 44px; font-weight: bold; line-height: 1.05; margin-bottom: 5px; color: #111; }
+  .subhead { font-size: 16px; color: #555; }
+  .header-block { border-bottom: 3px solid #111; padding-bottom: 12px; margin-bottom: 14px; }
+
+  .intro-bar { background: #111; color: #fff; padding: 10px 16px; font-family: Helvetica, Arial, sans-serif; font-size: 15px; font-weight: bold; margin-bottom: 14px; }
+
+  .two-col-table { width: 100%; border-collapse: collapse; margin-bottom: 13px; }
+  .two-col-table td { vertical-align: top; width: 50%; padding: 0; }
+  .two-col-table td:first-child { padding-right: 20px; }
+  .two-col-table td:last-child { padding-left: 20px; border-left: 1px solid #e0e0e0; }
+
+  .flag { display: inline-block; background: #111; color: #fff; font-family: Helvetica, Arial, sans-serif; font-size: 10px; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; margin-bottom: 6px; }
+  .section-title { font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 700; margin-bottom: 5px; color: #111; }
+  .section-label { font-family: Helvetica, Arial, sans-serif; font-size: 10px; font-weight: bold; letter-spacing: 0.14em; text-transform: uppercase; color: #666; margin-bottom: 5px; }
+  .section-body { font-size: 13px; line-height: 1.62; color: #444; }
+
+  .divider { border: none; border-top: 1px solid #ddd; margin: 0 0 13px; }
+
+  .table-label { font-family: Helvetica, Arial, sans-serif; font-size: 10px; font-weight: bold; letter-spacing: 0.12em; text-transform: uppercase; color: #666; margin-bottom: 6px; }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 13px; }
+  .data-table th { font-family: Helvetica, Arial, sans-serif; font-size: 10px; font-weight: bold; letter-spacing: 0.07em; text-transform: uppercase; color: #666; text-align: left; padding: 4px 6px; border-bottom: 2px solid #111; }
+  .data-table th.r { text-align: right; }
+  .data-table td { padding: 5px 6px; border-bottom: 1px solid #e8e8e8; color: #111; }
+  .data-table td.r { text-align: right; }
+  .data-table tr:nth-child(even) td { background: #f7f7f5; }
+
+  .callout { border-left: 3px solid #111; padding: 8px 14px; margin-bottom: 13px; background: #f7f7f5; }
+  .callout p { font-size: 12px; line-height: 1.55; color: #555; }
+  .callout p+p { margin-top: 4px; }
+
+  .stats-wrap { border-top: 2px solid #111; padding-top: 12px; margin-bottom: 13px; }
+  .stats-table { width: 100%; border-collapse: collapse; }
+  .stats-table td { width: 33.33%; vertical-align: top; padding: 0 10px; text-align: center; }
+  .stats-table td:first-child { padding-left: 0; }
+  .stats-table td:last-child { padding-right: 0; }
+  .stat-label { font-family: Helvetica, Arial, sans-serif; font-size: 10px; font-weight: bold; letter-spacing: 0.12em; text-transform: uppercase; color: #666; margin-bottom: 3px; }
+  .stat-val { font-family: Helvetica, Arial, sans-serif; font-size: 24px; font-weight: bold; color: #111; line-height: 1.1; }
+  .stat-sub { font-size: 11px; color: #666; margin-top: 2px; }
+
+  .vote-no { background: #111; color: #fff; text-align: center; padding: 14px; margin-bottom: 12px; }
+  .vote-no-text { font-family: Helvetica, Arial, sans-serif; font-size: 36px; font-weight: bold; letter-spacing: 0.03em; }
+
+  .footer { border-top: 1px solid #ddd; padding-top: 8px; text-align: center; }
+  .footer-cta { font-family: Helvetica, Arial, sans-serif; font-size: 15px; font-weight: bold; color: #111; margin-bottom: 4px; }
+  .footer-cta a { color: #111; text-decoration: underline; }
+  .footer-disc { font-family: Helvetica, Arial, sans-serif; font-size: 11px; color: #666; }
+
+  .footer-table { width: 100%; border-collapse: collapse; border-top: 1px solid #ddd; padding-top: 0; margin-top: 0; }
+  .footer-table td { vertical-align: middle; padding: 6px 0; }
+  .footer-text { text-align: center; }
+  .footer-qr { text-align: right; width: 90px; padding-left: 10px; }
+  .footer-qr img { width: 80px; height: 80px; display: block; }
+
+
+  /* ── Page 2 styles (prefixed to avoid conflicts) ── */
+  .page { width: 1044px; padding: 28px 60px 24px; }
+  .section-heading { font-family: Helvetica, Arial, sans-serif; font-size: 13px; font-weight: bold; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: #111; padding: 4px 10px; margin-bottom: 0; }
+  .table-label { font-family: Helvetica, Arial, sans-serif; font-size: 10px; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: #111; padding: 4px 10px; margin-bottom: 0; }
+  .est-note { font-family: Georgia, serif; font-size: 11px; color: #555; font-style: italic; margin-bottom: 6px; padding: 5px 10px; background: #f7f7f5; border-left: 3px solid #aaa; }
+  .split-outer { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
+  .split-outer > tbody > tr > td { vertical-align: top; width: 50%; padding: 0; }
+  .split-outer > tbody > tr > td:first-child { padding-right: 10px; }
+  .split-outer > tbody > tr > td:last-child { padding-left: 10px; }
+  .inner-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .inner-table th { font-family: Helvetica, Arial, sans-serif; font-size: 9px; font-weight: bold; letter-spacing: 0.07em; text-transform: uppercase; color: #444; text-align: left; padding: 4px 6px; border-bottom: 2px solid #111; border-top: 1px solid #ccc; background: #f0f0f0; }
+  .inner-table th.r { text-align: right; }
+  .inner-table td { padding: 2.5px 6px; border-bottom: 1px solid #e8e8e8; color: #111; }
+  .inner-table td.r { text-align: right; }
+  .inner-table tr:nth-child(even) td { background: #f7f7f5; }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 10px; }
+  .data-table thead tr { background: #f0f0f0; }
+  .data-table th { font-family: Helvetica, Arial, sans-serif; font-size: 9.5px; font-weight: bold; letter-spacing: 0.07em; text-transform: uppercase; color: #444; text-align: left; padding: 3px 7px; border-bottom: 2px solid #111; border-top: 1px solid #ccc; }
+  .data-table th.r { text-align: right; }
+  .data-table td { padding: 2px 7px; border-bottom: 1px solid #e8e8e8; color: #111; vertical-align: top; }
+  .data-table td.r { text-align: right; }
+  .data-table td.basis { font-size: 10px; color: #666; }
+  .data-table tr:nth-child(even) td { background: #f7f7f5; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="flyer">
+
+  <div class="header-block">
+    <p class="eyebrow">El Cerrito Library Tax &nbsp;•&nbsp; June 2, 2026</p>
+    <h1 class="headline">Why Measure C<br>Is Bad for Business</h1>
+    <p class="subhead">Libraries are good. Measure C is not.</p>
+  </div>
+
+  <div class="intro-bar">A new parcel tax — up to $0.17/sq ft — with no exemptions for commercial properties and a 30-year horizon.</div>
+
+  <table class="two-col-table">
+    <tr>
+      <td>
+        <span class="flag">How it works</span>
+        <p class="section-title">Tax structure</p>
+        <p class="section-body">Annual parcel tax on all El Cerrito properties. Rate scales with building square footage — so larger commercial and industrial spaces pay significantly more. The City can increase the rate annually, and the 30-year clock doesn't start until bonds are issued, potentially in the 2030s.</p>
+      </td>
+      <td>
+        <span class="flag">Who pays</span>
+        <p class="section-title">Direct impact on businesses</p>
+        <p class="section-body">Owners pay the tax directly. Tenants under NNN or pass-through leases will likely see higher rent or CAM charges. Larger storefronts, offices, warehouses, and retail spaces bear the greatest burden — and there are <strong>no exemptions for commercial properties</strong>.</p>
+      </td>
+    </tr>
+  </table>
+
+  <hr class="divider">
+
+  <table class="two-col-table">
+    <tr>
+      <td>
+        <p class="section-label">Indirect effects</p>
+        <p class="section-body">Higher fixed costs push businesses to raise prices or cut staffing and hours. El Cerrito retailers and food-service operators may face a cost disadvantage relative to nearby cities without similar taxes.</p>
+      </td>
+      <td>
+        <p class="section-label">No relief available</p>
+        <p class="section-body">No commercial exemptions exist. The burden falls across the entire business sector — from national chains to local independents — with larger properties paying disproportionately more over time.</p>
+      </td>
+    </tr>
+  </table>
+
+  <hr class="divider">
+
+  <p class="table-label">30-year estimated cost — selected El Cerrito Plaza tenants</p>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Business</th>
+        <th class="r">Sq ft</th>
+        <th class="r">Year-1 tax</th>
+        <th class="r">30-yr total*</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Ross Dress for Less</td><td class="r">30,241</td><td class="r">$5,141</td><td class="r">$239,111</td></tr>
+      <tr><td>Marshalls</td><td class="r">30,000</td><td class="r">$5,100</td><td class="r">$237,206</td></tr>
+      <tr><td>Crunch Fitness</td><td class="r">25,016</td><td class="r">$4,253</td><td class="r">$197,798</td></tr>
+      <tr><td>Petco</td><td class="r">15,482</td><td class="r">$2,632</td><td class="r">$122,414</td></tr>
+      <tr><td>Trader Joe's</td><td class="r">11,188</td><td class="r">$1,902</td><td class="r">$88,462</td></tr>
+      <tr><td>Foot Locker</td><td class="r">8,179</td><td class="r">$1,390</td><td class="r">$64,670</td></tr>
+      <tr><td>Sola Salon Studios</td><td class="r">7,500</td><td class="r">$1,275</td><td class="r">$59,301</td></tr>
+      <tr><td>Sprint</td><td class="r">3,415</td><td class="r">$581</td><td class="r">$27,002</td></tr>
+      <tr><td>Anime Island</td><td class="r">3,309</td><td class="r">$563</td><td class="r">$26,164</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p>* Scenario estimate using a 2.86% annual escalator (Bay Area inflation rate, last 30 years). Square footages from publicly available El Cerrito Plaza leasing/property materials.</p>
+    <p>The measure allows increases up to the greater of Bay Area cost-of-living or California per-capita personal income growth — so actual costs could be higher than shown.</p>
+  </div>
+
+  <div class="stats-wrap">
+    <table class="stats-table">
+      <tr>
+        <td>
+          <p class="stat-label">Largest tenants</p>
+          <p class="stat-val">$198k–$239k</p>
+          <p class="stat-sub">Estimated 30-year cost</p>
+        </td>
+        <td>
+          <p class="stat-label">Mid-size stores</p>
+          <p class="stat-val">$88k–$122k</p>
+          <p class="stat-sub">Estimated 30-year cost</p>
+        </td>
+        <td>
+          <p class="stat-label">Smaller tenants</p>
+          <p class="stat-val">$26k–$65k</p>
+          <p class="stat-sub">Estimated 30-year cost</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="vote-no">
+    <p class="vote-no-text">Vote No on C</p>
+  </div>
+
+  <table class="footer-table">
+    <tr>
+      <td class="footer-text">
+        <p class="footer-cta">More info: <a href="http://www.nomoreforevertax.org">www.nomoreforevertax.org</a></p>
+        <p class="footer-disc">Ad paid for by Neighbors For a Better El Cerrito &nbsp;•&nbsp; FPPC ID #1485677</p>
+      </td>
+      <td class="footer-qr">
+        <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCACcAJoDASIAAhEBAxEB/8QAHQAAAgMBAQEBAQAAAAAAAAAABwgABQYECQMCAf/EAFIQAAEDAwMDAQQFBQsIBwkAAAECAwQFBhEABxIIITETFCIyQQkVUWFxFiMzgZEXGDU4UlZ0lbKz0iQlN0JylqG0JjRVV3WU0zZDU1Rlc7HR4//EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwBk90t1LI20ZiOXfWBCVLJDDaGluuKA8nigE4+/WD/fX7J/zjmf1ZI/waB30gcRuob32ZAdUpLcmnNMqKfICpKwSP26Id77e9K22FOpUW96W03LksBSCuRLdfeA7FxSGldgTnvgDOdBrv31+yf845n9WSP8Guim9Uuy8+exCauZ5tx9YQlTsB5CAT4yopwB950JIczoilSmozcBtK3FBKS4ipISCftUSAP16xPW3tPZFgQ7arllQjT49UU405HS6txs8UpUFgrJPcK8Z0D8tOIdaQ62oLQtIUlQPYg+Dr96Hlx7lWdtrY9vTrwqa4DEyM02wpMZx7koNpJGEJJHn56ROsdTG8pq0w0++5Ahl9fs49hjfo+R4+W8+MedA99j7xWDel3TLVt2rOS6nDCy8gxXEJHE4VhSkgHv9h10UXdWy6xuRP29gVF5y4IHP2hgxnEpTwAKvfI4nyPB0iXSNuPbljbqVC5L1qa4rEqK4FPJjrcKnFKyfdbScZ7/ACxo2XLcFk3pXJ1Y6b3s7ozHfWkSlIcZLjB/SnErDXjHgZ+zQMtuLe1vbf2y5cd0S1xKc26hpTiGlOHko4A4pBOuuzbkpN3WzCuKhSFSKdOb9RhxTakFSc48KAI8fPXnpcVY6g9zbmmbQVupO1aosOlcinLTFaCVtd8+olKR2z/Kxqrc3X3v2scVYAuZ6kfUx9D2NMeM6GvngK4Kz585Ogd++eoXa2y7mlW5cFbkx6jFIDraYLzgGRn4kpIOtJTNzrPqW2sncSJUHV29GbW67IMdYUEo+I8COR/ZpMVMWrvZt2zDpTIrW9k1aXpLrnqR+bSDlZ5HiwPc+zv+vWLdd3tokpOwaprkb25YYFISqOUOFzvj1seD/tY0D/0XdSzKxtvN3CgVF5y3oSXFPyDGcSpIRjl7hHI+R8tdFkbkWheNlyLxotT5UWMtxD0l9pTIQUAFWQsA4AI76Vb8o6PtT0y3Fs/fEr6uvOXFkLZgIQp9JDoHDLjYUgZ4nyrtqy2F/iGXr+NQ/u0aAqudVuyiHFI/KSUriSMppr5B/D3Nfn99fsn/ADjmf1ZI/wAGgj0i7Pba3DtTVb/3AifWDTMl1kodecbbjttJSor/ADagSTy/VjVuupdECFqQaeklJxkNVMj9udAV/wB9fsn/ADjmf1ZI/wAGiRtpuFae41Fcq9pVRM6M056ToKFNrbV9ikqAIz8u3fQLhbR9Oe4u2NYrthUYttsodQia07KQ406hPL4Hld/I8jWd+jR/ge+P6RC/svaBwdTU1NAknXf/ABgrC/okf/m16pvpFv8ASBan/gQ/vV6sfpApbdP3wsye8lRajU5p5YSO5CZKycff20X7yq3Tbu3RqLULquu3i5HY/M+rUkRZCAoDKFgkKGD/AKp8En7dB54Rf+stf7Y//OnK+kI/0b7d/wC05/ct6v2duekFp5Dgum3lcFBWFXGnBx8j7+hv12bk2Zdrdt21aFUjVRFIU4t1+MsraSFJSlKEr8KwE+QToC31Ybc3fuLtZZUO0KV9YvxAlx5Prob4pUygA++RnuNYpmB0c09luBWS0KlHQluWEOzFgPAALAKSUn3s+O2mgTdds2pZ1DkXNX6ZRmX4jSGlzZKGUrUG0kgFRGToSXfsR07UloV25nY9NYnuFxEmVVy026pXve6SQDnOe2gyG/nTRbkuwIUzaG0fUqbzzbnITVd2FDOcOrx8x9+htWqvZ2zNgwUWnIFI3ihcYtXASt7hnPqp97k1449x+rTFdVt91vbXaOlVSyJrLBL7UdpxSA6lTPHtjPnsB30A9+LOt+rdOVK3lkwim7q+6w9PfbcUG1KWSFYQSQM4GgFG2FwbrXHvG7X7LkLl3nPQ6446ltoc0kDmSFDgBgDXVvTtpvBTzOv7cSjLb9qfSJMsusnLiuw91B7ePs1T2K5uZtmI25NEolSp8NbRaYqj8BSoy0uduylDic47aOW3943xugY0XfRK4u2kttTyqlIjexRVPJ/RYkYA7qyAM99BuemCgbX2Ds5R936803TaiGnGnqit5xWeZKeIQCQSfGAM6XjqB3HiVDqFdv2wqr6nsxZchy/RIw4geeKx3/WNGqOzT5N1LsSsLQ3sK2kriVRa+ERToGWwJngnn2xnv40EN99tG4Nz1Ksbb0OoVGxo7KXE1WKlcmKMD3z6wynt8+/bQY2u1q892b8iuVB1VYuCeURWQltDZcPfikBIA+enFseybksHoqvOhXVT/YKgWZr/AKXqoc9xSEgHKSR8j20ONkbCtuB01VHeKNFcTd9DVIkwZJdJQhxoJKCUeDjPz0S7Pvm4tw+i+9LguiU3Jn+jNY5oaCBwShOBgfidBS9Mv8SW7v8A7tQ/um9JFpwujLcvbqJtXVtuL4q0KliRIedJmPFlp9pxCQpPPsEkcfGcnOtR+5r0gfzroH+8af8AFoP10Pfxa7m/pkn+5Tqp+jR/ge+P6RC/sva3iLz2D2p2orVMtG66Q/HdS4sRIdRTLfddWkJGEhRP2fcPJ1g/o0f4Hvj+kQv7L2gcHU1NTQYDdvaCyN0PY13VAecfhgpZfju+m4EnyknByM98aHrnSRs222pxyPWEoSCpSjOwAB5Pw6OtadlR6NNfhN+rKbjuLYRxKuSwklIwPOTjtoVbG3RuPdNhXLK3Jt9dFnMPOtRG1QXI3qM+kDywsknuSMjtoBSraTpJS4WlX3TgsHiUm4mcg/ZrRVfp+6c7OXT6rcNTTT2HnAuN9ZVZDbUgpwrA5AchgjIHyOgl0r7M2lui7dU65XqmldOl4YTEeS2O+T3yk51e2veNrb4T59s721+l0Cm22r/M7jEtENTpJKFBRdKgvCUJPYDzoGKuuhbP76QItCTcMCstUg+qhmkVJtSmgQEjkE5wO2Bqp3QlbAXzb8K17o3AoIjUtYS223W2W1pUkccK7/doVbr0mn9LVIp9zbVuLlSK+sx5CqqsSGy0kBaSjgEYzy85OhTs/tXTKtc0+p73x6paFHmNmRFmSyIDTzq1cuKVupIV2OcDQGq1KLf27V0SbG3VtmZFsmAkuU2TFjKZbcCOzRS/7yVgowe3nQM6kL5rtNm1XZaIqOm07fmhmC2W8vBKO6eS89/J+Wms3U3Ydp9kwYOx1RpF41uOptpUKGr291LCU45lDSs/Id/Gld2jtFW8/UdWIO5cWbTpspD0qbHip9nW28kD3eKwop/A6C76bbkqe7cmlbI3eppy0Y0NbraIyPTf5M+8jK+/zJ+WjF1GUa3TsQ7s/t3NZq9bpb7KkUViUl+cG0K5LJbHvHAOfGqvc3bW2+my1Hdz9vlTnq6w6iG2mpvB5jg8cKJSlKTnA7d9L7CvbdmhXs/vv+TCmjUApPt71OdEBXqDh7pzjvjt73nQEvcKq0ykdFMOxKrUIsG6o0thT9GfdCJjYDucqaPvDt38aLPTNAt+qdICqddctEShyESETn1vBpLbRIySs9k/jpaNp4KOoXqIxfLimPrBh1+R9XfmsltGQBy5Y/46cqBbe1FDst/YxN1MNic2tgwXai17coOd8JGM57dvd0C+JuikU/c6m7C2LVYFU23rzjceWtl5L7p9bIdCXknAPYfLtpq7G2wtGz7DlWRS4br1ElrcU+zKX6nP1AAoE4HbAGk0k2FQ9t+tSz7Zt5ctUFEyI8DKcC18lE57gAY7fZo8bobz3bbfU/be29PZpho1R9l9dTrKlPfnVKCsKCgB8P2HQdS+kbZ1S1KEOsJBOeIndh93w6z11dPnTbajzDFzV40Z19JUyidWm2S4B5ICgM4yNcvU/vzuLYW7kWzLNp1MlpfhMutodiLeecccUocUhKx/JGBjQF3igb/7q1aHUrn21rqXobRaaTEoj7acE5Oc5JPb7dAxNqdOfTrdjchy2Kw7WkRilL6oNYQ8GyrOAriDjOD+zRo2p20tLbKjyKZakFyO3JcDj7jrhW46oDAyfsGTgffpceilTe01HuVvc95qzHKo/HVBbraxDXIS2lYWUJcwSAVpyR9umktS77VuxEhdsXFSq0mMUh8wZSHg2VZ4hXEnGcH9h0F5qampoKC5LztG2pTcS4bmpFJkOo9RtuZMQ0pSckcgFEZGQRn7tAzqB3mviM/Gj7PUinXfSHYixUZ0Rhychhwkj0yWlAIIThXf7dCr6QqM1M3otCI+8GGn6W22tw/6iVSXAVfqznR76d7Atvb/AG0uCBbd2M3IxLWuQ683ww0v0QOHuqPyAP69AnnT/uLutaZrsXb61Wq2uY4HZyTTnpCmScgfo1DiPPn7NXOy20NBrNbrUje9VWsqOsJdgOSXEwEyHVKUXEpLyDywMHA8Z1T7Ib61TZ6oXAxCoUWqtVCSVkOvKbKFJJHkA5GPu0UBeVG6pyKTe1QgWIxb59pjuiSlz2ou+6pPv8MYCAe2fOgP+/FjbYXZaNAp1+3Qqj0yEf8AIHxUGY/re4kfEtJCvdAPb7dJxufuVuHvIwLJptuM1KnUV8mKKVDddfLaPcSpagogggDuEjTcbrbdWfvdbVGtqBfMYfUeFcoRbkKUCgIHIBQx8Ok/2xum7en28qnV3bQlSYz/ADhIVNbXHSsJUcKSriR9+NASaq3ZfTxbUO7NubliVi9H0NxZ8GfKbeQyFJyv8y3xWkg9u6u2iPsdK2iVWo+8tXvenU68a5FU5UoDtWYSwy4vspKWyOafA7FR0s21G2SNw7umTrxmyLRo80OS2ag+xhlalKJCEqWUg+ft1gNyKJTbbvqsUKkVVFWgQpJaYmoxxfSMe8MEj9h0DrVuXdW925dT23uOjOJ2yW4qTBrlNjLQp/0wC2UyFFTagSSOye+O2s/VaXLNae2OvSHJom0VLOItefQWHVrR7zYMlY9I8lEjAQM/LVv0Z7n3bU4du2DLsh+JQ4lNX6VZPPg7wyR5Tx7k48/LRp3/ALOoN9bay6BclcFDgrdbd9sKkgNrScpzyIBH3ZGgWvp226TavVaZdqx6lUrMbiSExKwpPqsOZb8eskBCjnt20Xr0szZaPvdHv64r5bplzwXWnhEeqrDTYKfh5NqTywfx1S7I3g5ZVyx9ro1PTJsulxXXE3W47xYdIHLzjgBk4+I6Xnq2oNbuzeup1q2KTOrVNdZaS3LgsKeaUQO4Ckgg40DY1bb3ay6L8i73m6HHV0lSFiVHqDJgp9HJ988T4z394aod47SsWuInb/UCtrqtZtuH6kMxJjbsFTkfKkpWEpJPdXcBQ+XjS22veO6NB2Mqu1bO2dTdi1AOpVNVFeC0JcxyATxwT27HOr7YWsX9GsxWy1RsGpsUa4Za2X6quO6hcVLwCVKwU8TjAPcjQD25Lv3S3CvOJu8q1DIXSQ2kSIVOeMNPokq988j45d/eHy8aJ9tdT/UFczTztu2TSKshghLqodHkuhBOcA8XTjODpk7A2ipFg7LViwXrgdfp8wyHH5zraWi0lxASe2SO3HOc6rNiLGoG1G2tfes6v/lapxSpBW2U8VLQj3WwEFWD379z5HbQBaohreGgyql1DJVZFWorTgoTSVinialYy57j4UV8VIbGUkfFqy+jR/ge+P6RC/svaFm+Fd3K3uuegGrbd1OiRoXJhHpRHnCA4pPJSlFIHbiMDA+em/6eNl6bs5T6vGgVqVVV1R1pbq3mg2EBsKAAAJ/ln5/ZoCrqampoEP8ApHkqXurbSEJKlKooAAGST67nbWe6c9zL02uolVtv8gJdTgVh8LLqkuMqYUpIQpWeCgpOADjt4Pfv2anfTYeJudfdBu165naUqjtoQWREDodSh0ufFzTx8keDosgRZ9KeiRpbbiC0WStCgrjlOPloPODfHZZVozKbJtytvXU3U+TkhUWH2iqJzwJStWT3+eNEmD0m2e/CYfd3nhMuONpWpswW8oJGSP0/y1e1mop6RHHoMZk3iq51rkKW4r2IRwntxAAc5fj20GNidn293bgryqvXl2qhgJktqdieqHS4tWUjktHjHnv50H96c9x6ptJeFwuUa1XrrLyfZiGnlNcUoWrC/dQvzosTL9h9VBNm11EawW6UfaxLXJEr1VfDw4qDePxyfw0aOnDYCLs9VapU2bpdra6iwhrBhBgICSTn41Zzn7tedd3/APtZWP6e/wD3itB6Sb8bZUm+9rqTa9Ru1mhxoamSiatlKw7wQEjsVpAz58nQVZ6IKe+0l5nc5xxtYylaaOkgj7QfW1outKNIldN1sNxmHHlhUU8UJKj+iH2aGu1fVhUrNsejWWxt19ZOUqMI/qipKQpzBPcoDRx58ZOg1Q6hJuz9SVs9RrEcuIW1/kLcv28tuSQkZK/TS0rj58ZP46yG+++V4bp7ev2i5tVUKSl2Q097Ql9x4jgc44+knz+OtSgfkdKV1Qx/85VSt/pLVHuKj+v7h/PDKjx45/RjOflowV7fR6m7DQNyGrYRJqMpTYXRRNIW3yUUn3uBPbGfh0AG2afqm523cPp/rtq1Kgwg0uQiu5UeDjZ5pBaUgAgntjmPx02Gylgt7abfw7Saqa6mmMtavaFM+kVFRz8OTj9usVU97qhC6fY26Qs1xyU86hv6qEo5TyXxzz9PPbz8Ouu3953KpsXP3Fct5EeoxY7ryaMZmVucPA5cAe/+zoN/uLX5NrWNWbih01VUkU+It9uGlRSXikfCCASM/gdLlaPVzUarftHtetbdJoYqEltlx+RU1AspUccylTQyP1jRJtXex6s7GVTcR+20Q6hCbfWijqmEre9MDGFFAIzn+SdALcay3d/bDq++chUm2p1MiORvqUM+0+uGBySoOHgU8uZHwnxoGq3VlRqztBdCqS+1PC6a+hJjqDmVcPAx8/u0uvRPUzYW1d4Tq6yIMhLwfjx5ivQVI4NqyE8hk/IdgfOhfsF1F1baC0F2euyRVfUlqlNqXLVHcBWACOPpqz8Ix41Qb3bjT979x7fbqdEFsNpCYiUlwvKAWsZWSUoyPHbA/HQHW1usOvXDUmYsHalx5tbyGnXWamtwNcjjJwz+P7NN3pOGZzfSRDTAoUVe4BuRSn5EhLnsqY3oYCU8Uh3OfVUckjx40Y+mPex3eaHXZDtuIon1U4wgBMwv+r6gWc/AnGOH3+dAZNTU1NAA+pTe52wLsplhottFRTcELiZZmFoseq4pn4OB5Y8+RnxrQ7C7ZxtmLMrEYV8Vf259VRy4wI/H82BwxyVn4fP3+NLp9IRM+rt6rPqHp+p7NTG3uGccuMlZxn5eNW0mgL6tKGu8lTXLSTbbaoAhFPtaXyE+r6mco4k8uPg+POgDvUjvM7u5cVLU5b7dHFKUtkBMsv8Aq5X5+BOPw76cPe7aGDvJZdqwXLqRRPqxv1QpMZL/AKnNtAxjmnGOP36UXp22Cd3bdrublRSGqU8GQr2UvKdUc57ck4GMfM6Lo6IEA5G5QBH/ANK//roDP1A7subH2dbzrNCRXvaD7JhUr2fHpoT73wrzn7NJXsLte3vff1aiO1pVCwlc3kmN7R8SyeOOSfGfOjaZY6pv+gCgLV/JD3vbM+1e1f8Auvh9zj8GfJ86KPTl08p2iuedWhdgrHtUYMel7F6PHvnOeas6DR75bjr2T20plSapCa4WlNQuCpHs+cJxyzxV9njQLW63t9HT1UsN/WDlzd/yfI9JMb1+3Z8cuWOP8gZz8tYTqo6gE7jUqRZjdrOU1ECoqIlLlcyvgSnujiMZ/E6ttrriO+m3lE2DVE+oU0yKl/635+v6npEnHpYTjPL+V20GiLjVktjqwbdRPlV74rbKg2GPX9z/AKx3KuPHP6MZz8tB23d8pVM6hZ+7LNsIfdmh0Gm+1nCQtAT+k4d8Y/k6wG6NprsncGtWp7X7d9WSSx7QG+AcwAc4yceft03HRdsYilm392XK+HzKhO4pyoePTK8pB9Tl5GM/DoKlzrdqLaeTm1yUJ+1VXUB/ca1W1NiMbu3zR+oeTVXKKtEgK+p0Nh1OWuwy+Snsc+OGuveO407vbhVPp4dhKo6RiWKyHPV7tDmE+lhPnx8WsezWWLT59KLrapSaskw03Aggemp/uCWPmBj+XoMn1SXLItLq7p13RYK6kmlsxZAZS4Upd4lXu8gDj9h0SNu+rqfdd80a23tuhAbqUtEdUk1NS/SCjjlgsjOPxGiZaVD/AHvvT/VU+2/lGaM2/OT7vs/q9geHlWPHnv8AhrPSNzFbq9Jl6XX9UGjkRJcb0PX9X4EA8uXFPnl9ny0Hx6gNp4VTvtG8rdyhMi34bbyaWlgKEn0CpYT6nPKc5x8JxpROo7dqXu7clOqki3EUMw45ZS0Hy8peTnJUUp+zxjWy6eNo1TbGVvQm4A0q3ZjjyaamPkv+gErx6nL3c5x8J0WbdpUTqnrdN3Byq1n7akpZehqZEpMpOQtJDmUEfCoYKTjOgpOgpSmNudyW5BLWUM8EuHGfzT2cA/q1a/RrNOtUi9/UbWjMiFjkkjPuvarvpFJyYF47fTkpDpjIkulAVjOFsnGfl40bumjev92WHXJH5PfU31U4yjHtfrep6gWf5KcY4ff50Bh1NTU0CRdeaEOb/WI24hK0KhsJUlQyCDKXkEacOl0GlQbfdg0inQaa3KZwsRo6W0lRRjkQkDJ0FOp3YGt7sXnSbgpNxw6T9XwhHAdQsr5hxSwoFPj4h+zW46erCu2wLbqFNu6737nkyJfrMvuvuulpvglPAFwkgZBOB276AFNTWukpyRCnJcuh66H1PoUwBHTHSO2CTkqOT92us9M+4lWT9ZN7z1RlqYPXS16kghAX73H9J8s400NyW3QLjYbartDplVDPIsibEQ+GlEdynmDg9h4+zSxTOnHehyW8uNvdUY7CnFFppNQmANpz2SAFYAA7dtAmn1jWrbrU9mmVqfDeQ8tl16LIW0p3iojJKSCe/fvpnvo/biuCsbkVpirV2qVBpFPCkolS3HUg8vICidC7qG2Gre0tNp9WqtwQqqKlIW3+aSsLCgAoklQ75zre/Rzf6Tq5/wCHD+1oNZdNTt3qVuuqbf0G3o9r1CDJXIdrD8dtTsgNniQoIwe/3qOirVthFfuL0myrerUaiVuEltL1ciRfSefCSSQVIIVg5+aj40NqndNN3zvCq2jtpBdsW448hb0uuoSlh6UlCuKkqWweZye/cnXQnqZh7TpG3Fy0qsXDWLf/AMjl1MSQr2pY7leVnkfPz76DNVHei0trZzu3tybdQrsq9CV7LLrL6Gi5NWO/qKK0KVnuB3J8aJ+wHUlSdxr3i2TTbNXRWzGcdbWl9JbQEDPEJSkY1VbR7tbU7ybkmhL2mpiKlLZdkuzZ0CM6pZQATyPEqJP2nRI3V2ep9ZtB2Dt5Go9lV1TyFN1WnQ0xXkIB99AcZAWAodiM4Pz0C/8AWZvBAj1isWRSbdVTbgjvMn6/jOJbfKB3KeSQF4I7Y5ay+zHTnce5lrQ9wkbgOQJ0h5RDjiHHH0qT25epyBz9+tTU9y7F2pmrsbcKwot8XHTvdl1qRGZfckk9wSt4FZwO3c6uKR1k2LR4KIFJ26m0+I3ngxF9FptP4JTgDQBu/H7m2V3sp9JuS6apd9PhFmXKivSnPRlNnOW1IWpQI7fMEabXbmrUne7p8rke36JGtOPUjIp4ZbQkobVxTlwhASDnI/ZpG+oncSHuhuS9dUGnvwGXIzbIZeUFKBTnvkdvnol9Nuze5F7WA5X7T3Jk2zAXMWwYrEuQ1yWgJyohsgf6w0GVvmiVjp73bgUJVwSqrCbQxUJTEdxbDUlJUoFtSMkHsk+c+dNrtXuhRNw9lrun2zbX5L/VzTqVMR+CU8lNkhaSgDv279vkNA/c3pXvtmh1O7Li3EYrb1PhqdUuSt911SEAniFLycef26yXTFvzRtp7brVHq9uyqsiovocHpLRx4hJBSoK8+dBUbP7UV7eqi3FcM+730OUJCBmbzkLdCkrVgKKuwHH/AI6N30aP8D3x/SIX9l7Qi3b3kj3vPoNG2ygT7ChcnGpcaA8IrMlbpQApSGCArASR3Hz02XStsvU9nYNfj1Ksw6mao4wtBjoUkI9MLBzy+3n/AMNAbNTU1NAnfXvfF60m+LYtW163UKW1Jh+v/kElbDjrq3VNhKlJUMj3RgfaTr4U3p86ipUBiS9vNLjOOthamlV2cSjIzgkDH7NV/Xf/ABgrC/okf/m166Ova+Lwt66bWpVAuWq0iIuk+0LRBlLYK3CtScqKCCeyR2PYaCw/e69Q3/fdJ/ruf/8ArQq3qpm++zFVpj1Y3Irs1mUSuNJYq8h1orQclCkuHBPg4IIIOhrT909zGp8d1O4V1lSHUqAXV31pJBHlJUQR9xGDpnfpD3XH9vtv33lc3HHHVrV9pLTZJ0BO6i9qK/vPt/asem1WBDkxgJL7kzkAsrbT44JPfOdAr6PmIuBvBc0FxSVLjRFNKUnwSlwgkfs1vOti4rgt3aWxHrfrtUpDruEuLgy3GFLAZRgEoIyNbfpp3J2svOeqFaFsopteZgtrnyTTWmXHjjCipxHdZKsnufnoK3p+2BuLbnder3hU6zSpcWcl4Iajlz1E81lQzySB/wAdA/rL2WrtBrlwboyKrTXabUqmPTjNlfrJ59hnKePy+3WatZ7enc7dKu0C2dwa8zIZkPucXK0+y0lCXCMAJVgfgBr6b7bYb22jZP1rf14SqvR/aENlhysvSR6h+E8FnH69ASbtgQbZ6ILZu+24Uai3G4mMldXp7SY8xQUtQUC8gBZBAAPfvqt212i35vqyKZddP3lqEaNUWvVbafrc3mkZIwcZHy+3QquaxN0oGw1Mu6p3JIkWXI9L2anmpurQ3yUQj8yfdGCD48a4dl17r3nX4tkWXe1bgKDC3GWBWH2GG0IGSAEqwPwA0BvrVuQ7tQrYCVFhSNymSJEm65bQcDyW/fKS+QXzlPbuNfiBdO12xMZO3W4G3dOumvQvzj1RZpkZ5LgX3SOT2FnH3jS97jRb5sXcyZHrdwzjc0NQ9SoMz3FO5I7EO55ePv1lazVqpWp66hWalNqUxYAVIlvqdcUB4ypRJOgYXdLbmNufadW3tsWFSbctmFFUldKLAYd5M/GoJaSUd+Q+fy0YOj2lVWudJNao9EqJptSmTZjMWWHFNllwobwrkn3hj7R30ttr2BupUtiqpdtKuR9izYqXlSqeKm6hCwjHP8yPdOcjz51kts6vuBJrNOs+z7trVLVUZYaYYj1N2Oz6iyByISoAZ7ZONA+NPtC7bJ6Zrso16XKu4qoY0t4TFyXXz6amwEo5O+92we3jvrzstmZDp9w0+dUIwlRGJCHHmSkK9RAOSnB7HI+3RW3Bpe9dv7gRdtbgvytyp9UbbCWvryQ4w4l0lICsqxjscgjWl/ec7sf/ABqB/wCcP+HQEGjdQewEqrxI0XZeMy+68hDbn1NBHBRIAOQcjTla8vr32jurae9rXjXOqCpVRkhbBivcxhC0BWewx8Q16g6CampqaBJOu/t1A2ET/wDKR/8Am16I/VNsBcu7lZoFat6s0iH7HTxFdanKcTn3ioKSUJVn4sYIHjXL1pbG3fuVV6PcloCPNkQ43sTsFx1LSuPNSw4FrISfiwR2PjGe+BdF236w40duOxUqyhptIQhP5QsHAHgd3dB8ofRVuMmWyp+5rUS0HElZQ9IUoJz3wC0MnHyyNbD6RhpMSy7EgF1K3GHnkH5EgNtjOPs7azH7nvWR/wBq1n/eCP8A+pqnqHTx1F3zX4QvVxxbQVwM2fV2n0x0fMhKVqV+oDuf26B2mLat25bPojFxUKm1dpmG0ppE2Mh5KCW05ICgcHS1XxJt/cMOW904MMUC56c+o1FcBj6rWtkEpKfUATyAUD2zptKRFMGkw4JWFmOwhoqAxy4pAz/w0hh2D6iravSs1Ozo64glSXSmVCq7DXqtqWVD4lhWO/ggaB1LJsq3bfYjTotuUmFWVRkIly48VtLri+I5lS0jKsnJJz30svXPuzZ1ZtOobdQJUldegVNv2hsx1JQnh3PvnsfPy1l/3Pesj/tWs/7wR/8A1NYys9NHUBWapIqlVt8TZ0lfN996rRlLcV9pPqdzoGcsGvWPbnSDZ9T3DhR5tCTEZQtp+H7SkuFauJ4YPz+eO2ls263P2+tTqqn3xDiuwbSdDzUZEaJx9NK0AA+mPAyD2Hf7tFTp82e3eiXJCoe6lNMyxI8VxKadJqDMiOhwD83hpKz4OcHHbTBfuLbT/wDd9b3/AJNOgB3Vm5Yd49N8jce26NAVJmzY4RUlQUtyVD1OJBURy+7X36aaBtpC6ZG7zvK06HNRCD70qU/TG33eCSPtSSfw1k9+9lN6K1clSoVk0xSbDLiFw6c3UmGY6SO+Q0pYx37+NHjpz2+n2/sVHsq+aRH9RanUyobi0PIWhR8EpJSQfx0Cd7p3avcDdFuztnKhMp1t1hDcRmlMLVCiOuqyF8muye/bJI7400/StsoxZFjtC9bVoqrnZqDj7UsttPutownhxc7kYIPg6Ee+/T1uD+68i4dorYi06nR2WlRnIcxiMWnk5yoJUsEHx3xrv2vsjqpg7iUGXdNRqy6GzNbXPS5W2HEloH3spDhKhj5AaBrKnaNq1StM1upW3SJlUY4hqY/DbW83xOU4WRkYJ7d9Z2Vujb9OqdRpVZJg1GIt0txS4lSnGkIC/UKgeCOQ5EBSgSEn7wN7rAXrtNbN3VwVSsS62pIyr2NmepuN6hQUFzgP9YpOD3wcdwdBwIuCwL6rUr66taO+KA++yudV4Lfpx1NlHJTbi8gpJKfhOQQMgdtEaFNhzQ8YcpmR6DpZd9JYVwWMEpOPBGR2+/QkrOxFvt0apfV064p8l4LeRDlVpxDD7xAPvlIz7y0pUT5yBjA7auOni0rstKzH2bxrMioVKZKXILbpQosA/IqSTyWfmeSh2Tj55Al6mpqaCampqaCampqaCampqaCampqaCampqaCampqaCampqaCampqaCampqaCampqaD//Z" alt="QR code" />
+      </td>
+    </tr>
+  </table>
+
+</div>
+
+<!-- PAGE BREAK -->
+<hr class="page-break">
+
+<!-- PAGE 2 -->
+<div class="page">
+
+  <div class="header-block">
+    <p class="eyebrow">El Cerrito Library Tax &nbsp;•&nbsp; June 2, 2026</p>
+    <h1 class="headline">Why Measure C<br>Is Bad for Business</h1>
+    <p class="subhead">Estimated 30-year costs for El Cerrito businesses</p>
+  </div>
+
+  <!-- Public record table -->
+  <p class="table-label">Public-record / published square footage</p>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Business</th>
+        <th class="r">Sq ft</th>
+        <th class="r">30-year cost</th>
+        <th>Basis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>All Star Donuts</td><td class="r">1,200</td><td class="r">$9,488</td><td class="basis">Public tenant SF at El Cerrito Plaza</td></tr>
+      <tr><td>Chef's Chinese Food</td><td class="r">1,613</td><td class="r">$12,754</td><td class="basis">Public tenant SF at El Cerrito Plaza</td></tr>
+      <tr><td>Kyoto Ramen</td><td class="r">1,200</td><td class="r">$9,488</td><td class="basis">Public tenant SF at El Cerrito Plaza</td></tr>
+      <tr><td>California Fish Grill</td><td class="r">2,400</td><td class="r">$18,976</td><td class="basis">Public tenant SF at El Cerrito Plaza</td></tr>
+      <tr><td>Petco</td><td class="r">15,482</td><td class="r">$122,414</td><td class="basis">Public tenant SF at El Cerrito Plaza</td></tr>
+      <tr><td>Denny's</td><td class="r">6,334</td><td class="r">$50,082</td><td class="basis">Public property record at 11344 San Pablo Ave</td></tr>
+      <tr><td>Burger King</td><td class="r">3,742</td><td class="r">$29,587</td><td class="basis">Public property record at 6021 Central Ave</td></tr>
+      <tr><td>Taco Bell</td><td class="r">2,299</td><td class="r">$18,178</td><td class="basis">Public property record/menu listing — treat as approximate</td></tr>
+      <tr><td>Wienerschnitzel</td><td class="r">494</td><td class="r">$3,906</td><td class="basis">Public property record at 11101 San Pablo Ave</td></tr>
+      <tr><td>24 Hour Fitness</td><td class="r">25,871</td><td class="r">$204,558</td><td class="basis">Public property record at 10636 San Pablo Ave</td></tr>
+      <tr><td>Home Depot</td><td class="r">104,000</td><td class="r">$822,313</td><td class="basis">Interior-only estimate</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Estimated table — two columns -->
+  <p class="table-label">Estimated square footage (no public record available)</p>
+  <table class="split-outer">
+    <tbody>
+      <tr>
+        <td>
+          <table class="inner-table">
+            <thead><tr><th>Business</th><th class="r">Sq ft</th><th class="r">30-yr cost</th></tr></thead>
+            <tbody>
+              <tr><td>Tashi Delek</td><td class="r">1,800</td><td class="r">$14,200</td></tr>
+              <tr><td>Little Hong Kong</td><td class="r">1,800</td><td class="r">$14,200</td></tr>
+              <tr><td>Los Moles</td><td class="r">2,500</td><td class="r">$19,800</td></tr>
+              <tr><td>Gangnam Tofu</td><td class="r">1,800</td><td class="r">$14,200</td></tr>
+              <tr><td>Uncle Wong's</td><td class="r">1,800</td><td class="r">$14,200</td></tr>
+              <tr><td>Donut Time</td><td class="r">1,200</td><td class="r">$9,500</td></tr>
+              <tr><td>Antojitos Guatemaltecos</td><td class="r">1,600</td><td class="r">$12,700</td></tr>
+              <tr><td>El Momo</td><td class="r">1,600</td><td class="r">$12,700</td></tr>
+              <tr><td>Sushi Matsu</td><td class="r">1,800</td><td class="r">$14,200</td></tr>
+              <tr><td>Happy Garden</td><td class="r">1,800</td><td class="r">$14,200</td></tr>
+              <tr><td>Tokyo Ramen</td><td class="r">1,500</td><td class="r">$11,900</td></tr>
+              <tr><td>Zomsa</td><td class="r">1,800</td><td class="r">$14,200</td></tr>
+              <tr><td>Noodles Fresh</td><td class="r">1,500</td><td class="r">$11,900</td></tr>
+              <tr><td>Guru Curry House</td><td class="r">1,800</td><td class="r">$14,200</td></tr>
+              <tr><td>Larb Thai</td><td class="r">1,800</td><td class="r">$14,200</td></tr>
+              <tr><td>H&amp;J</td><td class="r">1,500</td><td class="r">$11,900</td></tr>
+              <tr><td>Masa Taqueria</td><td class="r">1,600</td><td class="r">$12,700</td></tr>
+              <tr><td>Pakaoma Thai</td><td class="r">1,800</td><td class="r">$14,200</td></tr>
+              <tr><td>Sushi Sho</td><td class="r">1,800</td><td class="r">$14,200</td></tr>
+              <tr><td>Banh Mi Ba Le</td><td class="r">1,500</td><td class="r">$11,900</td></tr>
+              <tr><td>Hosanna Oriental Food</td><td class="r">1,200</td><td class="r">$9,500</td></tr>
+              <tr><td>Mugunghwa Korean</td><td class="r">1,800</td><td class="r">$14,200</td></tr>
+              <tr><td>Momolicious</td><td class="r">1,500</td><td class="r">$11,900</td></tr>
+              <tr><td>New York Pizza</td><td class="r">1,800</td><td class="r">$14,200</td></tr>
+            </tbody>
+          </table>
+        </td>
+        <td>
+          <table class="inner-table">
+            <thead><tr><th>Business</th><th class="r">Sq ft</th><th class="r">30-yr cost</th></tr></thead>
+            <tbody>
+              <tr><td>Mountain Mike's</td><td class="r">2,400</td><td class="r">$19,000</td></tr>
+              <tr><td>Nation's</td><td class="r">3,500</td><td class="r">$27,700</td></tr>
+              <tr><td>Little Kathmandu</td><td class="r">1,800</td><td class="r">$14,200</td></tr>
+              <tr><td>Lucky</td><td class="r">45,000</td><td class="r">$355,800</td></tr>
+              <tr><td>New India Supermarket</td><td class="r">3,500</td><td class="r">$27,700</td></tr>
+              <tr><td>Himalayan Grocery</td><td class="r">2,500</td><td class="r">$19,800</td></tr>
+              <tr><td>Yaoyasan</td><td class="r">3,000</td><td class="r">$23,700</td></tr>
+              <tr><td>Annapurna Mart</td><td class="r">2,500</td><td class="r">$19,800</td></tr>
+              <tr><td>Daiso</td><td class="r">8,000</td><td class="r">$63,300</td></tr>
+              <tr><td>Kaady Car Wash</td><td class="r">4,500</td><td class="r">$35,600</td></tr>
+              <tr><td>EC Honda</td><td class="r">25,000</td><td class="r">$197,700</td></tr>
+              <tr><td>R&amp;R Auto Service</td><td class="r">3,500</td><td class="r">$27,700</td></tr>
+              <tr><td>Fairmount Auto</td><td class="r">3,500</td><td class="r">$27,700</td></tr>
+              <tr><td>O'Reilly Auto Parts</td><td class="r">7,000</td><td class="r">$55,300</td></tr>
+              <tr><td>AutoZone</td><td class="r">7,000</td><td class="r">$55,300</td></tr>
+              <tr><td>Auto Imports</td><td class="r">3,000</td><td class="r">$23,700</td></tr>
+              <tr><td>Doherty's</td><td class="r">2,500</td><td class="r">$19,800</td></tr>
+              <tr><td>Paul 777 Auto Care</td><td class="r">3,000</td><td class="r">$23,700</td></tr>
+              <tr><td>EC Test Only / Star Smog</td><td class="r">1,800</td><td class="r">$14,200</td></tr>
+              <tr><td>Harbor Freight</td><td class="r">15,000</td><td class="r">$118,600</td></tr>
+              <tr><td>Pet Food Express</td><td class="r">5,000</td><td class="r">$39,500</td></tr>
+              <tr><td>PetVet</td><td class="r">1,500</td><td class="r">$11,900</td></tr>
+              <tr><td>Tropical Fish World</td><td class="r">2,500</td><td class="r">$19,800</td></tr>
+              <tr><td>Physical Therapy Innovations</td><td class="r">2,500</td><td class="r">$19,800</td></tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p>All 30-year cost estimates use a 2.86% annual escalator (Bay Area inflation rate, last 30 years) for the full 30-year term. Estimated square footages are based on typical unit sizes for similar businesses; actual costs may vary. The measure allows increases up to the greater of Bay Area cost-of-living or California per-capita personal income growth — actual costs could be higher than shown.</p>
+  </div>
+
+  <div class="vote-no">
+    <p class="vote-no-text">Vote No on C — June 2, 2026</p>
+  </div>
+
+  <div class="footer">
+    <p class="footer-cta">More info: <a href="http://www.nomoreforevertax.org">www.nomoreforevertax.org</a></p>
+    <p class="footer-disc">Ad paid for by Neighbors For a Better El Cerrito &nbsp;•&nbsp; FPPC ID #1485677</p>
+  </div>
+
+</div>
+
+</body>
+</html>
