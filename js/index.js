@@ -71,6 +71,87 @@ sidebarLinks.forEach(link => {
     });
 });
 
+// Endorsements popup (home page)
+(function () {
+    var popupOverlay = document.getElementById('endorsements-popup-overlay');
+    var closeBtn = document.getElementById('endorsements-popup-close');
+    var listWrap = document.querySelector('.endorsements-popup-list-wrap');
+    var scrollHintBtn = document.getElementById('endorsements-popup-scroll-hint');
+    if (!popupOverlay || !closeBtn) return;
+
+    var storageKey = 'endorsements-popup-seen';
+
+    function syncScrollHint() {
+        if (!listWrap) return;
+        var overflow = listWrap.scrollHeight > listWrap.clientHeight + 2;
+        listWrap.classList.toggle('no-overflow', !overflow);
+        if (!overflow) return;
+        var atEnd = listWrap.scrollTop + listWrap.clientHeight >= listWrap.scrollHeight - 3;
+        listWrap.classList.toggle('is-at-end', atEnd);
+    }
+
+    function scrollListDown() {
+        if (!listWrap) return;
+        var remaining = listWrap.scrollHeight - listWrap.scrollTop - listWrap.clientHeight;
+        if (remaining <= 1) return;
+        var step = Math.min(listWrap.clientHeight * 0.7, remaining);
+        listWrap.scrollBy({ top: step, behavior: 'smooth' });
+    }
+
+    function openPopup() {
+        popupOverlay.classList.add('is-visible');
+        popupOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus({ preventScroll: true });
+        syncScrollHint();
+    }
+
+    function closePopup() {
+        popupOverlay.classList.remove('is-visible');
+        popupOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        try {
+            sessionStorage.setItem(storageKey, '1');
+        } catch (e) {
+            /* Ignore storage failures in private browsing or restricted contexts. */
+        }
+    }
+
+    function shouldOpenPopup() {
+        try {
+            return !sessionStorage.getItem(storageKey);
+        } catch (e) {
+            return true;
+        }
+    }
+
+    if (shouldOpenPopup()) {
+        setTimeout(openPopup, 650);
+    }
+
+    closeBtn.addEventListener('click', closePopup);
+    if (listWrap) {
+        listWrap.addEventListener('scroll', syncScrollHint, { passive: true });
+    }
+    if (scrollHintBtn) {
+        scrollHintBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            scrollListDown();
+        });
+    }
+    popupOverlay.addEventListener('click', function (e) {
+        if (e.target === popupOverlay) closePopup();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && popupOverlay.classList.contains('is-visible')) {
+            closePopup();
+        }
+    });
+    window.addEventListener('resize', syncScrollHint);
+    window.addEventListener('load', syncScrollHint);
+    syncScrollHint();
+})();
+
 /* Yard sign / donate popup (home page) - commented out
 const yardsignPopupOverlay = document.getElementById('yardsign-popup-overlay');
 const yardsignPopupClose = document.getElementById('yardsign-popup-close');
