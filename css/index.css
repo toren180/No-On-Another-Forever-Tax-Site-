@@ -1988,7 +1988,7 @@ nav {
 /* --- ACTION CARDS SECTION --- */
 .action-cards-section {
     background-color: white;
-    padding-top: 0;
+    padding-top: 72px;
     padding-bottom: 100px;
     padding-left: 20px;
     padding-right: 20px;
