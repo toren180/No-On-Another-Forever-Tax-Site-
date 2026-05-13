@@ -1600,6 +1600,138 @@ nav {
     border-radius: 12px;
 }
 
+/* --- ENDORSEMENTS MARQUEE SECTION --- */
+.endorsement-marquee-section {
+    background: linear-gradient(180deg, var(--section-bg) 0%, #fff 100%);
+    padding: 80px 20px 72px;
+    overflow: hidden;
+}
+
+.endorsement-marquee-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.endorsement-marquee-copy {
+    max-width: 860px;
+}
+
+.endorsement-marquee-copy h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: 0.035em;
+    color: #222;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+.endorsement-heading-accent {
+    display: block;
+    color: var(--brand-color);
+}
+
+.endorsement-marquee-copy p {
+    max-width: 760px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: var(--body-text-size);
+    line-height: var(--body-text-line-height);
+    letter-spacing: var(--body-text-letter-spacing);
+    color: var(--body-text-color);
+    margin-bottom: 34px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.endorsement-marquee {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+    padding: 14px 0;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+.endorsement-marquee:focus-visible {
+    outline: 3px solid rgba(254, 82, 82, 0.45);
+    outline-offset: 4px;
+}
+
+.endorsement-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: endorsement-marquee-scroll 480s linear infinite;
+    will-change: transform;
+}
+
+.endorsement-marquee:hover .endorsement-marquee-track,
+.endorsement-marquee:focus .endorsement-marquee-track,
+.endorsement-marquee:focus-within .endorsement-marquee-track {
+    animation-play-state: paused;
+}
+
+.endorsement-marquee-group {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 0 0 auto;
+    padding-right: 14px;
+}
+
+.endorsement-name {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 18px;
+    border: 1px solid rgba(254, 82, 82, 0.28);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    color: var(--brand-color);
+    font-family: 'Outfit', 'Open Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+
+.endorsement-name:nth-child(3n) {
+    border-color: rgba(34, 34, 34, 0.14);
+}
+
+@keyframes endorsement-marquee-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .endorsement-marquee {
+        overflow-x: auto;
+        -webkit-mask-image: none;
+        mask-image: none;
+        scrollbar-width: none;
+    }
+
+    .endorsement-marquee::-webkit-scrollbar {
+        display: none;
+    }
+
+    .endorsement-marquee-track {
+        animation: none;
+    }
+
+    .endorsement-marquee-group[aria-hidden="true"] {
+        display: none;
+    }
+}
+
 /* --- NEW: TESTIMONIALS SECTION --- */
 /* --- HORIZONTAL SCROLL TESTIMONIALS --- */
 .testimonials-section {
@@ -2071,6 +2203,41 @@ nav {
 
     .mission-text p {
         font-size: 1.1rem;
+    }
+
+    .endorsement-marquee-section {
+        padding: 56px 20px 48px;
+    }
+
+    .endorsement-marquee-container {
+        padding: 0 24px;
+    }
+
+    .endorsement-marquee-copy h3 {
+        font-size: 2rem;
+        line-height: 1.1;
+        margin-bottom: 18px;
+    }
+
+    .endorsement-marquee-copy p {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+
+    .endorsement-marquee {
+        -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+        mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+    }
+
+    .endorsement-marquee-group {
+        gap: 10px;
+        padding-right: 10px;
+    }
+
+    .endorsement-name {
+        min-height: 38px;
+        padding: 8px 14px;
+        font-size: 0.9rem;
     }
 
     .volunteer-form-section {
