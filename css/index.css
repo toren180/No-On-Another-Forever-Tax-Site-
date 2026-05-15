@@ -1913,6 +1913,10 @@ nav {
     padding-top: 15px;
 }
 
+.featured-neighbor-quote-wrap {
+    align-self: start;
+}
+
 .featured-neighbor-quote {
     max-width: 100%;
     margin: 0;
@@ -1924,7 +1928,11 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-self: start;
+}
+
+.endorsement-supporters-btn {
+    display: inline-block;
+    margin-top: 18px;
 }
 
 .featured-neighbor-quote blockquote {
@@ -1983,6 +1991,114 @@ nav {
     color: #555;
     font-size: 0.98rem;
     letter-spacing: 0.06em;
+}
+
+/* --- SUPPORTERS PAGE --- */
+.supporters-page {
+    background: #fff;
+}
+
+.supporters-page nav {
+    position: relative;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.supporters-page .logo {
+    color: var(--brand-color);
+    text-shadow: none;
+}
+
+.supporters-page .nav-links a {
+    color: #222;
+    text-shadow: none;
+}
+
+.supporters-page .nav-links a:hover {
+    color: var(--brand-color);
+}
+
+.supporters-page .nav-links .nav-btn {
+    color: #fff;
+}
+
+.supporters-page .hamburger span {
+    background-color: var(--brand-color);
+}
+
+.supporters-main {
+    background: linear-gradient(180deg, #fff 0%, var(--section-bg) 100%);
+    padding: 72px 20px 96px;
+}
+
+.supporters-list-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.supporters-list-header {
+    margin-bottom: 36px;
+    text-align: center;
+}
+
+.supporters-list-header h1 {
+    color: #222;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 5.5vw, 3.75rem);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.supporters-list {
+    column-count: 3;
+    column-gap: 48px;
+    list-style: none;
+    margin: 0;
+    padding: 34px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 14px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.07);
+}
+
+.supporters-list li {
+    break-inside: avoid;
+    margin-bottom: 12px;
+    color: #222;
+    font-family: 'Open Sans', sans-serif;
+    font-size: var(--body-text-size);
+    font-weight: 400;
+    line-height: var(--body-text-line-height);
+    letter-spacing: var(--body-text-letter-spacing);
+}
+
+@media (max-width: 900px) {
+    .supporters-list {
+        column-count: 2;
+        column-gap: 34px;
+    }
+}
+
+@media (max-width: 600px) {
+    .endorsement-supporters-btn {
+        width: 100%;
+    }
+
+    .supporters-main {
+        padding: 58px 20px 70px;
+    }
+
+    .supporters-list-section {
+        padding: 0;
+    }
+
+    .supporters-list {
+        column-count: 1;
+        padding: 26px 22px;
+    }
 }
 
 /* Navigation Arrows and Read All Button Container */
