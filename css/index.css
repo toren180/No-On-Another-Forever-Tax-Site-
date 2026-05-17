@@ -1671,7 +1671,7 @@ nav {
     display: grid;
     gap: 16px;
     list-style: none;
-    margin: 0;
+    margin: 0 0 20px;
     padding: 0;
 }
 
@@ -2050,6 +2050,19 @@ nav {
     line-height: 1.05;
     letter-spacing: 0.02em;
     text-transform: uppercase;
+}
+
+.supporters-page-subtitle {
+    margin: 14px 0 0;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--brand-color);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: var(--body-text-letter-spacing);
 }
 
 .supporters-list {
