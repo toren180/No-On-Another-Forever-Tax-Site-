@@ -598,6 +598,50 @@ nav {
     border: 5px solid white;
 }
 
+.mission-video-carousel {
+    position: relative;
+    width: fit-content;
+    height: 100%;
+    max-width: calc(100% - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    min-height: 0;
+}
+
+.mission-video-track {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    aspect-ratio: 9 / 16;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mission-video-track::-webkit-scrollbar {
+    display: none;
+}
+
+.mission-video-track:focus-visible {
+    outline: 2px solid var(--brand-color);
+    outline-offset: 6px;
+    border-radius: 8px;
+}
+
+.mission-video-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: start;
+}
+
 .mission-video.youtube-clickplay {
     width: auto;
     height: 100%;
@@ -610,6 +654,11 @@ nav {
     background: #000;
 }
 
+.mission-video-slide .mission-video.youtube-clickplay {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .mission-video .youtube-clickplay-poster img {
     height: 100%;
     border: none;
@@ -618,25 +667,91 @@ nav {
     object-fit: cover;
 }
 
+.mission-video-next {
+    position: absolute;
+    left: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: var(--brand-color);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(254, 82, 82, 0.32);
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mission-video-next:hover {
+    background: var(--brand-hover);
+    transform: translateY(-50%) scale(1.06);
+    box-shadow: 0 10px 28px rgba(254, 82, 82, 0.38);
+}
+
+.mission-video-next:focus-visible {
+    outline: 2px solid var(--brand-color);
+    outline-offset: 3px;
+}
+
+.mission-video-next svg {
+    display: block;
+}
+
+.mission-video-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    min-height: 18px;
+    margin: -2px 0 0;
+}
+
+.mission-video-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(254, 82, 82, 0.28);
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.mission-video-dot:hover {
+    background: rgba(254, 82, 82, 0.5);
+}
+
+.mission-video-dot.is-active {
+    background: var(--brand-color);
+    transform: scale(1.2);
+}
+
+.mission-video-dot:focus-visible {
+    outline: 2px solid var(--brand-color);
+    outline-offset: 2px;
+}
+
 .mission-donate-btn {
     margin-top: 0;
     width: auto;
     /* Let it shrink to fit the text */
     align-self: center;
     /* Centers it under the image */
-    min-width: 0;
+    min-width: 150px;
     /* Override the global button minimum width */
-    padding-top: 8px;
-    padding-left: 45px;
-    padding-right: 35px;
+    padding: 10px 38px;
     /* Smaller padding */
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     /* Slightly smaller text */
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    align-self: end;
-    gap: 8px;
+    text-align: center;
+    gap: 0;
 }
 
 .caption {
@@ -2496,9 +2611,26 @@ nav {
         flex-direction: column;
     }
 
-    .mission-video.youtube-clickplay {
+    .mission-video-carousel {
         width: min(100%, 220px);
         height: auto;
+    }
+
+    .mission-video-track {
+        width: 100%;
+        height: auto;
+    }
+
+    .mission-video.youtube-clickplay {
+        width: 100%;
+        height: auto;
+    }
+
+    .mission-video-next {
+        left: auto;
+        right: -12px;
+        width: 38px;
+        height: 38px;
     }
 
     .mission-text h3 {

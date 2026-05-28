@@ -162,25 +162,65 @@
             </div>
 
             <div class="mission-image">
-                <div class="mission-video youtube-clickplay" aria-label="Video: The wrong plan at the wrong price">
-                    <button type="button" class="youtube-clickplay-poster" aria-label="Play video">
-                        <img src="/images/first_vid_thumbnail.png"
-                            alt="Video thumbnail: No on Measure C, don't vote for maybe" loading="lazy" width="578"
-                            height="1024" />
-                        <span class="youtube-clickplay-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28"
-                                height="28" fill="#fff">
-                                <path d="M8 5v14l11-7z" />
-                            </svg></span>
+                <div class="mission-video-carousel" aria-roledescription="carousel" aria-label="Featured videos">
+                    <div class="mission-video-track" id="mission-video-track" tabindex="0">
+                        <div class="mission-video-slide">
+                            <div class="mission-video youtube-clickplay"
+                                aria-label="Video: The wrong plan at the wrong price">
+                                <button type="button" class="youtube-clickplay-poster" aria-label="Play video">
+                                    <img src="/images/first_vid_thumbnail.png"
+                                        alt="Video thumbnail: No on Measure C, don't vote for maybe" loading="lazy"
+                                        width="578" height="1024" />
+                                    <span class="youtube-clickplay-icon" aria-hidden="true"><svg viewBox="0 0 24 24"
+                                            width="28" height="28" fill="#fff">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg></span>
+                                </button>
+                                <iframe class="youtube-clickplay-frame" hidden
+                                    data-embed-src="https://www.youtube.com/embed/XMRNPjcs6Zw"
+                                    title="YouTube Shorts video"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="mission-video-slide">
+                            <div class="mission-video youtube-clickplay"
+                                aria-label="Video: No on C, a blank check for the BART library plan">
+                                <button type="button" class="youtube-clickplay-poster" aria-label="Play video">
+                                    <img src="/images/second_vid_thumbnail.png"
+                                        alt="Video thumbnail: No on C, a blank check for the BART library plan"
+                                        loading="lazy" width="578" height="1024" />
+                                    <span class="youtube-clickplay-icon" aria-hidden="true"><svg viewBox="0 0 24 24"
+                                            width="28" height="28" fill="#fff">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg></span>
+                                </button>
+                                <iframe class="youtube-clickplay-frame" hidden
+                                    data-embed-src="https://www.youtube.com/embed/utGdaWDkzys"
+                                    title="YouTube Shorts video"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="mission-video-next" id="mission-video-next" aria-label="Next video">
+                        <span aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+                                stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 6l6 6-6 6" />
+                            </svg>
+                        </span>
                     </button>
-                    <iframe class="youtube-clickplay-frame" hidden
-                        data-embed-src="https://www.youtube.com/embed/XMRNPjcs6Zw" title="YouTube Shorts video"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="mission-video-dots" id="mission-video-dots" role="group" aria-label="Video slides">
+                    <button type="button" class="mission-video-dot is-active" aria-label="Go to video 1"
+                        aria-current="true"></button>
+                    <button type="button" class="mission-video-dot" aria-label="Go to video 2"></button>
                 </div>
 
                 <a href="https://buy.stripe.com/7sYcN58OwbnRgc6eqX5Vu02" class="btn btn-primary mission-donate-btn"
                     target="_blank">
-                    Donate <span>&rarr;</span>
+                    Donate
                 </a>
             </div>
         </div>
@@ -247,7 +287,8 @@
                     <span class="endorsement-name">Gina Brusatori, former El Cerrito Mayor and City Council</span>
                     <span class="endorsement-name">Kathie Perka, former El Cerrito City Council</span>
                     <span class="endorsement-name">Steve Magyary, former El Cerrito Financial Advisory Board</span>
-                    <span class="endorsement-name">Jon Bashor, former 2-term Friends of El Cerrito Library &amp; President El Cerrito Historical Society</span>
+                    <span class="endorsement-name">Jon Bashor, former 2-term Friends of El Cerrito Library &amp;
+                        President El Cerrito Historical Society</span>
                     <span class="endorsement-name">Adam Oesterle</span>
                     <span class="endorsement-name">Adelle LaRosa Noble</span>
                     <span class="endorsement-name">Adriana Ruiz</span>
@@ -810,7 +851,8 @@
                     <span class="endorsement-name">Gina Brusatori, former El Cerrito Mayor and City Council</span>
                     <span class="endorsement-name">Kathie Perka, former El Cerrito City Council</span>
                     <span class="endorsement-name">Steve Magyary, former El Cerrito Financial Advisory Board</span>
-                    <span class="endorsement-name">Jon Bashor, former 2-term Friends of El Cerrito Library &amp; President El Cerrito Historical Society</span>
+                    <span class="endorsement-name">Jon Bashor, former 2-term Friends of El Cerrito Library &amp;
+                        President El Cerrito Historical Society</span>
                     <span class="endorsement-name">Adam Oesterle</span>
                     <span class="endorsement-name">Adelle LaRosa Noble</span>
                     <span class="endorsement-name">Adriana Ruiz</span>

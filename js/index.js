@@ -126,6 +126,86 @@ if (yardsignPopupOverlay && yardsignPopupClose) {
 })();
 */
 
+// Mission video carousel
+(function () {
+    var track = document.getElementById('mission-video-track');
+    var nextBtn = document.getElementById('mission-video-next');
+    var dotsEl = document.getElementById('mission-video-dots');
+    if (!track || !nextBtn) return;
+    var syncRaf = null;
+
+    function getSlides() {
+        return track.querySelectorAll('.mission-video-slide');
+    }
+
+    function getClosestSlideIndex() {
+        var slides = getSlides();
+        if (!slides.length) return 0;
+        var trackRect = track.getBoundingClientRect();
+        var centerX = trackRect.left + trackRect.width / 2;
+        var best = 0;
+        var bestDist = Infinity;
+        for (var i = 0; i < slides.length; i++) {
+            var slideRect = slides[i].getBoundingClientRect();
+            var slideCenterX = slideRect.left + slideRect.width / 2;
+            var dist = Math.abs(slideCenterX - centerX);
+            if (dist < bestDist) {
+                bestDist = dist;
+                best = i;
+            }
+        }
+        return best;
+    }
+
+    function syncDots() {
+        if (!dotsEl) return;
+        var active = getClosestSlideIndex();
+        var dots = dotsEl.querySelectorAll('.mission-video-dot');
+        for (var i = 0; i < dots.length; i++) {
+            dots[i].classList.toggle('is-active', i === active);
+            if (i === active) {
+                dots[i].setAttribute('aria-current', 'true');
+            } else {
+                dots[i].removeAttribute('aria-current');
+            }
+        }
+    }
+
+    function scheduleSyncDots() {
+        if (syncRaf !== null) return;
+        syncRaf = requestAnimationFrame(function () {
+            syncRaf = null;
+            syncDots();
+        });
+    }
+
+    function scrollToSlide(index) {
+        var slides = getSlides();
+        if (!slides.length) return;
+        var next = Math.max(0, Math.min(slides.length - 1, index));
+        slides[next].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    }
+
+    nextBtn.addEventListener('click', function () {
+        var slides = getSlides();
+        if (!slides.length) return;
+        var next = (getClosestSlideIndex() + 1) % slides.length;
+        scrollToSlide(next);
+    });
+
+    if (dotsEl) {
+        dotsEl.querySelectorAll('.mission-video-dot').forEach(function (dot, index) {
+            dot.addEventListener('click', function () {
+                scrollToSlide(index);
+            });
+        });
+    }
+
+    track.addEventListener('scroll', scheduleSyncDots, { passive: true });
+    window.addEventListener('resize', scheduleSyncDots);
+    scheduleSyncDots();
+})();
+
 // The City's Plan — horizontal video carousel (mixed slide widths)
 (function () {
     var scrollEl = document.getElementById('city-plan-videos-scroll');
