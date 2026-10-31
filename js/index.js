@@ -451,3 +451,71 @@ if (yardsignPopupOverlay && yardsignPopupClose) {
     window.addEventListener('load', scheduleCarouselSync);
 })();
 
+// The City's Plan — accordion list
+(function () {
+    var accordion = document.getElementById('city-plan-accordion');
+    if (!accordion) return;
+
+    var items = accordion.querySelectorAll('.city-plan-item');
+
+    function setPanelHeight(item, open) {
+        var panel = item.querySelector('.city-plan-item-panel');
+        var inner = item.querySelector('.city-plan-item-panel-inner');
+        if (!panel || !inner) return;
+        panel.style.maxHeight = open ? inner.offsetHeight + 'px' : '0px';
+    }
+
+    function openItem(item) {
+        var header = item.querySelector('.city-plan-item-header');
+        item.classList.add('is-open');
+        if (header) header.setAttribute('aria-expanded', 'true');
+        setPanelHeight(item, true);
+    }
+
+    function closeItem(item) {
+        var header = item.querySelector('.city-plan-item-header');
+        item.classList.remove('is-open');
+        if (header) header.setAttribute('aria-expanded', 'false');
+        setPanelHeight(item, false);
+    }
+
+    function toggleItem(item) {
+        if (item.classList.contains('is-open')) {
+            closeItem(item);
+        } else {
+            openItem(item);
+        }
+    }
+
+    items.forEach(function (item) {
+        var header = item.querySelector('.city-plan-item-header');
+        if (!header) return;
+        header.addEventListener('click', function () {
+            toggleItem(item);
+        });
+    });
+
+    function syncOpenHeights() {
+        items.forEach(function (item) {
+            if (item.classList.contains('is-open')) {
+                setPanelHeight(item, true);
+            }
+        });
+    }
+
+    window.addEventListener('resize', syncOpenHeights);
+
+    function init() {
+        items.forEach(function (item) {
+            setPanelHeight(item, item.classList.contains('is-open'));
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+    window.addEventListener('load', init);
+})();
+

@@ -1076,86 +1076,149 @@ nav {
     letter-spacing: 0.04em;
 }
 
-/* Text cards */
+/* Text cards: clean accordion list */
 .city-plan-content {
     display: flex;
     flex-direction: column;
     gap: 0;
     max-width: 100%;
-    counter-reset: city-plan-counter;
 }
 
-.city-plan-text-stack {
+.city-plan-accordion {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 14px;
     width: 100%;
 }
 
-.city-plan-text-cluster {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.city-plan-block {
-    margin-bottom: 0;
-    padding: var(--city-plan-card-padding, 24px);
+.city-plan-item {
     background: #fff;
+    border: 1px solid #e2e2e2;
     border-radius: 10px;
-    border: 1px solid rgba(254, 82, 82, 0.35);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    counter-increment: city-plan-counter;
-    overflow: visible;
-    transition: box-shadow 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.city-plan-block:hover {
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.09), 0 2px 8px rgba(254, 82, 82, 0.14);
-    border-color: rgba(254, 82, 82, 0.5);
-    transform: translateY(-2px);
+.city-plan-item:hover {
+    border-color: #d2d2d2;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
 }
 
-/* First two clusters (points 1–4): center text vertically in each card */
-.city-plan-text-cluster:nth-child(-n+2) .city-plan-block {
+.city-plan-item.is-open {
+    border-color: #d6d6d6;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* Header row acts as the toggle */
+.city-plan-item-header {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 20px var(--city-plan-card-padding, 24px);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
-.city-plan-point {
-    position: relative;
-    padding-left: 42px;
+.city-plan-item-header:focus-visible {
+    outline: 2px solid var(--brand-color);
+    outline-offset: -2px;
 }
 
-/* Number badge - use HTML span; hide CSS counter ::before */
+/* Number badge - quiet outline, not a solid block */
 .city-plan-number {
-    display: inline-block;
-    position: absolute;
-    left: 0;
-    top: -2px;
-    width: 28px;
-    height: 28px;
-    line-height: 28px;
-    text-align: center;
-    background: var(--brand-color);
-    color: white;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1.5px solid var(--brand-color);
+    color: var(--brand-color);
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-family: 'Oswald', sans-serif;
-    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.city-plan-point::before {
-    display: none;
+.city-plan-item.is-open .city-plan-number {
+    background: var(--brand-color);
+    color: #fff;
 }
 
 .city-plan-title {
-    color: var(--brand-color);
-    font-weight: 800;
+    flex: 1 1 auto;
+    font-family: 'Oswald', sans-serif;
+    color: #222;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+    text-transform: none;
 }
 
-.city-plan-block p {
+/* Plus / minus toggle, built from two CSS bars (no icon font/SVG needed) */
+.city-plan-toggle {
+    position: relative;
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+}
+
+.city-plan-toggle::before,
+.city-plan-toggle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #999;
+    transition: transform 0.25s ease, background-color 0.2s ease;
+}
+
+.city-plan-toggle::before {
+    width: 14px;
+    height: 2px;
+    transform: translate(-50%, -50%);
+}
+
+.city-plan-toggle::after {
+    width: 2px;
+    height: 14px;
+    transform: translate(-50%, -50%);
+}
+
+.city-plan-item.is-open .city-plan-toggle::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.city-plan-item.is-open .city-plan-toggle::before,
+.city-plan-item.is-open .city-plan-toggle::after {
+    background: var(--brand-color);
+}
+
+.city-plan-item:hover .city-plan-toggle::before,
+.city-plan-item:hover .city-plan-toggle::after {
+    background: var(--brand-color);
+}
+
+/* Collapsible panel */
+.city-plan-item-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.city-plan-item-panel-inner {
+    padding: 0 var(--city-plan-card-padding, 24px) 22px calc(var(--city-plan-card-padding, 24px) + 48px);
+}
+
+.city-plan-point-text {
     font-size: var(--body-text-size);
     line-height: var(--body-text-line-height);
     color: var(--body-text-color);
@@ -1992,9 +2055,7 @@ nav {
     max-width: 320px;
     background: white;
     border: 1px solid #ddd;
-    /* Thin subtle border like the example */
-    border-top: 4px solid var(--brand-color);
-    /* Color accent on top */
+    /* Thin subtle grey border all around */
     border-radius: 6px;
     padding: 25px;
     display: flex;
@@ -2775,15 +2836,25 @@ nav {
         max-width: 100%;
     }
 
-    .city-plan-text-stack {
+    .city-plan-accordion {
         max-width: 100%;
+        gap: 10px;
     }
 
-    .city-plan-point {
-        font-size: 1.1rem;
+    .city-plan-item-header {
+        gap: 12px;
+        padding: 16px 16px;
     }
 
-    .city-plan-block p {
+    .city-plan-title {
+        font-size: 1.05rem;
+    }
+
+    .city-plan-item-panel-inner {
+        padding: 0 16px 18px 58px;
+    }
+
+    .city-plan-point-text {
         font-size: 1rem;
     }
 
